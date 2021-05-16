@@ -1,0 +1,1 @@
+/usr/bin/c++ -pthread -g CMakeFiles/Client.dir/main.cpp.o CMakeFiles/Client.dir/ClientSock.cpp.o -o Client   -L"/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/SFML_LIBRARY_DIR"  -Wl,-rpath,"/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/SFML_LIBRARY_DIR" -lsfml-graphics -lsfml-window -lsfml-system 
