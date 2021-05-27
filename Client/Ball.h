@@ -5,6 +5,8 @@
 #ifndef CLIENT_BALL_H
 #define CLIENT_BALL_H
 
+#define gravity = 9.81
+
 // fricción
 #define us 0.75             // coeficiente de fricción estática del césped
 #define uk 0.57             // coeficiente de fricción cinética del césped
@@ -16,8 +18,12 @@
 class Ball {
 private:
     float pos[2];
-    float energy;
+    float speed;
 
+    void ChangeSpeed(float deltaTime);
+
+public:
+    void Kick(float energy, float degrees);
 };
 
 
