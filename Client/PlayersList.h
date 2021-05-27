@@ -6,20 +6,33 @@ class Player{
 private:
     Player* next;
     Player* prev;
-    sf::CircleShape* obj;
+    int index, jindex;
+    sf::Sprite* obj;
 
 public:
     Player* GetNext();
     Player* GetPrev();
-    sf::CircleShape* GetObj();
+    sf::Sprite* GetObj();
+    void SetNext(Player* Next);
+    void SetPrev(Player* Prev);
+    void SetObj(sf::Sprite* img);
+    void SetIndex(int posi,int posj);
 
 
 };
 
 
-
-
 class PlayersList {
+private:
+    Player* start = nullptr;
+    Player* end = nullptr;
+
+public:
+
+    PlayersList() = default;
+    void Insert(int x, int y, int posx, int posy);
+    Player* GetStart();
+    Player* GetEnd();
 
 };
 

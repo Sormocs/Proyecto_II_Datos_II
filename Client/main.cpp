@@ -11,6 +11,7 @@ int main() {
     //std::thread RunC (RunClient);
 
     GUI::getInstance()->Run();
+
     //RunC.join();
     return 0;
 }

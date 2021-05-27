@@ -11,6 +11,8 @@ BPGame *BPGame::getInstance() {
 
 bool BPGame::Run() {
 
+    selection = true;
+
     sf::RenderWindow window(sf::VideoMode(1000, 700), "BP Game", sf::Style::Titlebar | sf::Style::Close);
     sf::Vector2i centerwin(0, 0);
     window.setPosition(centerwin);
@@ -59,8 +61,8 @@ bool BPGame::Run() {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
 
     sf::RectangleShape field;
-    field.setSize(sf::Vector2f(810,405)); // 405/3 = 135 para, cada cuadro de 135x135
-    field.setPosition(90,150);
+    field.setSize(sf::Vector2f(840,405)); // 420/6 = 70, 405/5 = 81 para cada cuadro de 70x81
+    field.setPosition(75,130);
     field.setFillColor(sf::Color(102,204,0,255));
 
     while (window.isOpen()) {
@@ -74,6 +76,7 @@ bool BPGame::Run() {
 
                 if (event.type == sf::Event::Closed) {
                     window.close();
+                    Reset();
                     return true;
                 } else if (event.type == sf::Event::MouseButtonReleased) {
                     if (addp.Clicked(mouse[0], mouse[1]) and players < 17) {
@@ -91,6 +94,8 @@ bool BPGame::Run() {
                     } else if (accept.Clicked(mouse[0], mouse[1])) {
 
                         //EXTRAS ?
+                        CreatePlayers(75,130);
+                        std::cout << "Players Created" << std::endl;
                         selection = false;
                     }
 
@@ -127,10 +132,97 @@ bool BPGame::Run() {
             window.clear();
 
             window.draw(field);
+            DrawObst(winptr);
 
             window.display();
         }
     }
     return false;
+
+}
+
+void BPGame::CreatePlayers(int x, int y) {
+
+    srand(time(NULL));
+    std::cout << "Srand initiated" << std::endl;
+    int p = 0;
+    while (p < players/2){
+        int randi = rand()%5;
+        int randj = rand()%5+1;
+        if (!avpos[randi][randj]){
+            int i = 0;
+            while (i<5){
+                if (i == randi) break;
+                else y += 81;
+                i++;
+            }
+            int j = 0;
+            while (j<6){
+                if (j==randj) break;
+                else x += 70;
+                j++;
+            }
+
+            obst->Insert(x,y,randi,randj);
+            x = 75;
+            y = 130;
+            avpos[randi][randj] = true;
+            //std::cout << avpos << std::endl;
+            p++;
+
+        } else continue;
+
+    }
+    std::cout << "Side 1 finished" << std::endl;
+    int p2 = 0;
+    while (p2 < players/2){
+        int randi2 = rand()%5;
+        int randj2 = rand()%6 + 5;
+        if (!avpos[randi2][randj2]){
+            int i = 0;
+            while (i<5){
+                if (i == randi2) break;
+                else y += 81;
+                i++;
+            }
+            int j = 0;
+            while (j<12){
+                if (j==randj2) break;
+                else x += 70;
+                j++;
+            }
+
+            obst->Insert(x,y,randi2,randj2);
+            x = 75;
+            y = 130;
+            avpos[randi2][randj2] = true;
+            //std::cout << avpos << std::endl;
+            p2++;
+
+        } else continue;
+    }
+    std::cout << "Side 2 finished" << std::endl;
+
+}
+
+void BPGame::DrawObst(sf::RenderWindow *win) {
+
+    if (obst->GetStart() != nullptr){
+
+        Player* temp = obst->GetStart();
+        while (temp != nullptr){
+            win->draw(*temp->GetObj());
+            temp = temp->GetNext();
+        }
+
+    }
+
+}
+
+void BPGame::Reset() {
+
+    selection = true;
+
+    obst = new PlayersList;
 
 }
