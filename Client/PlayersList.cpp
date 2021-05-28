@@ -46,6 +46,16 @@ Player *PlayersList::GetEnd() {
     return end;
 }
 
+void PlayersList::Reset() {
+    this->start = nullptr;
+    this->end = nullptr;
+    this->size = 0;
+}
+
+int PlayersList::GetSize() {
+    return this->size;
+}
+
 void PlayersList::Insert(int x, int y, int posx, int posy) {
     sf::Texture* img = new sf::Texture;
     img->loadFromFile("../Pictures/player.png");
@@ -74,4 +84,6 @@ void PlayersList::Insert(int x, int y, int posx, int posy) {
         end = temp;
 
     }
+
+    this->size++;
 }

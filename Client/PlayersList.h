@@ -2,14 +2,14 @@
 
 #pragma once
 
-class Player{
+class Player {
 private:
-    Player* next;
-    Player* prev;
-    int index, jindex;
+    Player *next;
+    Player *prev;
     sf::Sprite* obj;
 
 public:
+    int index, jindex;
     Player* GetNext();
     Player* GetPrev();
     sf::Sprite* GetObj();
@@ -26,13 +26,15 @@ class PlayersList {
 private:
     Player* start = nullptr;
     Player* end = nullptr;
-
+    int size = 0;
 public:
 
     PlayersList() = default;
+    void Reset();
     void Insert(int x, int y, int posx, int posy);
     Player* GetStart();
     Player* GetEnd();
+    int GetSize();
 
 };
 

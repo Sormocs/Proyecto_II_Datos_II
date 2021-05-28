@@ -93,9 +93,11 @@ bool BPGame::Run() {
 
                     } else if (accept.Clicked(mouse[0], mouse[1])) {
 
-                        //EXTRAS ?
+
                         CreatePlayers(75,130);
                         std::cout << "Players Created" << std::endl;
+                        std::string send = StartGame();
+                        client->Send(send);
                         selection = false;
                     }
 
@@ -142,7 +144,8 @@ bool BPGame::Run() {
 }
 
 void BPGame::CreatePlayers(int x, int y) {
-
+    obst->Reset();
+    ResetMatrixPlayer();
     srand(time(NULL));
     std::cout << "Srand initiated" << std::endl;
     int p = 0;
@@ -224,5 +227,40 @@ void BPGame::Reset() {
     selection = true;
 
     obst = new PlayersList;
+
+}
+
+void BPGame::ResetMatrixPlayer() {
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 12; ++j) {
+            this->avpos[i][j] = false;
+        }
+
+    }
+}
+
+std::string BPGame::StartGame() {
+
+    json obj;
+
+    obj["game"] = "BP";
+    obj["action"] = "StartBP";
+    obj["size"] = obst->GetSize();
+
+    if (obst->GetStart() != nullptr){
+        int itemp = 0;
+        Player* temp = obst->GetStart();
+        while (temp != nullptr){
+
+            obj[std::to_string(itemp)]["i"] = temp->index;
+            obj[std::to_string(itemp)]["j"] = temp->jindex;
+            itemp++;
+
+            temp = temp->GetNext();
+        }
+
+    }
+
+    return obj.dump(4);
 
 }

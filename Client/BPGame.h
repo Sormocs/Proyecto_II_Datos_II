@@ -2,8 +2,11 @@
 #include <cstdlib>
 #include "Button.h"
 #include "PlayersList.h"
-
+#include "json.hpp"
+#include "ClientSock.h"
 #pragma once
+
+using json = nlohmann::json;
 
 class BPGame {
 private:
@@ -22,6 +25,8 @@ private:
     int players = 2;
     PlayersList* obst = new PlayersList;
     BPGame() = default;
+    ClientSock *client = ClientSock::getInstance();
+
 
 public:
     static BPGame* getInstance();
@@ -29,5 +34,7 @@ public:
     void CreatePlayers(int x, int y);
     void DrawObst(sf::RenderWindow* win);
     void Reset();
+    void ResetMatrixPlayer();
+    std::string StartGame();
 };
 
