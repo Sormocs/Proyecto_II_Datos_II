@@ -1,12 +1,16 @@
-//
-// Created by tiquillo on 26/5/21.
-//
+/**
+ * @file Ball.h
+ * @author Luis Delgado
+ * @brief Archivo header de la clase Ball.
+ */
 
 #ifndef CLIENT_BALL_H
 #define CLIENT_BALL_H
 
 #include "Constants.h"
-
+/**
+ * @brief Clase Ball encargada del control de la ubicación de la bola.
+ */
 class Ball {
 public:
     float pos[2];

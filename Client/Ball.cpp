@@ -1,20 +1,34 @@
-//
-// Created by tiquillo on 26/5/21.
-//
+/**
+ * @file Ball.cpp
+ * @author Luis Delgado
+ * @brief Archivo cpp de la clase Ball.
+ */
 
 #include "Ball.h"
-
+/**
+ * @brief Friction disminuye la velocidad de la bola con el paso del tiempo con base en su fricción.
+ * @param deltaTime
+ */
 void Ball::Friction(float deltaTime) {
     if (speed > 0) this->speed -= (float) (speed - (UK * (BALL_MASS * GRAVITY))) * deltaTime;
 
     else if (speed < 0) speed = 0;
 }
 
+/**
+ * @brief Throw da los valores iniciales a la bola cuando esta es lanzada por el ordenador o por el jugador.
+ * @param force
+ * @param degrees
+ */
 void Ball::Throw(float force, float degrees) {
     this->speed = force * (US * (BALL_MASS * GRAVITY));
     this->degree = degrees;
 }
 
+/**
+ * @brief Bounce calcula la dirección y la velocidad después de un impacto contra una superficie.
+ * @param direction
+ */
 void Ball::Bounce(char direction) {
     if (direction == DIAGONAL_COLLITION) {
         pos[0] = -pos[0];

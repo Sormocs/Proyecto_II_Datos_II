@@ -1,13 +1,17 @@
-//
-// Created by tiquillo on 27/5/21.
-//
+/**
+ * @file PlayerObs.h
+ * @author Luis Delgado
+ * @brief Archivo header de las clases PlayerObs y PlayerList.
+ */
 
 #ifndef CLIENT_PLAYEROBS_H
 #define CLIENT_PLAYEROBS_H
 
 #include "Constants.h"
 
-
+/**
+ * @brief Clase PlayerObs encargada de representar los jugadores que sirven de obstáculos para el balón.
+ */
 class PlayerObs {
 private:
     float pos[2];
@@ -28,7 +32,9 @@ public:
 
 // ############################################################################################################
 
-
+/**
+ * @brief Clase PlayerList que sirve para almacenar los obstáculos o jugadores.
+ */
 class PlayerList {
 private:
     PlayerObs* first;

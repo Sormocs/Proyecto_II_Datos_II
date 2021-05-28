@@ -1,5 +1,8 @@
-#ifndef CLIENT_PHYSCONTROLLER_H
-#define CLIENT_PHYSCONTROLLER_H
+/**
+ * @file PhysController.h
+ * @author Luis Delgado
+ * @brief Archivo header de la clase PhysController.
+ */
 
 #include <chrono>
 #include <cmath>
@@ -9,6 +12,10 @@
 typedef std::chrono::high_resolution_clock Time;
 typedef std::chrono::milliseconds ms;
 typedef std::chrono::time_point<std::chrono::system_clock, std::chrono::duration<long, std::ratio<1, 1000000000>>> time_p;
+
+/**
+ * @brief Controla el movimiento de la bola.
+ */
 
 class PhysController {
 private:
