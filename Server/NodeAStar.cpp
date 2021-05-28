@@ -3,7 +3,11 @@
 //
 
 #include "NodeAStar.h"
-
+/**
+ * @brief constructor
+ * @param x int
+ * @param y int
+ */
 NodeAStar::NodeAStar(int x, int y) {
     this->x = x;
     this->y = y;
@@ -12,7 +16,12 @@ NodeAStar::NodeAStar(int x, int y) {
     this->h = 0;
     this->father = NULL;
 }
-
+/**
+ * @brief constructor
+ * @param x int
+ * @param y int
+ * @param father NodeAStart
+ */
 NodeAStar::NodeAStar(int x, int y, NodeAStar* father) {
     this->x = x;
     this->y = y;

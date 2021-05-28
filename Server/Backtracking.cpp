@@ -3,11 +3,16 @@
 //
 
 #include "Backtracking.h"
-
+/**
+ * @brief constructor
+ * @param A int[][]
+ */
 Backtracking::Backtracking(int (*A)[12]) {
     CopyMatrix(A);
 }
-
+/*
+ * @brief Genera la matriz
+ */
 void Backtracking::CopyMatrix(int (*A)[12]) {
 
     for (int i = 0; i < 5; ++i){
@@ -18,7 +23,12 @@ void Backtracking::CopyMatrix(int (*A)[12]) {
     }
 
 }
-
+/**
+ * @brief verifica si la posición es correcta
+ * @param i int
+ * @param j int
+ * @return bool
+ */
 bool Backtracking::ItsPossible(int i, int j) {
     if(i < 5 && j < 12 && i >= 0 && j >= 0 && matriz[i][j] == 0){
         return true;
@@ -26,7 +36,15 @@ bool Backtracking::ItsPossible(int i, int j) {
         return false;
     }
 }
-
+/**
+ * @brief Encuentra al path actualizando la matriz
+ * @param i int
+ * @param j int
+ * @param fi int
+ * @param fj int
+ * @param direction
+ * @return bool
+ */
 bool Backtracking::FindPath(int i, int j, int fi, int fj, string direction) {
 
     if(i == fi && j == fj){
@@ -58,6 +76,9 @@ bool Backtracking::FindPath(int i, int j, int fi, int fj, string direction) {
     return  true;
 }
 
+/**
+ * @brief imprime la matriz
+ */
 void Backtracking::PrintPath() {
 
     for (int i = 0; i < 5; ++i){
@@ -69,6 +90,10 @@ void Backtracking::PrintPath() {
 
 }
 
+/**
+ * @brief Genera el string de un json con los datos a enviar
+ * @return string
+ */
 std::string Backtracking::GenerateJsonString() {
 
     json obj;

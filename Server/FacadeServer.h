@@ -22,7 +22,6 @@ private:
 public:
 
     FacadeServer();
-    void StartMatrix(string data);
     void ReciveInfo(string data);
     void GameBP(string data);
     void UpdateMatrix(json obj);

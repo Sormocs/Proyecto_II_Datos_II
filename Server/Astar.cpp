@@ -4,7 +4,10 @@
 
 #include "Astar.h"
 
-
+/**
+ * @brief constructor
+ * @param a int[][]
+ */
 Astar::Astar(int a[N][M]){
     for (int i = 0; i < 5; ++i){
         for (int j = 0; j < 12; ++j) {
@@ -17,7 +20,11 @@ Astar::~Astar()
 {
 
 }
-
+/**
+ * @brief  Algoritmo pathfinding A*
+ * @param startPos  NodeAStar
+ * @param endPos  NodeAStar
+ */
 void Astar::search(NodeAStar* startPos, NodeAStar* endPos){
     if (startPos->x < 0 || startPos->x > row || startPos->y < 0 || startPos->y >col ||
         endPos->x < 0 || endPos->x > row || endPos->y < 0 || endPos->y > col)
@@ -44,7 +51,13 @@ void Astar::search(NodeAStar* startPos, NodeAStar* endPos){
         sort(openList.begin(), openList.end(), compare);
     }
 }
-
+/**
+ * @brief checkea si el punto es correcto
+ * @param x int
+ * @param y int
+ * @param father NodeAStar
+ * @param g int
+ */
 void Astar::checkPoit(int x, int y, NodeAStar* father, int g){
     if (x < 0 || x > row || y < 0 || y > col)
         return;
@@ -67,7 +80,10 @@ void Astar::checkPoit(int x, int y, NodeAStar* father, int g){
         openList.push_back(point);
     }
 }
-
+/**
+ * @brief Verifica cual es la siguiente posicion
+ * @param current NodeAStart
+ */
 void Astar::NextStep(NodeAStar* current){
     checkPoit(current->x-1, current->y, current, WeightW);//Left
     checkPoit(current->x + 1, current->y, current, WeightW);//right
@@ -79,6 +95,13 @@ void Astar::NextStep(NodeAStar* current){
     checkPoit(current->x + 1, current->y + 1, current, WeightWH);//top right
 }
 
+/**
+ * @brief Verifica si essta en la open list
+ * @param Nodelist
+ * @param x
+ * @param y
+ * @return
+ */
 int Astar::isContains(vector<NodeAStar*>* Nodelist, int x, int y){
     for (int i = 0; i < Nodelist->size(); i++)
     {
@@ -89,7 +112,12 @@ int Astar::isContains(vector<NodeAStar*>* Nodelist, int x, int y){
     }
     return -1;
 }
-
+/**
+ * @brief calcula F
+ * @param sNode NodeAStar
+ * @param eNode NodeAStar
+ * @param g int
+ */
 void Astar::countGHF(NodeAStar* sNode, NodeAStar* eNode, int g){
     int h = (abs(sNode->x - eNode->x) + abs(sNode->y - eNode->y)) * WeightW;
     int currentg = sNode->father->g + g;
@@ -98,12 +126,19 @@ void Astar::countGHF(NodeAStar* sNode, NodeAStar* eNode, int g){
     sNode->h = h;
     sNode->g = currentg;
 }
-
+/**
+ * @brief comparaba 2 nodos
+ * @param n1 NodeAStar
+ * @param n2 NodeAStar
+ * @return bool
+ */
 bool Astar::compare(NodeAStar* n1, NodeAStar* n2){
     //printf("%d,%d",n1->f,n2->f);
     return n1->f < n2->f;
 }
-
+/**
+ * @brief se mueve en la matriz
+ */
 bool Astar::unWalk(int x, int y){
     if (matriz[x][y] == 1)
         return true;
@@ -125,6 +160,10 @@ void Astar::printMap(){
     }
 }
 
+/**
+ * @brief Genera el path para enviarlo al cliente
+ * @return string
+ */
 std::string Astar::GetPath() {
 
     json obj;
@@ -147,7 +186,11 @@ std::string Astar::GetPath() {
     return obj.dump(4);
 
 }
-
+/**
+ * @brief Ejecuta el algoritmo
+ * @param i int
+ * @param j int
+ */
 void Astar::Do(int i, int j){
 
     NodeAStar *startPos = new NodeAStar(i, j);

@@ -25,7 +25,6 @@ public:
     void CopyMatrix(int A[N][M]);
     bool ItsPossible(int i, int j);
     bool FindPath(int i, int j, int fi, int fj, string direction);
-    void PrintPath();
     std::string GenerateJsonString();
 
 

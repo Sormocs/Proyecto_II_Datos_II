@@ -26,7 +26,7 @@ public:
     Matrix(int x, int y);
     void GenerateMatrix();
     void PrintM();
-    std::string AlgBackttracking(int i, int j);
-    std::string AlAStart(int i,int j);
+    std::string AlgBackttracking(int i, int j,int fi, int fj);
+    std::string AlAStart(int i,int j,int fi, int fj);
 };
 

@@ -20,6 +20,17 @@ class Astar {
 
 public:
 
+    std::string path;
+    int matriz[N][M];
+    vector<NodeAStar *> openList;
+    vector<NodeAStar *> closeList;
+    NodeAStar *startPos;
+    NodeAStar *endPos;
+    static const int WeightW = 10;
+    static const int WeightWH = 14;
+    static const int row = 4;
+    static const int col = 11;
+
     Astar(int a[N][M]);
     ~Astar();
     void search(NodeAStar *startPos, NodeAStar *endPos);
@@ -34,16 +45,7 @@ public:
     std::string GetPath();
     void Do(int i, int j);
 
-    std::string path;
-    int matriz[N][M];
-    vector<NodeAStar *> openList;
-    vector<NodeAStar *> closeList;
-    NodeAStar *startPos;
-    NodeAStar *endPos;
-    static const int WeightW = 10;
-    static const int WeightWH = 14;
-    static const int row = 4;
-    static const int col = 11;
+
 
 
 };
