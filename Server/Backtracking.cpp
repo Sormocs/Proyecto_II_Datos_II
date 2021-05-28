@@ -19,8 +19,8 @@ void Backtracking::CopyMatrix(int (*A)[12]) {
 
 }
 
-bool Backtracking::ItsPossible(int i, int j, int fi, int fj) {
-    if(i <= fi && j <= fj && i >= 0 && j >= 0 && matriz[i][j] == 0){
+bool Backtracking::ItsPossible(int i, int j) {
+    if(i < 5 && j < 12 && i >= 0 && j >= 0 && matriz[i][j] == 0){
         return true;
     } else{
         return false;
@@ -34,7 +34,7 @@ bool Backtracking::FindPath(int i, int j, int fi, int fj, string direction) {
         return false;
     }
 
-    if (ItsPossible(i,j,fi,fj)){
+    if (ItsPossible(i,j)){
 
         path[i][j] = 0;
 
