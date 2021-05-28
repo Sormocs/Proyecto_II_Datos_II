@@ -72,6 +72,11 @@ void ServerSocket::Start() {listening = socket(AF_INET, SOCK_STREAM,0);
         }
 
         std::string received = std::string(buf,bytesReceived);
+        facade->ReciveInfo(received);
+
+        if(facade->GetFlag()){
+            Send(facade->GetSend());
+        }
 
     }
 

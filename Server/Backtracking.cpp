@@ -68,3 +68,24 @@ void Backtracking::PrintPath() {
     }
 
 }
+
+std::string Backtracking::GenerateJsonString() {
+
+    json obj;
+    int index = 0;
+
+    for (int i = 0; i < 5; i++){
+        for (int j = 0; j < 12; j++) {
+            if (path[i][j] == 0){
+                obj[std::to_string(index)]["i"] = i;
+                obj[std::to_string(index)]["j"] = j;
+                index++;
+            }
+        }
+    }
+
+    obj["size"] = index;
+
+    return obj.dump(4);
+
+}

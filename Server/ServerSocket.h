@@ -13,6 +13,7 @@
 #include <string.h>
 #include <string>
 #include "thread"
+#include "FacadeServer.h"
 
 #pragma once
 
@@ -33,6 +34,7 @@ private:
     char buf[4096];
 
     static ServerSocket *instance;
+    FacadeServer *facade = new FacadeServer();
 
     ServerSocket();
 

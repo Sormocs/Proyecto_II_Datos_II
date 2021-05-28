@@ -4,11 +4,13 @@
 
 
 #include <iostream>
+#include "json.hpp"
 
 #define N 5
 #define M 12
 
 using namespace std;
+using json = nlohmann::json;
 
 class Backtracking {
 
@@ -24,6 +26,7 @@ public:
     bool ItsPossible(int i, int j);
     bool FindPath(int i, int j, int fi, int fj, string direction);
     void PrintPath();
+    std::string GenerateJsonString();
 
 
 };

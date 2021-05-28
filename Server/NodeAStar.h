@@ -2,8 +2,6 @@
 // Created by richmond on 27/5/21.
 //
 
-
-
 #include <iostream>
 using namespace std;
 

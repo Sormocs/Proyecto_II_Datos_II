@@ -21,3 +21,37 @@ void Matrix::GenerateMatrix() {
 
     }
 }
+
+void Matrix::Update(int i, int j) {
+    this->matrix[i][j] = 1;
+}
+
+void Matrix::PrintM() {
+    for (int k = 0; k < 5; ++k) {
+        for (int l = 0; l < 12; ++l) {
+            cout << matrix[k][l] << " ";
+        }
+        cout << endl;
+    }
+}
+
+std::string Matrix::AlgBackttracking(int i, int j) {
+
+    b = new Backtracking(matrix);
+    b->FindPath(i,j,3,11,"right");
+    std::string path = b->GenerateJsonString();
+    delete b;
+    return path;
+
+}
+
+std::string Matrix::AlAStart(int i, int j) {
+
+    a = new Astar(matrix);
+    a->Do(i,j);
+    std::string path = a->path;
+    delete a;
+    return path;
+
+}
+

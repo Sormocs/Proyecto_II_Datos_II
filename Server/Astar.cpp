@@ -33,6 +33,7 @@ void Astar::search(NodeAStar* startPos, NodeAStar* endPos){
             cout << "find the path" << endl;
             printMap();
             printPath(current);
+            this->path = GetPath();
             openList.clear();
             closeList.clear();
             break;
@@ -122,4 +123,35 @@ void Astar::printMap(){
         }
         printf("\n");
     }
+}
+
+std::string Astar::GetPath() {
+
+    json obj;
+
+    int indexPath = 0;
+
+    for (int i = 0; i < closeList.size(); i++) {
+
+        obj[std::to_string(indexPath)]["i"] = closeList.at(i)->x;
+        obj[to_string(indexPath)]["j"] = closeList.at(i)->y;
+        indexPath++;
+
+    }
+
+    obj[to_string(indexPath+1)]["i"] = 0;
+    obj[to_string(indexPath+1)]["j"] = 2;
+
+    obj["size"] = indexPath+1;
+
+    return obj.dump(4);
+
+}
+
+void Astar::Do(int i, int j){
+
+    NodeAStar *startPos = new NodeAStar(i, j);
+    NodeAStar *endPos = new NodeAStar(2, 0);
+    search(startPos,endPos);
+
 }
