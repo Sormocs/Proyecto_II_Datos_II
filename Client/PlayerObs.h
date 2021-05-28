@@ -5,14 +5,17 @@
 #ifndef CLIENT_PLAYEROBS_H
 #define CLIENT_PLAYEROBS_H
 
-#include "math.h"
-#include "PhysController.h"
+#include "Constants.h"
+
 
 class PlayerObs {
 private:
     float pos[2];
-    float radius;
 
+    bool inside(float pos);
+    bool colliding(float pos);
+    bool aboutToCollide(float pos);
+    bool outside(float pos);
 public:
     PlayerObs* next;
 
@@ -35,6 +38,8 @@ public:
 
     void Add(PlayerObs* player);
     PlayerObs* Get(int index);
+
+    int Lenght() { return lenght; };
 };
 
 
