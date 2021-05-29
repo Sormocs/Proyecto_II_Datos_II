@@ -47,6 +47,6 @@ void GeneticAlgorithm::RunNextGen(int species) {
     CreateGeneration(species);
 
     for (int i = 0; i < species; ++i) {
-        ((GenNode*)genList->At(0)->value)->Run()
+        ((GenNode*)genList->At(0)->value)->Run();
     }
 }

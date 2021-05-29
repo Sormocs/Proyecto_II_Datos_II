@@ -13,5 +13,4 @@ bool GenNode::Run() {
 void GenNode::SetInitVals(int size, int moves, GenMatrix *matrix) {
     this->matSize = size;
     this->maxMoves = moves;
-    this->
 }
