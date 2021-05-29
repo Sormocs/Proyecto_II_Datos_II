@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['clientsock_5',['ClientSock',['../class_client_sock.html',1,'']]]
+  ['adl_5fserializer_626',['adl_serializer',['../structnlohmann_1_1adl__serializer.html',1,'nlohmann']]],
+  ['astar_627',['Astar',['../class_astar.html',1,'']]]
 ];
