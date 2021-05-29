@@ -1,3 +1,9 @@
+/**
+ * @file BPGame.h
+ * @author Sergio MB
+ * @brief Declaracion de metodos para la clase BPGame.
+ */
+
 #include <iostream>
 #include <cstdlib>
 #include "Button.h"
@@ -8,6 +14,9 @@
 
 using json = nlohmann::json;
 
+/**
+ * @brief Clase BPGame que forma la interfaz del primer juego.
+ */
 class BPGame {
 private:
     bool selection = true;

@@ -1,7 +1,17 @@
+/**
+ * @file BPGame.cpp
+ * @author Sergio MB & David Richmond
+ * @brief Definicion de los metodos de la clase BPGame para el funcionamiento de la ventana del juego.
+ */
+
 #include "BPGame.h"
 
 BPGame* BPGame::instance = nullptr;
 
+/**
+ * @brief Metodo para obtener la instancia de la ventana
+ * @return BPGame*
+ */
 BPGame *BPGame::getInstance() {
     if (instance == nullptr){
         instance = new BPGame;
@@ -9,6 +19,10 @@ BPGame *BPGame::getInstance() {
     return instance;
 }
 
+/**
+ * Metodo para correr la ventana
+ * @return bool
+ */
 bool BPGame::Run() {
 
     selection = true;
@@ -48,13 +62,6 @@ bool BPGame::Run() {
     title2.setCharacterSize(50);
     title2.setColor(sf::Color::White);
     title2.setPosition(70, 300);
-
-    sf::Text title3;
-    title3.setString("Player 2:");
-    title3.setFont(font);
-    title3.setCharacterSize(50);
-    title3.setColor(sf::Color::White);
-    title3.setPosition(680, 300);
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
@@ -116,7 +123,6 @@ bool BPGame::Run() {
             accept.Draw(winptr);
             window.draw(title1);
             window.draw(title2);
-            window.draw(title3);
             window.draw(playernum);
 
             window.display();
@@ -143,6 +149,11 @@ bool BPGame::Run() {
 
 }
 
+/**
+ * @brief Metodo para crear la cantidad de jugadores seleccionados por el usuario en la matriz del juego.
+ * @param x
+ * @param y
+ */
 void BPGame::CreatePlayers(int x, int y) {
     obst->Reset();
     ResetMatrixPlayer();
@@ -180,7 +191,8 @@ void BPGame::CreatePlayers(int x, int y) {
     int p2 = 0;
     while (p2 < players/2){
         int randi2 = rand()%5;
-        int randj2 = rand()%6 + 5;
+        int randj2 = rand()%6 + 6;
+        if (randj2 == 11) randj2 -=1;
         if (!avpos[randi2][randj2]){
             int i = 0;
             while (i<5){
@@ -208,6 +220,10 @@ void BPGame::CreatePlayers(int x, int y) {
 
 }
 
+/**
+ * @brief Metodo para dibujar los obstaculos (jugadores) creados en la ventana.
+ * @param win
+ */
 void BPGame::DrawObst(sf::RenderWindow *win) {
 
     if (obst->GetStart() != nullptr){
@@ -222,14 +238,20 @@ void BPGame::DrawObst(sf::RenderWindow *win) {
 
 }
 
+/**
+ * @brief Metodo para reestablecer los valores de la ventana
+ */
 void BPGame::Reset() {
 
     selection = true;
-
+    players = 2;
     obst = new PlayersList;
 
 }
 
+/**
+ * @brief Metodo que hace reset de la matriz del juego.
+ */
 void BPGame::ResetMatrixPlayer() {
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 12; ++j) {
@@ -239,6 +261,10 @@ void BPGame::ResetMatrixPlayer() {
     }
 }
 
+/**
+ * @brief Metodo para formar el json con la matriz del juegoo para enviar al server
+ * @return
+ */
 std::string BPGame::StartGame() {
 
     json obj;

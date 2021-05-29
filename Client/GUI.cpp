@@ -1,8 +1,16 @@
-
+/**
+ * @file GUI.cpp
+ * @author Sergio MB
+ * @brief Declaracion de metodos de la clase GUI.cpp
+ */
 #include "GUI.h"
 
 GUI* GUI::instance = nullptr;
 
+/**
+ * @brief Metodo para obtener la instancia de la interfaz principal.
+ * @return GUI*
+ */
 GUI *GUI::getInstance() {
     if (instance == nullptr){
         instance = new GUI;
@@ -10,6 +18,9 @@ GUI *GUI::getInstance() {
     return instance;
 }
 
+/**
+ * @brief Metodo para correr la interfaz principal
+ */
 void GUI::Run() {
     sf::RenderWindow window(sf::VideoMode(1000, 700), "Let's PLay", sf::Style::Titlebar | sf::Style::Close);
     sf::Vector2i centerwin(0, 0);
