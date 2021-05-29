@@ -1,7 +1,16 @@
+/**
+ * @file PlayerList.h
+ * @author Sergio MB
+ * @brief Lista enlazada para los jugadores en pantalla
+ */
+
 #include "SFML/Graphics.hpp"
 
 #pragma once
 
+/**
+ * @brief Clase de jugador que actua como nodo de lista enlazada.
+ */
 class Player {
 private:
     Player *next;
@@ -21,7 +30,9 @@ public:
 
 };
 
-
+/**
+ * @brief Clase PlayerList que contiene elementos Player para formar una lista enlazada
+ */
 class PlayersList {
 private:
     Player* start = nullptr;
