@@ -10,7 +10,7 @@ Para el json basta con descargar el el archivo json.hpp de https://github.com/nl
   
 Para la descarga e instalación de sfml basta con seguir los pasos de la siguiente página, la cual es la documentación de dicha biblioteca, https://www.sfml-dev.org/tutorials/2.5/start-linux.php.
   
-aqui lo de XML
+El xml se consigue del repositorio de https://github.com/leethomason/tinyxml2, el cual son un header y un cpp que facilitan la creacion de los XML para los proyectos personales, es de libre uso.
   
 Para poder ejecutar correctamente la aplicación primero debemos ejecutar el servidor, el cual contiene toda la lógica de los algoritmos y LAS estructuras de datos desarrollas, posteriormente ejecutaremos el cliente, donde nos mostrará un menú con 2 opciones para ambos juegos, empezaremos por el primer juego.
   
