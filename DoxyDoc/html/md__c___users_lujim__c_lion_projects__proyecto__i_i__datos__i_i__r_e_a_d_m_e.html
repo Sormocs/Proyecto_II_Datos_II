@@ -22,9 +22,8 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Let&#39;s Play!
-   &#160;<span id="projectnumber">0.5</span>
+   &#160;<span id="projectnumber">v0.5</span>
    </div>
-   <div id="projectbrief">Dos juegos desarrollados con algoritmos. Uno con pathfinding y el otro con algoritmos genéticos.</div>
   </td>
  </tr>
  </tbody>
@@ -72,7 +71,7 @@ $(function() {
 <p>Para el desarrollo de las aplicaciones se utilizaron las biblbiotecas sfml para la parte de la interfaz gráfica, Json for modern desarrollada por Nlohmaan para realizar las comunicaciones entre sockets, &lt;XML&gt;.</p>
 <p>Para el json basta con descargar el el archivo json.hpp de <a href="https://github.com/nlohmann/json/releases">https://github.com/nlohmann/json/releases</a> y adjuntarlo a los archivos de nuestro proyecto.</p>
 <p>Para la descarga e instalación de sfml basta con seguir los pasos de la siguiente página, la cual es la documentación de dicha biblioteca, <a href="https://www.sfml-dev.org/tutorials/2.5/start-linux.php">https://www.sfml-dev.org/tutorials/2.5/start-linux.php</a>.</p>
-<p>aqui lo de XML</p>
+<p>El xml se consigue del repositorio de <a href="https://github.com/leethomason/tinyxml2">https://github.com/leethomason/tinyxml2</a>, el cual son un header y un cpp que facilitan la creacion de los XML para los proyectos personales, es de libre uso.</p>
 <p>Para poder ejecutar correctamente la aplicación primero debemos ejecutar el servidor, el cual contiene toda la lógica de los algoritmos y LAS estructuras de datos desarrollas, posteriormente ejecutaremos el cliente, donde nos mostrará un menú con 2 opciones para ambos juegos, empezaremos por el primer juego.</p>
 <p>BP Gamer:</p>
 <p>Al principio nos aparecerá una pantalla para elegir la cantidad de jugadores y si queremos jugar contra otro jugador o contra la computadora, luego procedemos a entrar en la parte del juego, donde la pantalla cambiará a la pantalla de juego, donde estarían los jugadores, el balón y la cancha. El jugador que este en su turno podrá mover el balón, dandole una dirección y una potencia, al parar el balón, cambiará de turno, además se mostrará la ruta más corta entre el balón y la portería, luego de ello. Si estamos contra la computadora se realizará el tiro de la computadora automáticamente mostrando la primera ruta encontrada desde el balón hasta la porteria. El juego terminará cuando se llegue a la cantidad de goles anotados.</p>
