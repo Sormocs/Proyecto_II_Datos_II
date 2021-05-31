@@ -81,6 +81,13 @@ bool PlayerObs::aboutToCollide(float pos) {
     return (pos <= PLAYER_RADIUS + (PLAYER_RADIUS*0.1));
 }
 
+PlayerObs::PlayerObs(float X, float Y) {
+
+    pos[0] = X;
+    pos[1] = Y;
+
+}
+
 
 
 

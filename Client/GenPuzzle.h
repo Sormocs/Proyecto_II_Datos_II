@@ -14,5 +14,6 @@ private:
 public:
     static GenPuzzle* getInstance();
     bool Run();
+    void DivideImage();
 };
 

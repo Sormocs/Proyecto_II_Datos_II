@@ -64,3 +64,12 @@ void Ball::Bounce(char direction) {
     if (this->degree >= 360) this->degree -= 360.0f;
     speed -= speed * ENERGY_LOSS;
 }
+
+bool Ball::Clicked(int x, int y) {
+
+    if (pos[0]-20 < x && x < pos[0] + 40 && pos[1]-20 < y && y < pos[1] + 40) {
+        std::cout << "Ball CLicked" << std::endl;
+        return true;
+    }
+    return false;
+}

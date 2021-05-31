@@ -10,6 +10,8 @@
 #include "PlayersList.h"
 #include "json.hpp"
 #include "ClientSock.h"
+#include "PhysController.h"
+#include "TextBox.h"
 #pragma once
 
 using json = nlohmann::json;
@@ -34,6 +36,7 @@ private:
     int players = 2;
     PlayersList* obst = new PlayersList;
     BPGame() = default;
+    std::string playerName = "Guest";
     ClientSock *client = ClientSock::getInstance();
 
 

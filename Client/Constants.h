@@ -15,7 +15,7 @@
 #define NO_COLLITION '-'
 
 // constantes del jugador
-#define PLAYER_RADIUS 123
+#define PLAYER_RADIUS 40
 
 // constantes matemáticas
 #define PI 3.14159265359

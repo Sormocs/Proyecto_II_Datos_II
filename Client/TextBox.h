@@ -27,6 +27,7 @@ public:
     void Draw(sf::RenderWindow* win);
     void CheckClick(int x, int y);
     void Delete();
+    std::string GetString();
 };
 
 
