@@ -97,7 +97,7 @@ bool PlayerObs::aboutToCollide(float pos) {
  * @param player
  */
 void PlayerList::Add(PlayerObs *player) {
-    if (first == nullptr) first == player;
+    if (first == nullptr) first = player;
 
     else{
         player->next = first;
@@ -113,7 +113,7 @@ void PlayerList::Add(PlayerObs *player) {
  * @return PlayerObs en el índice
  */
 PlayerObs *PlayerList::Get(int index) {
-    if (first == nullptr or lenght == 0) return nullptr;
+    if (first == nullptr || lenght == 0) return nullptr;
 
     else if (index == 0) return first;
 

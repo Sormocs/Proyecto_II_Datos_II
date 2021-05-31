@@ -16,3 +16,6 @@
 
 // constantes del jugador
 #define PLAYER_RADIUS 123
+
+// constantes matemáticas
+#define PI 3.14159265359

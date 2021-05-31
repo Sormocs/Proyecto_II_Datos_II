@@ -37,6 +37,8 @@ public:
 
     float deltaTime();
 
+    float getAngleInDeg(float xDist, float yDist);
+
     void MoveBall();
 
     void CheckColl();

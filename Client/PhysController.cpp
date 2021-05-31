@@ -39,8 +39,14 @@ void PhysController::CheckColl() {
 void PhysController::MoveBall() {
     CheckColl();
     ball->Friction(deltaTime());
-    ball->pos[0] += std::cos((ball->degree * M_PI) / 180) * ball->speed;
-    ball->pos[1] += std::sin((ball->degree * M_PI) / 180) * ball->speed;
+    ball->pos[0] += std::cos((ball->degree * PI) / 180) * ball->speed;
+    ball->pos[1] += std::sin((ball->degree * PI) / 180) * ball->speed;
+}
+/**
+ * @brief getAngleInDeg obtiene el ángulo de un vector
+*/
+float GetAngleInDeg(float xDist, float yDist) {
+    return std::atan(yDist/xDist) * 180 / PI;
 }
 
 /**
