@@ -39,6 +39,8 @@ public:
 
     float getAngleInDeg(float xDist, float yDist);
 
+    float FixAngle(float angle);
+
     void MoveBall();
 
     void CheckColl();

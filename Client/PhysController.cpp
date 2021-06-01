@@ -43,10 +43,33 @@ void PhysController::MoveBall() {
     ball->pos[1] += std::sin((ball->degree * PI) / 180) * ball->speed;
 }
 /**
- * @brief getAngleInDeg obtiene el ángulo de un vector
+ * @brief getAngleInDeg obtiene el ángulo de un vector con las componentes X y Y.
 */
-float GetAngleInDeg(float xDist, float yDist) {
-    return std::atan(yDist/xDist) * 180 / PI;
+float PhysController::GetAngleInDeg(float xDist, float yDist) {
+    if (xDist == 0) {
+        if (yDist > 0) return 270;
+        else return 90;
+
+    } else if (xDist < 0) {
+        return FixAngle((std::atan(yDist/xDist) * 180 / PI) + 180);
+
+    } else return FixAngle(std::atan(yDist/xDist) * 180 / PI);
+}
+
+/**
+ * @brief FixAngle mantiene el ángulo entre 0 y 360.
+ * @param angle
+ * @return angle
+ */
+float PhysController::FixAngle(float angle){
+
+    while (angle < 0 && 360 <= angle){
+
+        if (angle < 0) angle += 360;
+
+        else if (angle >= 360) angle -= 360;
+    }
+    return angle
 }
 
 /**
