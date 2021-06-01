@@ -24,6 +24,7 @@ public:
     Backtracking(int A[N][M]);
     void CopyMatrix(int A[N][M]);
     bool ItsPossible(int i, int j);
+    void PrintPath();
     bool FindPath(int i, int j, int fi, int fj, string direction);
     std::string GenerateJsonString();
 
