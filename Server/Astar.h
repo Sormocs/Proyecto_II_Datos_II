@@ -43,7 +43,7 @@ public:
     void printPath(NodeAStar *current);
     void printMap();
     std::string GetPath();
-    void Do(int i, int j);
+    void Do(int i, int j,int fi, int fj);
 
 
 

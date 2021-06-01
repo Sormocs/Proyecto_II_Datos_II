@@ -24,16 +24,16 @@ private:
     PhysController() = default;
     static PhysController* instance;
     time_p* lastTime;
-    Ball* ball;
+    Ball* ball = new Ball;
 public:
 
-    PhysController* Instance();
+    static PhysController* Instance();
     void ResetTime();
     void ResetPlayers();
     void ResetBall();
     void ResetAll();
 
-    PlayerList* playerList;
+    PlayerList* playerList = new PlayerList;
 
     float deltaTime();
 
@@ -44,6 +44,8 @@ public:
     void MoveBall();
 
     void CheckColl();
+
+    Ball* GetBall();
 };
 
 

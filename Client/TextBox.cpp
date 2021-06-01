@@ -119,5 +119,9 @@ void TextBox::Delete() {
     }
 }
 
+std::string TextBox::GetString() {
+    return text.getString();
+}
+
 
 

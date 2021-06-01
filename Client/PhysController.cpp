@@ -77,7 +77,9 @@ float PhysController::FixAngle(float angle){
  * @return instancia de PhysController
  */
 PhysController *PhysController::Instance() {
-    if (instance == nullptr) instance = new PhysController();
+    if (instance == nullptr) {
+        instance = new PhysController;
+    }
     return instance;
 }
 
@@ -107,6 +109,10 @@ void PhysController::ResetBall() {
  */
 void PhysController::ResetAll() {
     PhysController::instance = new PhysController();
+}
+
+Ball *PhysController::GetBall() {
+    return ball;
 }
 
 

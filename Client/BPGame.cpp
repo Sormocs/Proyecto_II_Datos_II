@@ -61,16 +61,38 @@ bool BPGame::Run() {
     title2.setFont(font);
     title2.setCharacterSize(50);
     title2.setColor(sf::Color::White);
-    title2.setPosition(70, 300);
+    title2.setPosition(60, 300);
+
+    //NAME TEXTBOX
+    TextBox name_entry = TextBox(60,title2.getPosition().y + title2.getLocalBounds().height + 15, 260,55,28);
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
 
-    sf::RectangleShape field;
-    field.setSize(sf::Vector2f(840,405)); // 420/6 = 70, 405/5 = 81 para cada cuadro de 70x81
-    field.setPosition(75,130);
-    field.setFillColor(sf::Color(102,204,0,255));
+    //TEXTS
+    sf::Text playertxt;
+    playertxt.setString("Player: "+playerName);
+    playertxt.setFont(font);
+    playertxt.setCharacterSize(30);
+    playertxt.setColor(sf::Color::White);
+    playertxt.setPosition(10, 10);
+
+    //FIELD
+    sf::Texture* fieldimg = new sf::Texture;
+    fieldimg->loadFromFile("../Pictures/field.jpg");
+    sf::Sprite* fields = new sf::Sprite;
+    fields->setTexture(*fieldimg);
+    fields->setPosition(sf::Vector2f(75,130));
+
+    //BALL
+    sf::Texture* ball = new sf::Texture;
+    ball->loadFromFile("../Pictures/ball.png");
+    sf::Sprite* ballsprite = new sf::Sprite;
+    ballsprite->setTexture(*ball);
+    ballsprite->setPosition(sf::Vector2f (840/2+40,405/2+80));
+    PhysController::Instance()->GetBall()->pos[0] = ballsprite->getPosition().x+20;
+    PhysController::Instance()->GetBall()->pos[1] = ballsprite->getPosition().y+20;
 
     while (window.isOpen()) {
         sf::Event event;
@@ -85,7 +107,8 @@ bool BPGame::Run() {
                     window.close();
                     Reset();
                     return true;
-                } else if (event.type == sf::Event::MouseButtonReleased) {
+                } if (event.type == sf::Event::MouseButtonReleased) {
+                    name_entry.CheckClick(mouse[0],mouse[1]);
                     if (addp.Clicked(mouse[0], mouse[1]) and players < 17) {
 
                         players += 2;
@@ -106,16 +129,33 @@ bool BPGame::Run() {
                         std::string send = StartGame();
                         client->Send(send);
                         selection = false;
+                        if (name_entry.GetString() != ""){
+                            playerName = name_entry.GetString();
+                            playertxt.setString("Player: "+playerName);
+                        }
                     }
 
-                } else if (event.type == sf::Event::MouseMoved) {
+                } if (event.type == sf::Event::MouseMoved) {
 
                     addp.MouseOver(mouse[0], mouse[1]);
                     removep.MouseOver(mouse[0], mouse[1]);
                     accept.MouseOver(mouse[0], mouse[1]);
 
+                } if (event.type == sf::Event::TextEntered){
+                    if (name_entry.isSelected()){
+                        if (event.text.unicode == 8){
+                            name_entry.Delete();
+                        } else if (event.text.unicode == 13){
+                            name_entry.CheckClick(0,0);
+                        } else {
+                            char letter = static_cast<char>(event.text.unicode);
+                            name_entry.Wrtie(letter);
+                        }
+                    }
                 }
             }
+            ballsprite->setPosition(PhysController::Instance()->GetBall()->pos[0],PhysController::Instance()->GetBall()->pos[1]);
+
             window.clear();
 
             removep.Draw(winptr);
@@ -123,6 +163,7 @@ bool BPGame::Run() {
             accept.Draw(winptr);
             window.draw(title1);
             window.draw(title2);
+            name_entry.Draw(winptr);
             window.draw(playernum);
 
             window.display();
@@ -133,13 +174,17 @@ bool BPGame::Run() {
                 if (event.type == sf::Event::Closed) {
                     window.close();
                     return true;
-                } else if (event.type == sf::Event::MouseButtonReleased) {
-
+                } if (event.type == sf::Event::MouseButtonPressed) {
+                    if (PhysController::Instance()->GetBall()->Clicked(mouse[0],mouse[1])){
+                        PhysController::Instance()->GetBall()->Throw(24,80);
+                    }
                 }
             }
             window.clear();
 
-            window.draw(field);
+            window.draw(playertxt);
+            window.draw(*fields);
+            window.draw(*ballsprite);
             DrawObst(winptr);
 
             window.display();
@@ -178,6 +223,7 @@ void BPGame::CreatePlayers(int x, int y) {
             }
 
             obst->Insert(x,y,randi,randj);
+            PhysController::Instance()->playerList->Add(new PlayerObs(x+35,y+PLAYER_RADIUS));
             x = 75;
             y = 130;
             avpos[randi][randj] = true;
@@ -208,6 +254,7 @@ void BPGame::CreatePlayers(int x, int y) {
             }
 
             obst->Insert(x,y,randi2,randj2);
+            PhysController::Instance()->playerList->Add(new PlayerObs(x+35,y+PLAYER_RADIUS));
             x = 75;
             y = 130;
             avpos[randi2][randj2] = true;

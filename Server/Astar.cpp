@@ -191,10 +191,10 @@ std::string Astar::GetPath() {
  * @param i int
  * @param j int
  */
-void Astar::Do(int i, int j){
+void Astar::Do(int i, int j,int fi, int fj){
 
     NodeAStar *startPos = new NodeAStar(i, j);
-    NodeAStar *endPos = new NodeAStar(2, 0);
+    NodeAStar *endPos = new NodeAStar(fi, fj);
     search(startPos,endPos);
 
 }

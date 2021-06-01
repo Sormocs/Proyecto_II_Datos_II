@@ -21,6 +21,7 @@ private:
     bool aboutToCollide(float pos);
     bool outside(float pos);
 public:
+    PlayerObs(float X,float Y);
     PlayerObs* next;
 
 

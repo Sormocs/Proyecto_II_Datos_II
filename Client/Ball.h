@@ -7,6 +7,7 @@
 #ifndef CLIENT_BALL_H
 #define CLIENT_BALL_H
 
+#include <iostream>
 #include "Constants.h"
 /**
  * @brief Clase Ball encargada del control de la ubicación de la bola.
@@ -19,6 +20,7 @@ public:
     void Throw(float force, float direction);
     void Bounce(char direction);
     void Friction(float deltaTime);
+    bool Clicked(int x, int y);
 };
 
 
