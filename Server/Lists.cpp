@@ -1,16 +1,17 @@
-//
-// Created by lujim on 28/5/2021.
-//
-
 #include "Lists.h"
 
 /**
  * @brief Delete elimina todos los nodos enlazados y todos los elementos.
  */
+ using namespace std;
 void Node::Delete() {
     delete value;
     if (next != nullptr) next->Delete();
     delete this;
+}
+
+Node::Node(void *value) {
+    this->value = value;
 }
 
 /**
@@ -58,4 +59,34 @@ int List::Length() {
 void List::Reset() {
     first->Delete();
     first = nullptr;
+}
+
+Node *List::GetDelAt(int index) {
+    if (length == 0){
+        return nullptr;
+
+    } else if (index == 0) {
+        if (length == 1){
+            Node* temp = first;
+            first = nullptr;
+            length = 0;
+            return temp;
+
+        } else {
+            Node* temp = first;
+            first = first->next;
+            temp->next = nullptr;
+            length -= 1;
+            return temp;
+        }
+
+    } else {
+        Node* temp1 = At(index-1);
+        Node* temp2 = temp1;
+        temp1 = temp1->next;
+        temp2->next = nullptr;
+        length -= 1;
+        return temp2;
+    }
+
 }

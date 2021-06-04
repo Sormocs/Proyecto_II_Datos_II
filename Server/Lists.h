@@ -12,6 +12,9 @@ public:
     Node* next;
     void* value;
 
+    Node() = default;
+    Node(void* value);
+
     void Delete();
 };
 
@@ -26,6 +29,7 @@ private:
 public:
     void Add(Node* node);
     Node* At(int index);
+    Node* GetDelAt(int index);
 
     int Length();
 
