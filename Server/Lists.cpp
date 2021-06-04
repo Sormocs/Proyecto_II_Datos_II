@@ -82,8 +82,8 @@ Node *List::GetDelAt(int index) {
 
     } else {
         Node* temp1 = At(index-1);
-        Node* temp2 = temp1;
-        temp1 = temp1->next;
+        Node* temp2 = temp1->next;
+        if (temp1->next != nullptr) temp1->next = temp1->next->next;
         temp2->next = nullptr;
         length -= 1;
         return temp2;
