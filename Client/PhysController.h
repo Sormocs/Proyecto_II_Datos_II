@@ -23,7 +23,7 @@ class PhysController {
 private:
     PhysController() = default;
     static PhysController* instance;
-    time_p* lastTime;
+    time_p* lastTime = nullptr;
     Ball* ball = new Ball;
 public:
 

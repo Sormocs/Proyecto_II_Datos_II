@@ -85,6 +85,10 @@ bool BPGame::Run() {
     fields->setTexture(*fieldimg);
     fields->setPosition(sf::Vector2f(75,130));
 
+    sf::RectangleShape bg = sf::RectangleShape(sf::Vector2f (1000,700));
+    bg.setFillColor(sf::Color(50,205,50,255));
+    bg.setPosition(0,0);
+
     //BALL
     sf::Texture* ball = new sf::Texture;
     ball->loadFromFile("../Pictures/ball.png");
@@ -154,7 +158,6 @@ bool BPGame::Run() {
                     }
                 }
             }
-            ballsprite->setPosition(PhysController::Instance()->GetBall()->pos[0],PhysController::Instance()->GetBall()->pos[1]);
 
             window.clear();
 
@@ -174,24 +177,85 @@ bool BPGame::Run() {
                 if (event.type == sf::Event::Closed) {
                     window.close();
                     return true;
-                } if (event.type == sf::Event::MouseButtonPressed) {
-                    if (PhysController::Instance()->GetBall()->Clicked(mouse[0],mouse[1])){
-                        PhysController::Instance()->GetBall()->Throw(24,80);
+                }
+                if (event.type == sf::Event::MouseButtonPressed) {
+                    if (PhysController::Instance()->GetBall()->Clicked(mouse[0], mouse[1])) {
+
+                        pressed = true;
+
+                    }
+                }
+                if (event.type == sf::Event::MouseButtonReleased) {
+                    if (pressed) {
+                        pressed = false;
+                        //PhysController::Instance()->GetBall()->Throw(line->getSize().x,0);
+                    }
+                }
+                if (event.type == sf::Event::MouseMoved) {
+                    if (pressed) {
+
+                        int ballx = PhysController::Instance()->GetBall()->pos[0];
+                        int bally = PhysController::Instance()->GetBall()->pos[1];
+
+                        line = Line(ballx+15,bally+15,mouse[0],bally-(bally-mouse[1]),sf::Color(255,255,255,255));
+
+                        int x2 = ballx+15;
+                        int y2 = bally+15;
+                        if (mouse[0] > ballx+15 && mouse[1] < bally+15){
+
+                            std::cout << "line y: " << line.getPoints().getBounds().top << std::endl;
+                            std::cout << "line x: " << line.getPoints().getBounds().left << std::endl;
+
+                            x2 = line.getPoints().getBounds().left-line.getPoints().getBounds().width;
+                            y2 = line.getPoints().getBounds().top+line.getPoints().getBounds().height*2;
+
+                            invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+                        } else if (mouse[0] < ballx+15 && mouse[1] < bally+15 ){
+
+                            x2 = line.getPoints().getBounds().left+line.getPoints().getBounds().width*2;
+                            y2 = line.getPoints().getBounds().top+line.getPoints().getBounds().height*2;
+
+                            invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+
+                        } else if (mouse[0] < ballx+15 && mouse[1] > bally+15){
+
+                            x2 = line.getPoints().getBounds().left+line.getPoints().getBounds().width*2;
+                            y2 = line.getPoints().getBounds().top-line.getPoints().getBounds().height;
+
+                            invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+                        } else{
+
+                            x2 = line.getPoints().getBounds().left-line.getPoints().getBounds().width;
+                            y2 = line.getPoints().getBounds().top-line.getPoints().getBounds().height;
+
+                            invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+
+                        }
+
                     }
                 }
             }
             window.clear();
 
+            //PhysController::Instance()->MoveBall();
+
+            ballsprite->setPosition(PhysController::Instance()->GetBall()->pos[0],PhysController::Instance()->GetBall()->pos[1]);
+
+            window.draw(bg);
             window.draw(playertxt);
             window.draw(*fields);
             window.draw(*ballsprite);
             DrawObst(winptr);
+            if (pressed){
+
+                window.draw(line);
+                window.draw(invertedLine);
+            }
 
             window.display();
         }
     }
     return false;
-
 }
 
 /**
@@ -264,6 +328,8 @@ void BPGame::CreatePlayers(int x, int y) {
         } else continue;
     }
     std::cout << "Side 2 finished" << std::endl;
+    avpos[3][5] = false;
+    avpos[3][6] = false;
 
 }
 

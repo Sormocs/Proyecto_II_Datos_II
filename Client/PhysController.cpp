@@ -13,7 +13,10 @@ PhysController* PhysController::instance = nullptr;
  * @return deltaTime
  */
 float PhysController::deltaTime() {
-    if (lastTime == nullptr) *lastTime = Time::now();
+    if (lastTime == nullptr) {
+        lastTime = new time_p;
+        *lastTime = Time::now();
+    }
     time_p newTime = Time::now();
     return (std::chrono::duration_cast<ms>(newTime - *lastTime)).count() * 0.001;
 }

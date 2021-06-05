@@ -12,6 +12,7 @@
 #include "ClientSock.h"
 #include "PhysController.h"
 #include "TextBox.h"
+#include "Line.h"
 #pragma once
 
 using json = nlohmann::json;
@@ -27,16 +28,19 @@ private:
 
             {false, false, false, false, false, false, false, false, false, false, false, false},
             {false, false, false, false, false, false, false, false, false, false, false, false},
-            {false, false, false, false, false, false, false, false, false, false, false, false},
+            {false, false, false, false, true, true, false, false, false, false, false, false},
             {false, false, false, false, false, false, false, false, false, false, false, false},
             {false, false, false, false, false, false, false, false, false, false, false, false}
 
     };
+    bool pressed = false;
     sf::Font font;
     int players = 2;
     PlayersList* obst = new PlayersList;
     BPGame() = default;
     std::string playerName = "Guest";
+    Line line;
+    Line invertedLine;
     ClientSock *client = ClientSock::getInstance();
 
 
