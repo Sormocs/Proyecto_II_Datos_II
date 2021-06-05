@@ -29,18 +29,22 @@ private:
     char Score(List* positions);
     void Mutation(Specimen*& specimen, Specimen parents[2]);
     void Inheritance(Specimen*& specimen, Specimen parents[2]);
-    void SetDivisionNum(int divisions);
-    Specimen* CreateSpecimen();
+    void CreateSpecimen();
     void CreateGen(int maxSpec);
 
 public:
     GenAlgorithm();
+
+    void SetDivisionNum(int divisions);
+
     void Run(int maxGen = 500, int maxSpec = 700);
 
     List* getGenerations() const;
 
-    int getCurrentGen() const;
+    int getLastGen() const;
 
     bool isSolved() const;
+
+    float getTime() const;
 
 };

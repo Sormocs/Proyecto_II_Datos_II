@@ -31,7 +31,7 @@ void GenAlgorithm::SetDivisionNum(int divisions) {
     if (allPossibleDivs == nullptr) allPossibleDivs = new List();
 
     for (int i = 0; i < divisions; ++i) {
-        allPossibleDivs->Add(new Node((void*)(new char(i))));
+        allPossibleDivs->AddBack(new Node((void *) (new char(i))));
     }
     divisionNum = divisions;
 }
@@ -57,7 +57,7 @@ List *GenAlgorithm::SearchBests() {
 
     for (int i = 0; i < genSpecimens.Length(); ++i) {
 
-        if (((Specimen*)genSpecimens.At(i)->value)->score > bestScore / 2) newGenSpecimens->Add(genSpecimens.At(i));
+        if (((Specimen*)genSpecimens.At(i)->value)->score > bestScore / 2) newGenSpecimens->AddBack(genSpecimens.At(i));
     }
 
     return newGenSpecimens;
@@ -69,7 +69,7 @@ char GenAlgorithm::Score(List *positions) {
     bool repeated = false;
     char checkedPos[positions->Length()];
 
-    for (int i = positions->Length(); i > 0; --i) {
+    for (int i = 0; i < positions->Length(); ++i) {
 
         currentPos = *(char*)positions->At(i)->value;
 
@@ -89,27 +89,27 @@ void GenAlgorithm::Mutation(Specimen *&specimen, Specimen parents[]) {
     for (int i = 0; i < len; ++i) {
 
         if (i % 3 == 0){
-            specimen->positions->Add(new Node((void*)new char(random() % len)));
+            specimen->positions->AddBack(new Node((void *) new char(random() % len)));
 
         } else if (i % 2 == 0) {
-            specimen->positions->Add(new Node((void*)parents[0].positions->At(len - 1 - i)));
+            specimen->positions->AddBack(new Node((void *) parents[0].positions->At(i)));
 
         } else {
-            specimen->positions->Add(new Node((void*)parents[1].positions->At(len - 1 - i)));
+            specimen->positions->AddBack(new Node((void *) parents[1].positions->At(i)));
         }
     }
 }
 
-void GenAlgorithm::Inheritance(Specimen *&specimen, Specimen *parents) {
+void GenAlgorithm::Inheritance(Specimen *&specimen, Specimen parents[]) {
     char len = parents[0].positions->Length();
 
     for (int i = 0; i < len; ++i) {
 
         if (i < len / 3) {
-            specimen->positions->Add(new Node((void*)parents[0].positions->At(len - 1 - i)));
+            specimen->positions->AddBack(new Node((void *) parents[0].positions->At(i)));
 
         } else {
-            specimen->positions->Add(new Node((void*)parents[1].positions->At(len - 1 - i)));
+            specimen->positions->AddBack(new Node((void *) parents[1].positions->At(i)));
         }
     }
 }
@@ -117,12 +117,15 @@ void GenAlgorithm::Inheritance(Specimen *&specimen, Specimen *parents) {
 /**
  * @brief CreateSpecimen es el generador de especímenes de una generación.
  */
-Specimen* GenAlgorithm::CreateSpecimen() {
+void GenAlgorithm::CreateSpecimen() {
     auto* specimen = new Specimen();
+    List allPossibleDivsTEMP = *allPossibleDivs;
     if (currentGen == 0) {
         for (int i = 0; i < divisionNum; ++i) {
-
-            specimen->positions->Add(new Node((void*) new char(*((char*)allPossibleDivs->GetDelAt(random() % allPossibleDivs->Length())->value))));
+            char leng = allPossibleDivsTEMP.Length();
+            char ranIndex = random() % leng;
+            char posVal = *((char *) allPossibleDivsTEMP.GetDelAt(ranIndex)->value);
+            specimen->positions->AddBack(new Node((void *) new char(posVal)));
         }
     } else {
         Specimen parents[2];
@@ -134,13 +137,13 @@ Specimen* GenAlgorithm::CreateSpecimen() {
         }
     }
     specimen->score = Score(specimen->positions);
-    ((List*)generations->At(currentGen)->value)->Add(new Node((void*) specimen));
+    ((List *) generations->At(currentGen)->value)->AddBack(new Node((void *) specimen));
     if (specimen->score == divisionNum) solved = true;
 }
 
 
 void GenAlgorithm::CreateGen(int maxSpec) {
-    generations->Add(new Node((void*) new List()));
+    generations->AddBack(new Node((void *) new List()));
     for (int i = 0; i < maxSpec; ++i) {
         CreateSpecimen();
     }
@@ -163,10 +166,14 @@ List* GenAlgorithm::getGenerations() const {
     return generations;
 }
 
-int GenAlgorithm::getCurrentGen() const {
+int GenAlgorithm::getLastGen() const {
     return currentGen;
 }
 
 bool GenAlgorithm::isSolved() const {
     return solved;
+}
+
+float GenAlgorithm::getTime() const {
+    return time;
 }

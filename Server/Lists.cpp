@@ -15,10 +15,10 @@ Node::Node(void *value) {
 }
 
 /**
- * @brief Add añade un elemento al frente de la lista.
+ * @brief AddFront añade un elemento al frente de la lista.
  * @param node
  */
-void List::Add(Node *node) {
+void List::AddFront(Node *node) {
     if (first == nullptr or length == 0) first = node;
 
     else{
@@ -76,17 +76,27 @@ Node *List::GetDelAt(int index) {
             Node* temp = first;
             first = first->next;
             temp->next = nullptr;
-            length -= 1;
+            length--;
             return temp;
         }
 
     } else {
         Node* temp1 = At(index-1);
         Node* temp2 = temp1->next;
-        if (temp1->next != nullptr) temp1->next = temp1->next->next;
+        if (index == length-1) temp1->next = nullptr;
         temp2->next = nullptr;
-        length -= 1;
+        length--;
         return temp2;
     }
 
+}
+
+void List::AddBack(Node *node) {
+    if (length == 0) AddFront(node);
+
+    else {
+        Node *temp = At(length - 1);
+        temp->next = node;
+        length++;
+    }
 }

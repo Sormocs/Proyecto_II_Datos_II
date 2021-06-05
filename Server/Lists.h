@@ -27,7 +27,8 @@ private:
     int length;
 
 public:
-    void Add(Node* node);
+    void AddFront(Node* node);
+    void AddBack(Node* node);
     Node* At(int index);
     Node* GetDelAt(int index);
 

@@ -69,7 +69,7 @@ float PhysController::FixAngle(float angle){
 
         else if (angle >= 360) angle -= 360;
     }
-    return angle
+    return angle;
 }
 
 /**
