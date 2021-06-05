@@ -15,7 +15,7 @@ PhysController* PhysController::instance = nullptr;
 float PhysController::deltaTime() {
     if (lastTime == nullptr) *lastTime = Time::now();
     time_p newTime = Time::now();
-    return (std::chrono::duration_cast<ms>(newTime - *lastTime)).count();
+    return (std::chrono::duration_cast<ms>(newTime - *lastTime)).count() * 0.001;
 }
 
 /**
@@ -45,7 +45,7 @@ void PhysController::MoveBall() {
 /**
  * @brief getAngleInDeg obtiene el ángulo de un vector con las componentes X y Y.
 */
-float PhysController::GetAngleInDeg(float xDist, float yDist) {
+float PhysController::getAngleInDeg(float xDist, float yDist) {
     if (xDist == 0) {
         if (yDist > 0) return 270;
         else return 90;
