@@ -20,6 +20,7 @@ GenAlgorithm::GenAlgorithm() {
     currentGen = 0;
     solved = false;
     stop = false;
+    time = 0.0;
 }
 
 /**
@@ -33,28 +34,6 @@ void GenAlgorithm::SetDivisionNum(int divisions) {
         allPossibleDivs->Add(new Node((void*)(new char(i))));
     }
     divisionNum = divisions;
-}
-
-
-/**
- * @brief CreateSpecimen es el generador de especímenes de una generación.
- */
-void GenAlgorithm::CreateSpecimen(Specimen parents[]) {
-    Specimen* specimen = new Specimen();
-    if (currentGen == 0) {
-        for (int i = 0; i < divisionNum; ++i) {
-
-            specimen->positions->Add(new Node((void*) new char(*((char*)allPossibleDivs->GetDelAt(random() % allPossibleDivs->Length())->value))));
-        }
-    } else {
-        if (random() % 10 == 0) { // uno de cada diez especímenes será mutado
-            Mutation(specimen, parents);
-        } else {
-            Inheritance(specimen, parents);
-        }
-    }
-    specimen->score = Score(specimen->positions);
-    ((List*)generations->At(currentGen)->value)->Add(new Node((void*) specimen));
 }
 
 void GenAlgorithm::TwoRanParents(Specimen& father, Specimen& mother) {
@@ -135,10 +114,49 @@ void GenAlgorithm::Inheritance(Specimen *&specimen, Specimen *parents) {
     }
 }
 
+/**
+ * @brief CreateSpecimen es el generador de especímenes de una generación.
+ */
+Specimen* GenAlgorithm::CreateSpecimen() {
+    auto* specimen = new Specimen();
+    if (currentGen == 0) {
+        for (int i = 0; i < divisionNum; ++i) {
+
+            specimen->positions->Add(new Node((void*) new char(*((char*)allPossibleDivs->GetDelAt(random() % allPossibleDivs->Length())->value))));
+        }
+    } else {
+        Specimen parents[2];
+        TwoRanParents(parents[0], parents[1]);
+        if (random() % 10 == 0) { // uno de cada diez especímenes será mutado
+            Mutation(specimen, parents);
+        } else {
+            Inheritance(specimen, parents);
+        }
+    }
+    specimen->score = Score(specimen->positions);
+    ((List*)generations->At(currentGen)->value)->Add(new Node((void*) specimen));
+    if (specimen->score == divisionNum) solved = true;
+}
+
+
+void GenAlgorithm::CreateGen(int maxSpec) {
+    generations->Add(new Node((void*) new List()));
+    for (int i = 0; i < maxSpec; ++i) {
+        CreateSpecimen();
+    }
+}
+
+
 void GenAlgorithm::Run(int maxGen, int maxSpec) {
+    time_p now = Time::now();
     while (!(solved || stop)) {
 
+        CreateGen(maxSpec);
+
+        currentGen++;
+        if (currentGen >= maxGen) stop = true;
     }
+    time = std::chrono::duration_cast<ms>(Time::now()-now).count() * 0.001;
 }
 
 List* GenAlgorithm::getGenerations() const {
@@ -152,4 +170,3 @@ int GenAlgorithm::getCurrentGen() const {
 bool GenAlgorithm::isSolved() const {
     return solved;
 }
-

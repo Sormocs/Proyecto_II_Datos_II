@@ -1,5 +1,10 @@
 #include "Lists.h"
 #include <random>
+#include <chrono>
+
+typedef std::chrono::high_resolution_clock Time;
+typedef std::chrono::milliseconds ms;
+typedef std::chrono::time_point<std::chrono::system_clock, std::chrono::duration<long, std::ratio<1, 1000000000>>> time_p;
 
 class Specimen {
 public:
@@ -17,6 +22,7 @@ private:
     int currentGen;
     bool solved;
     bool stop;
+    float time;
 
     void TwoRanParents(Specimen& father, Specimen& mother);
     List* SearchBests();
@@ -24,9 +30,8 @@ private:
     void Mutation(Specimen*& specimen, Specimen parents[2]);
     void Inheritance(Specimen*& specimen, Specimen parents[2]);
     void SetDivisionNum(int divisions);
-    void CreateSpecimen(Specimen parents[2]);
-    void CreateGen()
-    void CreateGen(int size);
+    Specimen* CreateSpecimen();
+    void CreateGen(int maxSpec);
 
 public:
     GenAlgorithm();
