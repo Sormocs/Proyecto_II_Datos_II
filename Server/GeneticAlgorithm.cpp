@@ -1,6 +1,5 @@
 
 #include "GeneticAlgorithm.h"
-#include <random>
 
 
 Specimen::Specimen() {
@@ -19,6 +18,8 @@ GenAlgorithm::GenAlgorithm() {
     lastGenBests = new List();
     divisionNum = 0;
     currentGen = 0;
+    solved = false;
+    stop = false;
 }
 
 /**
@@ -132,5 +133,23 @@ void GenAlgorithm::Inheritance(Specimen *&specimen, Specimen *parents) {
             specimen->positions->Add(new Node((void*)parents[1].positions->At(len - 1 - i)));
         }
     }
+}
+
+void GenAlgorithm::Run(int maxGen, int maxSpec) {
+    while (!(solved || stop)) {
+
+    }
+}
+
+List* GenAlgorithm::getGenerations() const {
+    return generations;
+}
+
+int GenAlgorithm::getCurrentGen() const {
+    return currentGen;
+}
+
+bool GenAlgorithm::isSolved() const {
+    return solved;
 }
 
