@@ -7,6 +7,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <thread>
+#include <math.h>
 #include "Button.h"
 #include "PlayersList.h"
 #include "json.hpp"
@@ -37,6 +38,7 @@ private:
     bool pressed = false;
     sf::Font font;
     int players = 2;
+    float angle = 0;
     PlayersList* obst = new PlayersList;
     BPGame() = default;
     std::string playerName = "Guest";

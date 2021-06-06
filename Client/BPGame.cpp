@@ -189,7 +189,13 @@ bool BPGame::Run() {
                     if (pressed) {
                         pressed = false;
                         int force = std::sqrt(std::pow(line.getPoints().getBounds().width,2) + std::pow(line.getPoints().getBounds().height,2));
-                        PhysController::Instance()->GetBall()->Throw(force, 45);
+                        PhysController::Instance()->GetBall()->Throw(force/3, angle*(180/M_PI));
+                        int ballx = PhysController::Instance()->GetBall()->pos[0];
+                        int bally = PhysController::Instance()->GetBall()->pos[1];
+                        line = Line(ballx+15,bally+15,ballx+15,bally+15,sf::Color(255,255,255,255));
+                        invertedLine = Line(ballx+15,bally+15,ballx+15,bally+15,sf::Color(255,255,255,255));
+                        std::cout << angle << std::endl;
+                        angle = 0;
                     }
                 }
                 if (event.type == sf::Event::MouseMoved) {
@@ -208,6 +214,9 @@ bool BPGame::Run() {
                             y2 = line.getPoints().getBounds().top+line.getPoints().getBounds().height*2;
 
                             invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+
+                            angle = (-1)*atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) - M_PI;
+
                         } else if (mouse[0] < ballx+15 && mouse[1] < bally+15 ){
 
                             x2 = line.getPoints().getBounds().left+line.getPoints().getBounds().width*2;
@@ -215,18 +224,25 @@ bool BPGame::Run() {
 
                             invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
 
+                            angle = atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) + 2*M_PI;
+
                         } else if (mouse[0] < ballx+15 && mouse[1] > bally+15){
 
                             x2 = line.getPoints().getBounds().left+line.getPoints().getBounds().width*2;
                             y2 = line.getPoints().getBounds().top-line.getPoints().getBounds().height;
 
                             invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+
+                            angle = (-1)*atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width);
+
                         } else{
 
                             x2 = line.getPoints().getBounds().left-line.getPoints().getBounds().width;
                             y2 = line.getPoints().getBounds().top-line.getPoints().getBounds().height;
 
                             invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+
+                            angle = atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) + M_PI;
 
                         }
 
