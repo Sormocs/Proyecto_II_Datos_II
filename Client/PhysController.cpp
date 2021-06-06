@@ -18,8 +18,8 @@ float PhysController::deltaTime() {
         *lastTime = Time::now();
     }
     time_p newTime = Time::now();
-//    return (std::chrono::duration_cast<ms>(newTime - *lastTime)).count() * 0.001;
-    return 0.16;
+    return (std::chrono::duration_cast<ms>(newTime - *lastTime)).count() * 0.001;
+//    return 0.16;
 }
 
 /**
@@ -27,8 +27,8 @@ float PhysController::deltaTime() {
  */
 void PhysController::CheckColl() {
     char collision = char();
-    for (int i = 0; i < playerList->Lenght(); ++i) {
-        collision = playerList->Get(i)->WhereCollition(ball->pos);
+    for (int i = 0; i < playerList->Length(); ++i) {
+        collision = playerList->Get(i)->WhereCollision(ball->pos);
         if (collision == NO_COLLITION) continue;
 
         else {
@@ -36,23 +36,65 @@ void PhysController::CheckColl() {
         }
     }
 
-    if (ball->pos[0] < 100 || ball->pos[0] > 865) {
-        ball->Bounce(HORIZONTAL_COLLITION);
+    if (ball->pos[0] < 80) {
+        // si colisiona con el borde izquierdo
+        if (ball->degree > 90 && ball->degree < 270) {
+//             y el vector está
+//                   |
+//              aquí |
+//              _____|______
+//            o aquí |
+//                   |
+//
+            ball->Bounce(HORIZONTAL_COLLITION);
+        }
+    } else if (ball->pos[0] > 890) {
+        // sino, si colisiona con el borde izquierdo
+        if (ball->degree < 90 || ball->degree > 270) {
+//            y el vector está
+//                   |
+//                   |   aquí
+//            _______|_______
+//                   | o aquí
+//                   |
+            ball->Bounce(HORIZONTAL_COLLITION);
+        }
 
-    } else if (ball->pos[1] < 160 || ball->pos[1] > 505) {
-        ball->Bounce(VERTICAL_COLLITON);
+    } else if (ball->pos[1] < 135) {
+        // sino, si colisiona con el borde superior
+        if (ball->degree > 0 && ball->degree < 180) {
+//            y el vector está
+//                   |
+//              aquí | o aquí
+//            _______|_______
+//                   |
+//                   |
+            ball->Bounce(VERTICAL_COLLITON);
+        }
+    }else if (ball->pos[1] > 530) {
+        // sino, si colisiona con el borde inferior
+        if (ball->degree > 180 && ball->degree < 360){
+//            y el vector está
+//                   |
+//                   |
+//            _______|_______
+//              aquí | o aquí
+//                   |
+            ball->Bounce(VERTICAL_COLLITON);
+        }
     }
+    FixAngle(ball->degree);
 }
 
 /**
  * @brief MoveBall cambia la posición de la bola para mostrarla en pantalla.
  */
 void PhysController::MoveBall() {
-    if (this->ball->speed == 0) return;
+    if (this->ball->energy == 0) return;
     CheckColl();
     ball->Friction(deltaTime());
-    ball->pos[0] += std::cos((ball->degree * PI) / 180) * ball->speed;
-    ball->pos[1] += std::sin((ball->degree * PI) / 180) * ball->speed;
+    ball->pos[0] += ((std::cos((ball->degree * PI) / 180) * ball->energy)/BALL_MASS) * deltaTime();
+    ball->pos[1] += ((std::sin((ball->degree * PI) / 180) * ball->energy)/BALL_MASS) * deltaTime();
 }
 /**
  * @brief getAngleInDeg obtiene el ángulo de un vector con las componentes X y Y.

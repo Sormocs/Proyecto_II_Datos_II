@@ -42,6 +42,7 @@ private:
     Line line;
     Line invertedLine;
     ClientSock *client = ClientSock::getInstance();
+    sf::Sprite* ballsprite = new sf::Sprite;
 
 
 public:
