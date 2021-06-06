@@ -17,6 +17,7 @@ class Ball {
 public:
     Ball();
     float pos[2];
+    float energy;
     float speed;
     float degree;
     void Throw(float force, float direction);

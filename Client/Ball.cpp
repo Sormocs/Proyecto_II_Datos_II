@@ -10,9 +10,11 @@
  * @param deltaTime
  */
 void Ball::Friction(float deltaTime) {
-    if (speed > 0) this->speed -= (float) (speed - (UK * (BALL_MASS * GRAVITY))) * deltaTime;
+    if (energy > 0) this->energy -= (UK * (BALL_MASS * GRAVITY)) * deltaTime;
 
-    else if (speed < 0) speed = 0;
+    else if (energy < 0) energy = 0;
+
+    this->speed = energy / BALL_MASS;
 }
 
 /**
@@ -21,7 +23,8 @@ void Ball::Friction(float deltaTime) {
  * @param degrees
  */
 void Ball::Throw(float force, float degrees) {
-    this->speed = (force * (US * (BALL_MASS * GRAVITY))) /100.0;
+    this->energy = force - (US * (BALL_MASS * GRAVITY));
+    this->speed = force / BALL_MASS;
     this->degree = degrees;
 }
 
@@ -31,44 +34,74 @@ void Ball::Throw(float force, float degrees) {
  */
 void Ball::Bounce(char direction) {
     if (direction == DIAGONAL_COLLITION) {
-        pos[0] = -pos[0];
-        pos[1] = -pos[1];
+//        pos[0] = -pos[0];
+//        pos[1] = -pos[1];
 
         this->degree += 180.0f;
     }
 
     else if (direction == HORIZONTAL_COLLITION) {
-        pos[0] = -pos[0];
+//        pos[0] = -pos[0];
 
-        if (this->degree > 270) this->degree = 90 - (this->degree - 270);
+        if (this->degree > 270) this->degree = 180 + (360 - this->degree);
+//              |
+//              |
+//        ______|_____
+//     a aquí / | \ de aquí
+//         < /  |  \ >
 
-        else if (this->degree < 90) this->degree = 270 + (90 - this->degree);
-
-        else if (this->degree < 180) this->degree = 180 + (180 - this->degree);
-
-        else this->degree = 180 - (this->degree - 180);
-    }
-
-    else if (direction == VERTICAL_COLLITON) {
-        pos[1] = -pos[1];
-
-        if (this->degree < 90)  this->degree = 180 - this->degree;
-
-        else if (this->degree > 270) this->degree = 180 + (360 - this->degree);
+        else if (this->degree < 90) this->degree = 180 - this->degree;
+//         < \  |  / >
+//     a aquí \ | / de aquí
+//        ______|_____
+//              |
+//              |
 
         else if (this->degree < 180) this->degree = 180 - this->degree;
-
+//         < \  |  / >
+//    de aquí \ | / a aquí
+//        ______|_____
+//              |
+//              |
         else this->degree = 360 - (this->degree - 180);
+//              |
+//              |
+//        ______|_____
+//    de aquí / | \ a aquí
+//         < /  |  \ >
+    } else if (direction == VERTICAL_COLLITON) {
+        this->degree = 360 - this->degree;
+//        pos[1] = -pos[1];
+//
+//        if (this->degree < 90 || this->degree > 270)  this->degree = 360 - this->degree;
+////              |  / >
+////              | /
+////        ______|______
+////              | \
+////              |  \ >
+//
+//        else if (this->degree < 180) this->degree = 180 + (180 - this->degree);
+////         < \  |
+////    de aquí \ |
+////        ______|______
+////     a aquí / |
+////         < /  |
+//
+//        else this->degree = 180 - (this->degree - 180);
+////         < \  |
+////     a aquí \ |
+////        ______|______
+////    de aquí / |
+////         < /  |
     }
 
     if (this->degree >= 360) this->degree -= 360.0f;
-    speed -= speed * ENERGY_LOSS;
+    energy -= energy * ENERGY_LOSS;
 }
 
 bool Ball::Clicked(int x, int y) {
 
     if (pos[0]-20 < x && x < pos[0] + 40 && pos[1]-20 < y && y < pos[1] + 40) {
-        std::cout << "Ball CLicked" << std::endl;
         return true;
     }
     return false;
@@ -77,6 +110,7 @@ bool Ball::Clicked(int x, int y) {
 Ball::Ball() {
     this->pos[0] = 0.0;
     this->pos[1] = 0.0;
+    this->energy = 0.0;
     this->speed = 0.0;
     this->degree = 0.0;
 }
