@@ -29,12 +29,28 @@ bool GenPuzzle::Run() {
     title1.setColor(sf::Color::White);
     title1.setPosition(20, 10);
 
+    sf::Text title2;
+    title2.setString("Amount of cuts: ");
+    title2.setFont(font);
+    title2.setCharacterSize(50);
+    title2.setColor(sf::Color::White);
+    title2.setPosition(280, 160);
+
+    sf::Text cuts;
+    cuts.setString(std::to_string(parts));
+    cuts.setFont(font);
+    cuts.setCharacterSize(170);
+    cuts.setPosition(390, 230);
+
+
     //TEXT BOX
     TextBox entry = TextBox(20,100,250,55,28);
 
     //BUTTONS
     sf::Color btncolor = sf::Color(0, 128, 128, 255);
     Button accept = Button(400, 520, 180, 75, 26, "Begin", btncolor);
+    Button addc = Button(500, 450, 80, 50, 32, "MORE", btncolor);
+    Button removec = Button(400, 450, 80, 50, 32, "LESS", btncolor);
 
     //SHAPE
     sf::RectangleShape bg = sf::RectangleShape(sf::Vector2f (1000,700));
@@ -60,7 +76,20 @@ bool GenPuzzle::Run() {
                         if (entry.GetString() != "") {
                             if (DivideImage(entry.GetString())) {
                                 selection = false;
+                                ShuffleParts();
                             }
+                        }
+                    } if (addc.Clicked(mouse[0],mouse[1])){
+                        if (parts < 18) {
+                            parts += 2;
+                            if (parts < 10) cuts.setString("0" + std::to_string(parts));
+                            else cuts.setString(std::to_string(parts));
+                        }
+                    } if (removec.Clicked(mouse[0],mouse[1])){
+                        if (parts > 4) {
+                            parts -= 2;
+                            if (parts < 10) cuts.setString("0" + std::to_string(parts));
+                            else cuts.setString(std::to_string(parts));
                         }
                     }
 
@@ -77,10 +106,18 @@ bool GenPuzzle::Run() {
                         }
                     }
 
+                } if (event.type == sf::Event::MouseMoved){
+                    accept.MouseOver(mouse[0],mouse[1]);
+                    addc.MouseOver(mouse[0],mouse[1]);
+                    removec.MouseOver(mouse[0],mouse[1]);
                 }
                 window.clear();
 
                 window.draw(title1);
+                window.draw(title2);
+                window.draw(cuts);
+                addc.Draw(winptr);
+                removec.Draw(winptr);
                 entry.Draw(winptr);
                 accept.Draw(winptr);
 
@@ -97,6 +134,7 @@ bool GenPuzzle::Run() {
             window.clear();
 
             window.draw(bg);
+
             DrawParts(winptr);
 
             window.display();
@@ -138,17 +176,17 @@ bool GenPuzzle::DivideImage(std::string name) {
 
             sf::Sprite* part = new sf::Sprite;
             part->setTexture(*texture);
-            part->setTextureRect(sf::IntRect(x_part,y_part,x_part+div,y_part+div));
+            part->setTextureRect(sf::IntRect(x_part,y_part,div,div));
             part->setPosition(x,y);
             Parts->Insert(x,y,num,part);
 
             x_part += div;
-            x += div + 15;
+            x += div + 1;
 
             num++;
         }
         y_part += div;
-        y += div + 15;
+        y += div + 1;
 
     }
 
@@ -182,5 +220,37 @@ void GenPuzzle::DrawParts(sf::RenderWindow *win) {
         temp = temp->GetNext();
 
     }
+
+}
+
+void GenPuzzle::ShuffleParts() {
+
+    int pLen = Parts->GetLen();
+    int pos_parts[pLen][2];
+    bool av_pos[pLen];
+
+    Part* temp = Parts->GetStart();
+    for (int i = 0; i < pLen; i++){
+
+        pos_parts[i][0] = temp->getPart()->getPosition().x;
+        pos_parts[i][1] = temp->getPart()->getPosition().y;
+        av_pos[i] = true;
+        temp = temp->GetNext();
+
+    }
+
+    temp = Parts->GetStart();
+    while (temp != nullptr){
+        int randi = rand()%pLen;
+        if (av_pos[randi]){
+
+            temp->getPart()->setPosition(pos_parts[randi][0],pos_parts[randi][1]);
+            av_pos[randi] = false;
+            temp = temp->GetNext();
+        } else continue;
+    }
+
+
+
 
 }

@@ -69,11 +69,17 @@ void ImageParts::Insert(int x, int y, int num, sf::Sprite* part) {
         end = part1;
 
     }
+    len += 1;
+    std::cout << "Current num: " << end->GetNum() << std::endl;
+    std::cout << "Current len: " << len << std::endl;
 
-    std::cout << "Added" << std::endl;
 
 }
 
 Part *ImageParts::GetStart() {
     return start;
+}
+
+int ImageParts::GetLen() {
+    return len;
 }

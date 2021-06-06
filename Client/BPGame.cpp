@@ -42,7 +42,8 @@ bool BPGame::Run() {
 
     //TEXTS:
     sf::Text playernum;
-    playernum.setString("0" + std::to_string(players));
+    if (players < 10) playernum.setString("0" + std::to_string(players));
+    else playernum.setString(std::to_string(players));
     playernum.setFont(font);
     playernum.setCharacterSize(170);
     playernum.setColor(sf::Color::White);
@@ -264,8 +265,6 @@ bool BPGame::Run() {
 void BPGame::CreatePlayers(int x, int y) {
     obst->Reset();
     ResetMatrixPlayer();
-    srand(time(NULL));
-    std::cout << "Srand initiated" << std::endl;
     int p = 0;
     while (p < players/2){
         int randi = rand()%5;

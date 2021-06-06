@@ -20,6 +20,7 @@ void RunClient(){
  */
 int main() {
     //std::thread RunC (RunClient);
+    srand(time(NULL));
 
     GUI::getInstance()->Run();
 

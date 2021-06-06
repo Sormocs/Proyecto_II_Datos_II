@@ -28,10 +28,12 @@ class ImageParts {
 private:
     Part* start;
     Part* end;
+    int len = 0;
 public:
     ImageParts() = default;
     void Insert(int x, int y, int num, sf::Sprite* part);
     Part* GetStart();
+    int GetLen();
 
 };
 
