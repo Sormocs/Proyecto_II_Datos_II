@@ -189,17 +189,7 @@ bool BPGame::Run() {
                     if (pressed) {
                         pressed = false;
                         int force = std::sqrt(std::pow(line.getPoints().getBounds().width,2) + std::pow(line.getPoints().getBounds().height,2));
-                        std::cout << "########################################################" << std::endl;
-                        std::cout << "DeltaTime " << PhysController::Instance()->deltaTime() << "s." <<  std::endl;
-                        std::cout << "Fuerza " << PhysController::Instance()->GetBall()->energy << " N" << std::endl;
-                        std::cout << "Velocidad " << PhysController::Instance()->GetBall()->speed << " píxel/s" << std::endl;
-                        std::cout << "Dirección " << PhysController::Instance()->GetBall()->degree << " °" << std::endl;
-                        std::cout << "Posición " << PhysController::Instance()->GetBall()->pos[0] << ", " << PhysController::Instance()->GetBall()->pos[1] << std::endl << std::endl;
                         PhysController::Instance()->GetBall()->Throw(force, 45);
-                        std::cout << "Fuerza " << PhysController::Instance()->GetBall()->energy << " N" << std::endl;
-                        std::cout << "Velocidad " << PhysController::Instance()->GetBall()->speed << " píxel/s" << std::endl;
-                        std::cout << "Dirección " << PhysController::Instance()->GetBall()->degree << " °" << std::endl;
-                        std::cout << "Posición " << PhysController::Instance()->GetBall()->pos[0] << ", " << PhysController::Instance()->GetBall()->pos[1] << std::endl << std::endl;
                     }
                 }
                 if (event.type == sf::Event::MouseMoved) {
@@ -246,11 +236,6 @@ bool BPGame::Run() {
             window.clear();
 
             PhysController::Instance()->MoveBall();
-            std::cout << "Fuerza " << PhysController::Instance()->GetBall()->energy << " N" << std::endl;
-            std::cout << "Velocidad " << PhysController::Instance()->GetBall()->speed << " píxel/s" << std::endl;
-            std::cout << "Dirección " << PhysController::Instance()->GetBall()->degree << " °" << std::endl;
-            std::cout << "Posición " << PhysController::Instance()->GetBall()->pos[0] << ", " << PhysController::Instance()->GetBall()->pos[1] << std::endl << std::endl;
-
 
             ballsprite->setPosition(PhysController::Instance()->GetBall()->pos[0],PhysController::Instance()->GetBall()->pos[1]);
 

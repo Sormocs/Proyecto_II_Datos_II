@@ -1,8 +1,8 @@
 #define GRAVITY 9.81f
 
 // fricción
-#define US 0.075              // coeficiente de fricción estática del césped
-#define UK 0.057              // coeficiente de fricción cinética del césped
+#define US 0.75              // coeficiente de fricción estática del césped
+#define UK 0.57              // coeficiente de fricción cinética del césped
 
 // propiedades de la bola
 #define BALL_MASS 0.450      // 450 g de masa del balón

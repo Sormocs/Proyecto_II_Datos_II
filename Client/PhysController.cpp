@@ -26,17 +26,18 @@ double PhysController::deltaTime() {
  * @brief CheckColl revisa si colisiona la bola con algún jugador.
  */
 void PhysController::CheckColl() {
-    char collision = char();
-    for (int i = 0; i < playerList->Length(); ++i) {
-        collision = playerList->Get(i)->WhereCollision(ball->pos);
-        if (collision == NO_COLLITION) continue;
+    char collision = NO_COLLITION;
+//    for (int i = 0; i < playerList->Length(); ++i) {
+//        collision = playerList->Get(i)->WhereCollision(ball->pos);
+//        if (collision == NO_COLLITION) continue;
+//
+//        else {
+//            std::cout << "Colisión con jugador " << i << ", en posición " << playerList->Get(i)->WhereCollision(ball->pos) << std::endl;
+//            ball->Bounce(collision);
+//        }
+//    }
 
-        else {
-            ball->Bounce(collision);
-        }
-    }
-
-    if (ball->pos[0] < 80) {
+    if (ball->pos[0] < 70) {
         // si colisiona con el borde izquierdo
         if (ball->degree > 90 && ball->degree < 270) {
 //             y el vector está
@@ -48,7 +49,7 @@ void PhysController::CheckColl() {
 //
             ball->Bounce(HORIZONTAL_COLLITION);
         }
-    } else if (ball->pos[0] > 890) {
+    } else if (ball->pos[0] > 880) {
         // sino, si colisiona con el borde izquierdo
         if (ball->degree < 90 || ball->degree > 270) {
 //            y el vector está
@@ -60,26 +61,25 @@ void PhysController::CheckColl() {
             ball->Bounce(HORIZONTAL_COLLITION);
         }
 
-    } else if (ball->pos[1] < 135) {
+    } else if (ball->pos[1] < 125 || ball->pos[1] > 500) {
         // sino, si colisiona con el borde superior
-        if (ball->degree > 0 && ball->degree < 180) {
-//            y el vector está
-//                   |
-//              aquí | o aquí
-//            _______|_______
-//                   |
-//                   |
+        if (ball->degree > 180 && ball->degree < 360) {
+ //            y el vector está
+ //                   |
+ //              aquí | o aquí
+ //            _______|_______
+ //                   |
+ //                   |
             ball->Bounce(VERTICAL_COLLITON);
-        }
-    }else if (ball->pos[1] > 530) {
-        // sino, si colisiona con el borde inferior
-        if (ball->degree > 180 && ball->degree < 360){
-//            y el vector está
-//                   |
-//                   |
-//            _______|_______
-//              aquí | o aquí
-//                   |
+        } else if (ball->degree > 0 && ball->degree < 180) {
+//             sino, si colisiona con el borde inferior
+
+ //            y el vector está
+ //                   |
+ //                   |
+ //            _______|_______
+ //              aquí | o aquí
+ //                   |
             ball->Bounce(VERTICAL_COLLITON);
         }
     }
