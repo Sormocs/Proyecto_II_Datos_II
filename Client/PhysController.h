@@ -35,7 +35,7 @@ public:
 
     PlayerList* playerList = new PlayerList;
 
-    float deltaTime();
+    double deltaTime();
 
     float getAngleInDeg(float xDist, float yDist);
 

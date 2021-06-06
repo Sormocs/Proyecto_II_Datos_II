@@ -12,7 +12,7 @@ PhysController* PhysController::instance = nullptr;
  * @brief deltaTime retorna el tiempo transcurrido desde la última llamada, por ejemplo, el tiempo pasado desde el último fame.
  * @return deltaTime
  */
-float PhysController::deltaTime() {
+double PhysController::deltaTime() {
     if (lastTime == nullptr) {
         lastTime = new time_p;
         *lastTime = Time::now();
@@ -90,11 +90,13 @@ void PhysController::CheckColl() {
  * @brief MoveBall cambia la posición de la bola para mostrarla en pantalla.
  */
 void PhysController::MoveBall() {
-    if (this->ball->energy == 0) return;
+//    if (this->ball->energy == 0) return;
     CheckColl();
     ball->Friction(deltaTime());
     ball->pos[0] += ((std::cos((ball->degree * PI) / 180) * ball->energy)/BALL_MASS) * deltaTime();
     ball->pos[1] += ((std::sin((ball->degree * PI) / 180) * ball->energy)/BALL_MASS) * deltaTime();
+
+    *lastTime = Time::now();
 }
 /**
  * @brief getAngleInDeg obtiene el ángulo de un vector con las componentes X y Y.
