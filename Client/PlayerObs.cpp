@@ -27,17 +27,17 @@ char PlayerObs::WhereCollision(float *pos) {
     float yDist = pos[1] - this->yPos;
 
     // si ambos están tocando a la vez, está golpeando en diagonal
-    if (outside(xDist) & outside(yDist)) return NO_COLLITION;
+    if (outside(xDist) & outside(yDist)) return NO_COLLISION;
 
-    else if (colliding(xDist) && colliding(yDist)) return DIAGONAL_COLLITION;
+    else if (colliding(xDist) && colliding(yDist)) return DIAGONAL_COLLISION;
 
     // si la horizontal es más pequeña, está golpeando de costado.
-    else if (colliding(xDist) && aboutToCollide(yDist)) return HORIZONTAL_COLLITION;
+    else if (colliding(xDist) && aboutToCollide(yDist)) return HORIZONTAL_COLLISION;
 
     // si la vertical es más pequeña, está golpeando arriba o abajo.
-    else if (aboutToCollide(xDist) && colliding(yDist)) return VERTICAL_COLLITON;
+    else if (aboutToCollide(xDist) && colliding(yDist)) return VERTICAL_COLLISION;
 
-    else return NO_COLLITION;
+    else return NO_COLLISION;
 }
 
 /**

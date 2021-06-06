@@ -33,14 +33,14 @@ void Ball::Throw(float force, float degrees) {
  * @param direction
  */
 void Ball::Bounce(char direction) {
-    if (direction == DIAGONAL_COLLITION) {
+    if (direction == DIAGONAL_COLLISION) {
 //        pos[0] = -pos[0];
 //        pos[1] = -pos[1];
 
         this->degree += 180.0f;
     }
 
-    else if (direction == HORIZONTAL_COLLITION) {
+    else if (direction == HORIZONTAL_COLLISION) {
 //        pos[0] = -pos[0];
 
         if (this->degree > 270) this->degree = 180 + (360 - this->degree);
@@ -69,7 +69,7 @@ void Ball::Bounce(char direction) {
 //        ______|_____
 //    de aquí / | \ a aquí
 //         < /  |  \ >
-    } else if (direction == VERTICAL_COLLITON) {
+    } else if (direction == VERTICAL_COLLISION) {
         this->degree = 360 - this->degree;
 //        pos[1] = -pos[1];
 //

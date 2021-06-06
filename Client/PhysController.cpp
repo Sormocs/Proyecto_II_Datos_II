@@ -26,13 +26,13 @@ double PhysController::deltaTime() {
  * @brief CheckColl revisa si colisiona la bola con algún jugador.
  */
 void PhysController::CheckColl() {
-    char collision = NO_COLLITION;
+    char collision = NO_COLLISION;
     for (int i = 0; i < playerList->Length(); ++i) {
         collision = playerList->Get(i)->WhereCollision(ball->pos);
-        if (collision == NO_COLLITION) continue;
+        if (collision == NO_COLLISION) continue;
 
         else {
-            std::cout << "Colisión con jugador " << i << ", en posición " << std::to_string(playerList->Get(i)->WhereCollision(ball->pos)) << std::endl;
+            std::cout << "Colisión con jugador " << i << ", de tipo " << playerList->Get(i)->WhereCollision(ball->pos) << ", con coordenadas " << ball->pos[0] << ", " << ball->pos[1] << std::endl;
             ball->Bounce(collision);
         }
     }
@@ -47,7 +47,7 @@ void PhysController::CheckColl() {
 //            o aquí |
 //                   |
 //
-            ball->Bounce(HORIZONTAL_COLLITION);
+            ball->Bounce(HORIZONTAL_COLLISION);
         }
     } else if (ball->pos[0] > 880) {
         // sino, si colisiona con el borde izquierdo
@@ -58,7 +58,7 @@ void PhysController::CheckColl() {
 //            _______|_______
 //                   | o aquí
 //                   |
-            ball->Bounce(HORIZONTAL_COLLITION);
+            ball->Bounce(HORIZONTAL_COLLISION);
         }
 
     } else if (ball->pos[1] < 125 || ball->pos[1] > 500) {
@@ -70,7 +70,7 @@ void PhysController::CheckColl() {
  //            _______|_______
  //                   |
  //                   |
-            ball->Bounce(VERTICAL_COLLITON);
+            ball->Bounce(VERTICAL_COLLISION);
         } else if (ball->degree > 0 && ball->degree < 180) {
 //             sino, si colisiona con el borde inferior
 
@@ -80,7 +80,7 @@ void PhysController::CheckColl() {
  //            _______|_______
  //              aquí | o aquí
  //                   |
-            ball->Bounce(VERTICAL_COLLITON);
+            ball->Bounce(VERTICAL_COLLISION);
         }
     }
     FixAngle(ball->degree);

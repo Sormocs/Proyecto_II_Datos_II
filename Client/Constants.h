@@ -6,13 +6,13 @@
 
 // propiedades de la bola
 #define BALL_MASS 0.45      // 450 g de masa del balón
-#define ENERGY_LOSS 0.1      // Porcentaje de pérdidad de energía tras impacto
+#define ENERGY_LOSS 0      // Porcentaje de pérdidad de energía tras impacto
 
 // constantes de colisión
-#define HORIZONTAL_COLLITION 'h'
-#define VERTICAL_COLLITON 'v'
-#define DIAGONAL_COLLITION 'd'
-#define NO_COLLITION '-'
+#define HORIZONTAL_COLLISION 'h'
+#define VERTICAL_COLLISION 'v'
+#define DIAGONAL_COLLISION 'd'
+#define NO_COLLISION '-'
 
 // constantes del jugador
 #define PLAYER_RADIUS 40
