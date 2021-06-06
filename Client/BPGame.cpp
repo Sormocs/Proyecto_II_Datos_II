@@ -188,7 +188,8 @@ bool BPGame::Run() {
                 if (event.type == sf::Event::MouseButtonReleased) {
                     if (pressed) {
                         pressed = false;
-                        //PhysController::Instance()->GetBall()->Throw(line->getSize().x,0);
+                        int force = std::sqrt(std::pow(line.getPoints().getBounds().width,2) + std::pow(line.getPoints().getBounds().height,2));
+                        PhysController::Instance()->GetBall()->Throw(force, 4);
                     }
                 }
                 if (event.type == sf::Event::MouseMoved) {
@@ -202,9 +203,6 @@ bool BPGame::Run() {
                         int x2 = ballx+15;
                         int y2 = bally+15;
                         if (mouse[0] > ballx+15 && mouse[1] < bally+15){
-
-                            std::cout << "line y: " << line.getPoints().getBounds().top << std::endl;
-                            std::cout << "line x: " << line.getPoints().getBounds().left << std::endl;
 
                             x2 = line.getPoints().getBounds().left-line.getPoints().getBounds().width;
                             y2 = line.getPoints().getBounds().top+line.getPoints().getBounds().height*2;
@@ -237,7 +235,7 @@ bool BPGame::Run() {
             }
             window.clear();
 
-            //PhysController::Instance()->MoveBall();
+            PhysController::Instance()->MoveBall();
 
             ballsprite->setPosition(PhysController::Instance()->GetBall()->pos[0],PhysController::Instance()->GetBall()->pos[1]);
 

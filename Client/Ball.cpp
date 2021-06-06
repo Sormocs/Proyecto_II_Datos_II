@@ -21,7 +21,7 @@ void Ball::Friction(float deltaTime) {
  * @param degrees
  */
 void Ball::Throw(float force, float degrees) {
-    this->speed = force * (US * (BALL_MASS * GRAVITY));
+    this->speed = (force * (US * (BALL_MASS * GRAVITY))) /100.0;
     this->degree = degrees;
 }
 
@@ -72,4 +72,11 @@ bool Ball::Clicked(int x, int y) {
         return true;
     }
     return false;
+}
+
+Ball::Ball() {
+    this->pos[0] = 0.0;
+    this->pos[1] = 0.0;
+    this->speed = 0.0;
+    this->degree = 0.0;
 }

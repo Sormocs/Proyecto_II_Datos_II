@@ -14,7 +14,8 @@
  */
 class PlayerObs {
 private:
-    float pos[2];
+    float xPos;
+    float yPos;
 
     bool inside(float pos);
     bool colliding(float pos);

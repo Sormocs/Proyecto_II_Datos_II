@@ -21,10 +21,10 @@ typedef std::chrono::time_point<std::chrono::system_clock, std::chrono::duration
 
 class PhysController {
 private:
-    PhysController() = default;
+    PhysController();
     static PhysController* instance;
-    time_p* lastTime = nullptr;
-    Ball* ball = new Ball;
+    time_p* lastTime;
+    Ball* ball;
 public:
 
     static PhysController* Instance();

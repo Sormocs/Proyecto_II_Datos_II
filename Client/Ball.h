@@ -13,7 +13,9 @@
  * @brief Clase Ball encargada del control de la ubicación de la bola.
  */
 class Ball {
+
 public:
+    Ball();
     float pos[2];
     float speed;
     float degree;

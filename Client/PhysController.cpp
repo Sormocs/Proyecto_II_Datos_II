@@ -18,7 +18,8 @@ float PhysController::deltaTime() {
         *lastTime = Time::now();
     }
     time_p newTime = Time::now();
-    return (std::chrono::duration_cast<ms>(newTime - *lastTime)).count() * 0.001;
+//    return (std::chrono::duration_cast<ms>(newTime - *lastTime)).count() * 0.001;
+    return 0.16;
 }
 
 /**
@@ -34,12 +35,20 @@ void PhysController::CheckColl() {
             ball->Bounce(collision);
         }
     }
+
+    if (ball->pos[0] < 100 || ball->pos[0] > 865) {
+        ball->Bounce(HORIZONTAL_COLLITION);
+
+    } else if (ball->pos[1] < 160 || ball->pos[1] > 505) {
+        ball->Bounce(VERTICAL_COLLITON);
+    }
 }
 
 /**
  * @brief MoveBall cambia la posición de la bola para mostrarla en pantalla.
  */
 void PhysController::MoveBall() {
+    if (this->ball->speed == 0) return;
     CheckColl();
     ball->Friction(deltaTime());
     ball->pos[0] += std::cos((ball->degree * PI) / 180) * ball->speed;
@@ -116,6 +125,11 @@ void PhysController::ResetAll() {
 
 Ball *PhysController::GetBall() {
     return ball;
+}
+
+PhysController::PhysController() {
+    this->lastTime = nullptr;
+    this->ball = new Ball;
 }
 
 

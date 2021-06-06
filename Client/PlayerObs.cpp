@@ -22,8 +22,8 @@ PlayerObs::PlayerObs() {
 char PlayerObs::WhereCollition(float pos[]) {
 
     // Obtiene la distancia entre los puntos en la horizontal y en la vertical por separado.
-    float xDist = std::abs(pos[0] - this->pos[0]);
-    float yDist = std::sqrt(std::abs((pos[1] * pos[1]) + (this->pos[1] * this->pos[1])));
+    float xDist = std::abs(pos[0] - this->xPos);
+    float yDist = std::sqrt(std::abs((pos[1] * pos[1]) + (this->yPos * this->yPos)));
 
     // si ambos están tocando a la vez, está golpeando en diagonal
     if (outside(xDist) & outside(yDist)) return NO_COLLITION;
@@ -82,10 +82,8 @@ bool PlayerObs::aboutToCollide(float pos) {
 }
 
 PlayerObs::PlayerObs(float X, float Y) {
-
-    pos[0] = X;
-    pos[1] = Y;
-
+    xPos = X;
+    yPos = Y;
 }
 
 
