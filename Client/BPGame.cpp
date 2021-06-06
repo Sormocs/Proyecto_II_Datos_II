@@ -93,10 +93,11 @@ bool BPGame::Run() {
     //BALL
     sf::Texture* ball = new sf::Texture;
     ball->loadFromFile("../Pictures/ball.png");
-
+    sf::Sprite* ballsprite = new sf::Sprite;
     ballsprite->setTexture(*ball);
     ballsprite->setPosition(sf::Vector2f (840/2+40,405/2+80));
-
+    PhysController::Instance()->GetBall()->pos[0] = ballsprite->getPosition().x+20;
+    PhysController::Instance()->GetBall()->pos[1] = ballsprite->getPosition().y+20;
 
     while (window.isOpen()) {
         sf::Event event;
@@ -189,7 +190,7 @@ bool BPGame::Run() {
                     if (pressed) {
                         pressed = false;
                         int force = std::sqrt(std::pow(line.getPoints().getBounds().width,2) + std::pow(line.getPoints().getBounds().height,2));
-                        PhysController::Instance()->GetBall()->Throw(force, 45);
+                        PhysController::Instance()->GetBall()->Throw(force, 4);
                     }
                 }
                 if (event.type == sf::Event::MouseMoved) {
@@ -236,10 +237,6 @@ bool BPGame::Run() {
             window.clear();
 
             PhysController::Instance()->MoveBall();
-            std::cout << "Fuerza " << PhysController::Instance()->GetBall()->energy << " N" << std::endl;
-            std::cout << "Velocidad " << PhysController::Instance()->GetBall()->speed << " píxel/s" << std::endl;
-            std::cout << "Dirección " << PhysController::Instance()->GetBall()->degree << " °" << std::endl;
-            std::cout << "Posición " << PhysController::Instance()->GetBall()->pos[0] << ", " << PhysController::Instance()->GetBall()->pos[1] << std::endl << std::endl;
 
             ballsprite->setPosition(PhysController::Instance()->GetBall()->pos[0],PhysController::Instance()->GetBall()->pos[1]);
 
@@ -267,11 +264,6 @@ bool BPGame::Run() {
  */
 void BPGame::CreatePlayers(int x, int y) {
     obst->Reset();
-
-    PhysController::ResetAll();
-    PhysController::Instance()->GetBall()->pos[0] = ballsprite->getPosition().x+20;
-    PhysController::Instance()->GetBall()->pos[1] = ballsprite->getPosition().y+20;
-
     ResetMatrixPlayer();
     int p = 0;
     while (p < players/2){

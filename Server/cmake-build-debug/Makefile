@@ -58,19 +58,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/151/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/151/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server
+CMAKE_SOURCE_DIR = "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug
+CMAKE_BINARY_DIR = "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,7 +78,7 @@ CMAKE_BINARY_DIR = /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmak
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/151/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -89,7 +89,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/151/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -141,195 +141,6 @@ Server: cmake_check_build_system
 Server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
 .PHONY : Server/fast
-
-Astar.o: Astar.cpp.o
-
-.PHONY : Astar.o
-
-# target to build an object file
-Astar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Astar.cpp.o
-.PHONY : Astar.cpp.o
-
-Astar.i: Astar.cpp.i
-
-.PHONY : Astar.i
-
-# target to preprocess a source file
-Astar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Astar.cpp.i
-.PHONY : Astar.cpp.i
-
-Astar.s: Astar.cpp.s
-
-.PHONY : Astar.s
-
-# target to generate assembly for a file
-Astar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Astar.cpp.s
-.PHONY : Astar.cpp.s
-
-Backtracking.o: Backtracking.cpp.o
-
-.PHONY : Backtracking.o
-
-# target to build an object file
-Backtracking.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Backtracking.cpp.o
-.PHONY : Backtracking.cpp.o
-
-Backtracking.i: Backtracking.cpp.i
-
-.PHONY : Backtracking.i
-
-# target to preprocess a source file
-Backtracking.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Backtracking.cpp.i
-.PHONY : Backtracking.cpp.i
-
-Backtracking.s: Backtracking.cpp.s
-
-.PHONY : Backtracking.s
-
-# target to generate assembly for a file
-Backtracking.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Backtracking.cpp.s
-.PHONY : Backtracking.cpp.s
-
-FacadeServer.o: FacadeServer.cpp.o
-
-.PHONY : FacadeServer.o
-
-# target to build an object file
-FacadeServer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/FacadeServer.cpp.o
-.PHONY : FacadeServer.cpp.o
-
-FacadeServer.i: FacadeServer.cpp.i
-
-.PHONY : FacadeServer.i
-
-# target to preprocess a source file
-FacadeServer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/FacadeServer.cpp.i
-.PHONY : FacadeServer.cpp.i
-
-FacadeServer.s: FacadeServer.cpp.s
-
-.PHONY : FacadeServer.s
-
-# target to generate assembly for a file
-FacadeServer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/FacadeServer.cpp.s
-.PHONY : FacadeServer.cpp.s
-
-GeneticAlgorithm.o: GeneticAlgorithm.cpp.o
-
-.PHONY : GeneticAlgorithm.o
-
-# target to build an object file
-GeneticAlgorithm.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/GeneticAlgorithm.cpp.o
-.PHONY : GeneticAlgorithm.cpp.o
-
-GeneticAlgorithm.i: GeneticAlgorithm.cpp.i
-
-.PHONY : GeneticAlgorithm.i
-
-# target to preprocess a source file
-GeneticAlgorithm.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/GeneticAlgorithm.cpp.i
-.PHONY : GeneticAlgorithm.cpp.i
-
-GeneticAlgorithm.s: GeneticAlgorithm.cpp.s
-
-.PHONY : GeneticAlgorithm.s
-
-# target to generate assembly for a file
-GeneticAlgorithm.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/GeneticAlgorithm.cpp.s
-.PHONY : GeneticAlgorithm.cpp.s
-
-Lists.o: Lists.cpp.o
-
-.PHONY : Lists.o
-
-# target to build an object file
-Lists.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Lists.cpp.o
-.PHONY : Lists.cpp.o
-
-Lists.i: Lists.cpp.i
-
-.PHONY : Lists.i
-
-# target to preprocess a source file
-Lists.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Lists.cpp.i
-.PHONY : Lists.cpp.i
-
-Lists.s: Lists.cpp.s
-
-.PHONY : Lists.s
-
-# target to generate assembly for a file
-Lists.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Lists.cpp.s
-.PHONY : Lists.cpp.s
-
-Matrix.o: Matrix.cpp.o
-
-.PHONY : Matrix.o
-
-# target to build an object file
-Matrix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Matrix.cpp.o
-.PHONY : Matrix.cpp.o
-
-Matrix.i: Matrix.cpp.i
-
-.PHONY : Matrix.i
-
-# target to preprocess a source file
-Matrix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Matrix.cpp.i
-.PHONY : Matrix.cpp.i
-
-Matrix.s: Matrix.cpp.s
-
-.PHONY : Matrix.s
-
-# target to generate assembly for a file
-Matrix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/Matrix.cpp.s
-.PHONY : Matrix.cpp.s
-
-NodeAStar.o: NodeAStar.cpp.o
-
-.PHONY : NodeAStar.o
-
-# target to build an object file
-NodeAStar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/NodeAStar.cpp.o
-.PHONY : NodeAStar.cpp.o
-
-NodeAStar.i: NodeAStar.cpp.i
-
-.PHONY : NodeAStar.i
-
-# target to preprocess a source file
-NodeAStar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/NodeAStar.cpp.i
-.PHONY : NodeAStar.cpp.i
-
-NodeAStar.s: NodeAStar.cpp.s
-
-.PHONY : NodeAStar.s
-
-# target to generate assembly for a file
-NodeAStar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/NodeAStar.cpp.s
-.PHONY : NodeAStar.cpp.s
 
 ServerSocket.o: ServerSocket.cpp.o
 
@@ -394,27 +205,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Server"
-	@echo "... Astar.o"
-	@echo "... Astar.i"
-	@echo "... Astar.s"
-	@echo "... Backtracking.o"
-	@echo "... Backtracking.i"
-	@echo "... Backtracking.s"
-	@echo "... FacadeServer.o"
-	@echo "... FacadeServer.i"
-	@echo "... FacadeServer.s"
-	@echo "... GeneticAlgorithm.o"
-	@echo "... GeneticAlgorithm.i"
-	@echo "... GeneticAlgorithm.s"
-	@echo "... Lists.o"
-	@echo "... Lists.i"
-	@echo "... Lists.s"
-	@echo "... Matrix.o"
-	@echo "... Matrix.i"
-	@echo "... Matrix.s"
-	@echo "... NodeAStar.o"
-	@echo "... NodeAStar.i"
-	@echo "... NodeAStar.s"
 	@echo "... ServerSocket.o"
 	@echo "... ServerSocket.i"
 	@echo "... ServerSocket.s"

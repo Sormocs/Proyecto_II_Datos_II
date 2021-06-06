@@ -15,16 +15,15 @@ PlayerObs::PlayerObs() {
 }
 
 /**
- * @brief WhereCollision revisa si la colisión es vertical, horizontal o diagonal.
+ * @brief WhereCollition revisa si la colisión es vertical, horizontal o diagonal.
  * @param pos
  * @return char 'd', 'h', 'v'.
  */
-char PlayerObs::WhereCollision(float *pos) {
+char PlayerObs::WhereCollition(float pos[]) {
 
     // Obtiene la distancia entre los puntos en la horizontal y en la vertical por separado.
-    float xDist = pos[0] - this->xPos;
-    //float yDist = std::sqrt(std::abs((pos[1] * pos[1]) + (this->yPos * this->yPos)));
-    float yDist = pos[1] - this->yPos;
+    float xDist = std::abs(pos[0] - this->xPos);
+    float yDist = std::sqrt(std::abs((pos[1] * pos[1]) + (this->yPos * this->yPos)));
 
     // si ambos están tocando a la vez, está golpeando en diagonal
     if (outside(xDist) & outside(yDist)) return NO_COLLITION;
@@ -36,6 +35,14 @@ char PlayerObs::WhereCollision(float *pos) {
 
     // si la vertical es más pequeña, está golpeando arriba o abajo.
     else if (aboutToCollide(xDist) && colliding(yDist)) return VERTICAL_COLLITON;
+}
+
+/**
+ * @brief GetNext obtiene el siguiente elemento enlazado
+ * @return el siguiente PlayerObs
+ */
+PlayerObs* PlayerObs::GetNext() {
+    return next;
 }
 
 /**
@@ -102,7 +109,7 @@ void PlayerList::Add(PlayerObs *player) {
         first = player;
     }
 
-    length ++;
+    lenght ++;
 }
 
 /**
@@ -111,13 +118,13 @@ void PlayerList::Add(PlayerObs *player) {
  * @return PlayerObs en el índice
  */
 PlayerObs *PlayerList::Get(int index) {
-    if (first == nullptr || length == 0) return nullptr;
+    if (first == nullptr || lenght == 0) return nullptr;
 
     else if (index == 0) return first;
 
     else {
         PlayerObs* temp = first;
-        for (int i = 0; i < length - 1; ++i) {
+        for (int i = 0; i < lenght - 1; ++i) {
             if (i == index) return temp;
             else temp = temp->next;
         }

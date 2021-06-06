@@ -53,19 +53,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/151/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/151/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client
+CMAKE_SOURCE_DIR = "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug
+CMAKE_BINARY_DIR = "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Client.dir/depend.make
@@ -78,208 +78,43 @@ include CMakeFiles/Client.dir/flags.make
 
 CMakeFiles/Client.dir/main.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Client.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/main.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Client.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/main.cpp.o -c "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/main.cpp"
 
 CMakeFiles/Client.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/main.cpp > CMakeFiles/Client.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/main.cpp" > CMakeFiles/Client.dir/main.cpp.i
 
 CMakeFiles/Client.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/main.cpp -o CMakeFiles/Client.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/main.cpp" -o CMakeFiles/Client.dir/main.cpp.s
 
 CMakeFiles/Client.dir/ClientSock.cpp.o: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/ClientSock.cpp.o: ../ClientSock.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Client.dir/ClientSock.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/ClientSock.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/ClientSock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Client.dir/ClientSock.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/ClientSock.cpp.o -c "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/ClientSock.cpp"
 
 CMakeFiles/Client.dir/ClientSock.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/ClientSock.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/ClientSock.cpp > CMakeFiles/Client.dir/ClientSock.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/ClientSock.cpp" > CMakeFiles/Client.dir/ClientSock.cpp.i
 
 CMakeFiles/Client.dir/ClientSock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/ClientSock.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/ClientSock.cpp -o CMakeFiles/Client.dir/ClientSock.cpp.s
-
-CMakeFiles/Client.dir/GUI.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/GUI.cpp.o: ../GUI.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Client.dir/GUI.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/GUI.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/GUI.cpp
-
-CMakeFiles/Client.dir/GUI.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/GUI.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/GUI.cpp > CMakeFiles/Client.dir/GUI.cpp.i
-
-CMakeFiles/Client.dir/GUI.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/GUI.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/GUI.cpp -o CMakeFiles/Client.dir/GUI.cpp.s
-
-CMakeFiles/Client.dir/Button.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/Button.cpp.o: ../Button.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Client.dir/Button.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/Button.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/Button.cpp
-
-CMakeFiles/Client.dir/Button.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/Button.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/Button.cpp > CMakeFiles/Client.dir/Button.cpp.i
-
-CMakeFiles/Client.dir/Button.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/Button.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/Button.cpp -o CMakeFiles/Client.dir/Button.cpp.s
-
-CMakeFiles/Client.dir/BPGame.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/BPGame.cpp.o: ../BPGame.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Client.dir/BPGame.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/BPGame.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/BPGame.cpp
-
-CMakeFiles/Client.dir/BPGame.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/BPGame.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/BPGame.cpp > CMakeFiles/Client.dir/BPGame.cpp.i
-
-CMakeFiles/Client.dir/BPGame.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/BPGame.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/BPGame.cpp -o CMakeFiles/Client.dir/BPGame.cpp.s
-
-CMakeFiles/Client.dir/GenPuzzle.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/GenPuzzle.cpp.o: ../GenPuzzle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Client.dir/GenPuzzle.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/GenPuzzle.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/GenPuzzle.cpp
-
-CMakeFiles/Client.dir/GenPuzzle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/GenPuzzle.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/GenPuzzle.cpp > CMakeFiles/Client.dir/GenPuzzle.cpp.i
-
-CMakeFiles/Client.dir/GenPuzzle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/GenPuzzle.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/GenPuzzle.cpp -o CMakeFiles/Client.dir/GenPuzzle.cpp.s
-
-CMakeFiles/Client.dir/PlayersList.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/PlayersList.cpp.o: ../PlayersList.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Client.dir/PlayersList.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/PlayersList.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/PlayersList.cpp
-
-CMakeFiles/Client.dir/PlayersList.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/PlayersList.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/PlayersList.cpp > CMakeFiles/Client.dir/PlayersList.cpp.i
-
-CMakeFiles/Client.dir/PlayersList.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/PlayersList.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/PlayersList.cpp -o CMakeFiles/Client.dir/PlayersList.cpp.s
-
-CMakeFiles/Client.dir/Ball.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/Ball.cpp.o: ../Ball.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Client.dir/Ball.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/Ball.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/Ball.cpp
-
-CMakeFiles/Client.dir/Ball.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/Ball.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/Ball.cpp > CMakeFiles/Client.dir/Ball.cpp.i
-
-CMakeFiles/Client.dir/Ball.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/Ball.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/Ball.cpp -o CMakeFiles/Client.dir/Ball.cpp.s
-
-CMakeFiles/Client.dir/PhysController.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/PhysController.cpp.o: ../PhysController.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Client.dir/PhysController.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/PhysController.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/PhysController.cpp
-
-CMakeFiles/Client.dir/PhysController.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/PhysController.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/PhysController.cpp > CMakeFiles/Client.dir/PhysController.cpp.i
-
-CMakeFiles/Client.dir/PhysController.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/PhysController.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/PhysController.cpp -o CMakeFiles/Client.dir/PhysController.cpp.s
-
-CMakeFiles/Client.dir/PlayerObs.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/PlayerObs.cpp.o: ../PlayerObs.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Client.dir/PlayerObs.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/PlayerObs.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/PlayerObs.cpp
-
-CMakeFiles/Client.dir/PlayerObs.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/PlayerObs.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/PlayerObs.cpp > CMakeFiles/Client.dir/PlayerObs.cpp.i
-
-CMakeFiles/Client.dir/PlayerObs.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/PlayerObs.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/PlayerObs.cpp -o CMakeFiles/Client.dir/PlayerObs.cpp.s
-
-CMakeFiles/Client.dir/TextBox.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/TextBox.cpp.o: ../TextBox.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Client.dir/TextBox.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/TextBox.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/TextBox.cpp
-
-CMakeFiles/Client.dir/TextBox.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/TextBox.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/TextBox.cpp > CMakeFiles/Client.dir/TextBox.cpp.i
-
-CMakeFiles/Client.dir/TextBox.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/TextBox.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/TextBox.cpp -o CMakeFiles/Client.dir/TextBox.cpp.s
-
-CMakeFiles/Client.dir/ImageParts.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/ImageParts.cpp.o: ../ImageParts.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Client.dir/ImageParts.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/ImageParts.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/ImageParts.cpp
-
-CMakeFiles/Client.dir/ImageParts.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/ImageParts.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/ImageParts.cpp > CMakeFiles/Client.dir/ImageParts.cpp.i
-
-CMakeFiles/Client.dir/ImageParts.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/ImageParts.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/ImageParts.cpp -o CMakeFiles/Client.dir/ImageParts.cpp.s
-
-CMakeFiles/Client.dir/Line.cpp.o: CMakeFiles/Client.dir/flags.make
-CMakeFiles/Client.dir/Line.cpp.o: ../Line.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Client.dir/Line.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Client.dir/Line.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/Line.cpp
-
-CMakeFiles/Client.dir/Line.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/Line.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/Line.cpp > CMakeFiles/Client.dir/Line.cpp.i
-
-CMakeFiles/Client.dir/Line.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/Line.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/Line.cpp -o CMakeFiles/Client.dir/Line.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/ClientSock.cpp" -o CMakeFiles/Client.dir/ClientSock.cpp.s
 
 # Object files for target Client
 Client_OBJECTS = \
 "CMakeFiles/Client.dir/main.cpp.o" \
-"CMakeFiles/Client.dir/ClientSock.cpp.o" \
-"CMakeFiles/Client.dir/GUI.cpp.o" \
-"CMakeFiles/Client.dir/Button.cpp.o" \
-"CMakeFiles/Client.dir/BPGame.cpp.o" \
-"CMakeFiles/Client.dir/GenPuzzle.cpp.o" \
-"CMakeFiles/Client.dir/PlayersList.cpp.o" \
-"CMakeFiles/Client.dir/Ball.cpp.o" \
-"CMakeFiles/Client.dir/PhysController.cpp.o" \
-"CMakeFiles/Client.dir/PlayerObs.cpp.o" \
-"CMakeFiles/Client.dir/TextBox.cpp.o" \
-"CMakeFiles/Client.dir/ImageParts.cpp.o" \
-"CMakeFiles/Client.dir/Line.cpp.o"
+"CMakeFiles/Client.dir/ClientSock.cpp.o"
 
 # External object files for target Client
 Client_EXTERNAL_OBJECTS =
 
 Client: CMakeFiles/Client.dir/main.cpp.o
 Client: CMakeFiles/Client.dir/ClientSock.cpp.o
-Client: CMakeFiles/Client.dir/GUI.cpp.o
-Client: CMakeFiles/Client.dir/Button.cpp.o
-Client: CMakeFiles/Client.dir/BPGame.cpp.o
-Client: CMakeFiles/Client.dir/GenPuzzle.cpp.o
-Client: CMakeFiles/Client.dir/PlayersList.cpp.o
-Client: CMakeFiles/Client.dir/Ball.cpp.o
-Client: CMakeFiles/Client.dir/PhysController.cpp.o
-Client: CMakeFiles/Client.dir/PlayerObs.cpp.o
-Client: CMakeFiles/Client.dir/TextBox.cpp.o
-Client: CMakeFiles/Client.dir/ImageParts.cpp.o
-Client: CMakeFiles/Client.dir/Line.cpp.o
 Client: CMakeFiles/Client.dir/build.make
 Client: CMakeFiles/Client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable Client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -292,6 +127,6 @@ CMakeFiles/Client.dir/clean:
 .PHONY : CMakeFiles/Client.dir/clean
 
 CMakeFiles/Client.dir/depend:
-	cd /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles/Client.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles/Client.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Client.dir/depend
 

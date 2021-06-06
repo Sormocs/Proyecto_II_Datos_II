@@ -31,7 +31,7 @@ public:
     void ResetTime();
     void ResetPlayers();
     void ResetBall();
-    static void ResetAll();
+    void ResetAll();
 
     PlayerList* playerList = new PlayerList;
 

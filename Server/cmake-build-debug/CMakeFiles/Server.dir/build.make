@@ -53,19 +53,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/151/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/151/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server
+CMAKE_SOURCE_DIR = "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug
+CMAKE_BINARY_DIR = "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Server.dir/depend.make
@@ -78,148 +78,43 @@ include CMakeFiles/Server.dir/flags.make
 
 CMakeFiles/Server.dir/main.cpp.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Server.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/main.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Server.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/main.cpp.o -c "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/main.cpp"
 
 CMakeFiles/Server.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/main.cpp > CMakeFiles/Server.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/main.cpp" > CMakeFiles/Server.dir/main.cpp.i
 
 CMakeFiles/Server.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/main.cpp -o CMakeFiles/Server.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/main.cpp" -o CMakeFiles/Server.dir/main.cpp.s
 
 CMakeFiles/Server.dir/ServerSocket.cpp.o: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/ServerSocket.cpp.o: ../ServerSocket.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Server.dir/ServerSocket.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/ServerSocket.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/ServerSocket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Server.dir/ServerSocket.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/ServerSocket.cpp.o -c "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/ServerSocket.cpp"
 
 CMakeFiles/Server.dir/ServerSocket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/ServerSocket.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/ServerSocket.cpp > CMakeFiles/Server.dir/ServerSocket.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/ServerSocket.cpp" > CMakeFiles/Server.dir/ServerSocket.cpp.i
 
 CMakeFiles/Server.dir/ServerSocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/ServerSocket.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/ServerSocket.cpp -o CMakeFiles/Server.dir/ServerSocket.cpp.s
-
-CMakeFiles/Server.dir/Matrix.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/Matrix.cpp.o: ../Matrix.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Server.dir/Matrix.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/Matrix.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Matrix.cpp
-
-CMakeFiles/Server.dir/Matrix.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/Matrix.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Matrix.cpp > CMakeFiles/Server.dir/Matrix.cpp.i
-
-CMakeFiles/Server.dir/Matrix.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Matrix.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Matrix.cpp -o CMakeFiles/Server.dir/Matrix.cpp.s
-
-CMakeFiles/Server.dir/Astar.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/Astar.cpp.o: ../Astar.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Server.dir/Astar.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/Astar.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Astar.cpp
-
-CMakeFiles/Server.dir/Astar.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/Astar.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Astar.cpp > CMakeFiles/Server.dir/Astar.cpp.i
-
-CMakeFiles/Server.dir/Astar.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Astar.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Astar.cpp -o CMakeFiles/Server.dir/Astar.cpp.s
-
-CMakeFiles/Server.dir/NodeAStar.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/NodeAStar.cpp.o: ../NodeAStar.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Server.dir/NodeAStar.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/NodeAStar.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/NodeAStar.cpp
-
-CMakeFiles/Server.dir/NodeAStar.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/NodeAStar.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/NodeAStar.cpp > CMakeFiles/Server.dir/NodeAStar.cpp.i
-
-CMakeFiles/Server.dir/NodeAStar.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/NodeAStar.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/NodeAStar.cpp -o CMakeFiles/Server.dir/NodeAStar.cpp.s
-
-CMakeFiles/Server.dir/Backtracking.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/Backtracking.cpp.o: ../Backtracking.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Server.dir/Backtracking.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/Backtracking.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Backtracking.cpp
-
-CMakeFiles/Server.dir/Backtracking.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/Backtracking.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Backtracking.cpp > CMakeFiles/Server.dir/Backtracking.cpp.i
-
-CMakeFiles/Server.dir/Backtracking.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Backtracking.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Backtracking.cpp -o CMakeFiles/Server.dir/Backtracking.cpp.s
-
-CMakeFiles/Server.dir/FacadeServer.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/FacadeServer.cpp.o: ../FacadeServer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Server.dir/FacadeServer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/FacadeServer.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/FacadeServer.cpp
-
-CMakeFiles/Server.dir/FacadeServer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/FacadeServer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/FacadeServer.cpp > CMakeFiles/Server.dir/FacadeServer.cpp.i
-
-CMakeFiles/Server.dir/FacadeServer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/FacadeServer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/FacadeServer.cpp -o CMakeFiles/Server.dir/FacadeServer.cpp.s
-
-CMakeFiles/Server.dir/Lists.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/Lists.cpp.o: ../Lists.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Server.dir/Lists.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/Lists.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Lists.cpp
-
-CMakeFiles/Server.dir/Lists.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/Lists.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Lists.cpp > CMakeFiles/Server.dir/Lists.cpp.i
-
-CMakeFiles/Server.dir/Lists.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Lists.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Lists.cpp -o CMakeFiles/Server.dir/Lists.cpp.s
-
-CMakeFiles/Server.dir/GeneticAlgorithm.cpp.o: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/GeneticAlgorithm.cpp.o: ../GeneticAlgorithm.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Server.dir/GeneticAlgorithm.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Server.dir/GeneticAlgorithm.cpp.o -c /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/GeneticAlgorithm.cpp
-
-CMakeFiles/Server.dir/GeneticAlgorithm.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/GeneticAlgorithm.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/GeneticAlgorithm.cpp > CMakeFiles/Server.dir/GeneticAlgorithm.cpp.i
-
-CMakeFiles/Server.dir/GeneticAlgorithm.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/GeneticAlgorithm.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/GeneticAlgorithm.cpp -o CMakeFiles/Server.dir/GeneticAlgorithm.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/ServerSocket.cpp" -o CMakeFiles/Server.dir/ServerSocket.cpp.s
 
 # Object files for target Server
 Server_OBJECTS = \
 "CMakeFiles/Server.dir/main.cpp.o" \
-"CMakeFiles/Server.dir/ServerSocket.cpp.o" \
-"CMakeFiles/Server.dir/Matrix.cpp.o" \
-"CMakeFiles/Server.dir/Astar.cpp.o" \
-"CMakeFiles/Server.dir/NodeAStar.cpp.o" \
-"CMakeFiles/Server.dir/Backtracking.cpp.o" \
-"CMakeFiles/Server.dir/FacadeServer.cpp.o" \
-"CMakeFiles/Server.dir/Lists.cpp.o" \
-"CMakeFiles/Server.dir/GeneticAlgorithm.cpp.o"
+"CMakeFiles/Server.dir/ServerSocket.cpp.o"
 
 # External object files for target Server
 Server_EXTERNAL_OBJECTS =
 
 Server: CMakeFiles/Server.dir/main.cpp.o
 Server: CMakeFiles/Server.dir/ServerSocket.cpp.o
-Server: CMakeFiles/Server.dir/Matrix.cpp.o
-Server: CMakeFiles/Server.dir/Astar.cpp.o
-Server: CMakeFiles/Server.dir/NodeAStar.cpp.o
-Server: CMakeFiles/Server.dir/Backtracking.cpp.o
-Server: CMakeFiles/Server.dir/FacadeServer.cpp.o
-Server: CMakeFiles/Server.dir/Lists.cpp.o
-Server: CMakeFiles/Server.dir/GeneticAlgorithm.cpp.o
 Server: CMakeFiles/Server.dir/build.make
 Server: CMakeFiles/Server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable Server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -232,6 +127,6 @@ CMakeFiles/Server.dir/clean:
 .PHONY : CMakeFiles/Server.dir/clean
 
 CMakeFiles/Server.dir/depend:
-	cd /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/Server.dir/depend
 
