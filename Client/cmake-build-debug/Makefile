@@ -58,19 +58,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/151/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/151/bin/cmake/linux/bin/cmake -E rm -f
+RM = /home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client"
+CMAKE_SOURCE_DIR = /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug"
+CMAKE_BINARY_DIR = /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,7 +78,7 @@ CMAKE_BINARY_DIR = "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/151/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -89,7 +89,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/151/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/tiquillo/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/211.7142.21/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Client/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,6 +142,87 @@ Client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
 .PHONY : Client/fast
 
+BPGame.o: BPGame.cpp.o
+
+.PHONY : BPGame.o
+
+# target to build an object file
+BPGame.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/BPGame.cpp.o
+.PHONY : BPGame.cpp.o
+
+BPGame.i: BPGame.cpp.i
+
+.PHONY : BPGame.i
+
+# target to preprocess a source file
+BPGame.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/BPGame.cpp.i
+.PHONY : BPGame.cpp.i
+
+BPGame.s: BPGame.cpp.s
+
+.PHONY : BPGame.s
+
+# target to generate assembly for a file
+BPGame.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/BPGame.cpp.s
+.PHONY : BPGame.cpp.s
+
+Ball.o: Ball.cpp.o
+
+.PHONY : Ball.o
+
+# target to build an object file
+Ball.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Ball.cpp.o
+.PHONY : Ball.cpp.o
+
+Ball.i: Ball.cpp.i
+
+.PHONY : Ball.i
+
+# target to preprocess a source file
+Ball.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Ball.cpp.i
+.PHONY : Ball.cpp.i
+
+Ball.s: Ball.cpp.s
+
+.PHONY : Ball.s
+
+# target to generate assembly for a file
+Ball.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Ball.cpp.s
+.PHONY : Ball.cpp.s
+
+Button.o: Button.cpp.o
+
+.PHONY : Button.o
+
+# target to build an object file
+Button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Button.cpp.o
+.PHONY : Button.cpp.o
+
+Button.i: Button.cpp.i
+
+.PHONY : Button.i
+
+# target to preprocess a source file
+Button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Button.cpp.i
+.PHONY : Button.cpp.i
+
+Button.s: Button.cpp.s
+
+.PHONY : Button.s
+
+# target to generate assembly for a file
+Button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Button.cpp.s
+.PHONY : Button.cpp.s
+
 ClientSock.o: ClientSock.cpp.o
 
 .PHONY : ClientSock.o
@@ -168,6 +249,222 @@ ClientSock.s: ClientSock.cpp.s
 ClientSock.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/ClientSock.cpp.s
 .PHONY : ClientSock.cpp.s
+
+GUI.o: GUI.cpp.o
+
+.PHONY : GUI.o
+
+# target to build an object file
+GUI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/GUI.cpp.o
+.PHONY : GUI.cpp.o
+
+GUI.i: GUI.cpp.i
+
+.PHONY : GUI.i
+
+# target to preprocess a source file
+GUI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/GUI.cpp.i
+.PHONY : GUI.cpp.i
+
+GUI.s: GUI.cpp.s
+
+.PHONY : GUI.s
+
+# target to generate assembly for a file
+GUI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/GUI.cpp.s
+.PHONY : GUI.cpp.s
+
+GenPuzzle.o: GenPuzzle.cpp.o
+
+.PHONY : GenPuzzle.o
+
+# target to build an object file
+GenPuzzle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/GenPuzzle.cpp.o
+.PHONY : GenPuzzle.cpp.o
+
+GenPuzzle.i: GenPuzzle.cpp.i
+
+.PHONY : GenPuzzle.i
+
+# target to preprocess a source file
+GenPuzzle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/GenPuzzle.cpp.i
+.PHONY : GenPuzzle.cpp.i
+
+GenPuzzle.s: GenPuzzle.cpp.s
+
+.PHONY : GenPuzzle.s
+
+# target to generate assembly for a file
+GenPuzzle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/GenPuzzle.cpp.s
+.PHONY : GenPuzzle.cpp.s
+
+ImageParts.o: ImageParts.cpp.o
+
+.PHONY : ImageParts.o
+
+# target to build an object file
+ImageParts.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/ImageParts.cpp.o
+.PHONY : ImageParts.cpp.o
+
+ImageParts.i: ImageParts.cpp.i
+
+.PHONY : ImageParts.i
+
+# target to preprocess a source file
+ImageParts.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/ImageParts.cpp.i
+.PHONY : ImageParts.cpp.i
+
+ImageParts.s: ImageParts.cpp.s
+
+.PHONY : ImageParts.s
+
+# target to generate assembly for a file
+ImageParts.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/ImageParts.cpp.s
+.PHONY : ImageParts.cpp.s
+
+Line.o: Line.cpp.o
+
+.PHONY : Line.o
+
+# target to build an object file
+Line.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Line.cpp.o
+.PHONY : Line.cpp.o
+
+Line.i: Line.cpp.i
+
+.PHONY : Line.i
+
+# target to preprocess a source file
+Line.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Line.cpp.i
+.PHONY : Line.cpp.i
+
+Line.s: Line.cpp.s
+
+.PHONY : Line.s
+
+# target to generate assembly for a file
+Line.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/Line.cpp.s
+.PHONY : Line.cpp.s
+
+PhysController.o: PhysController.cpp.o
+
+.PHONY : PhysController.o
+
+# target to build an object file
+PhysController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/PhysController.cpp.o
+.PHONY : PhysController.cpp.o
+
+PhysController.i: PhysController.cpp.i
+
+.PHONY : PhysController.i
+
+# target to preprocess a source file
+PhysController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/PhysController.cpp.i
+.PHONY : PhysController.cpp.i
+
+PhysController.s: PhysController.cpp.s
+
+.PHONY : PhysController.s
+
+# target to generate assembly for a file
+PhysController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/PhysController.cpp.s
+.PHONY : PhysController.cpp.s
+
+PlayerObs.o: PlayerObs.cpp.o
+
+.PHONY : PlayerObs.o
+
+# target to build an object file
+PlayerObs.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/PlayerObs.cpp.o
+.PHONY : PlayerObs.cpp.o
+
+PlayerObs.i: PlayerObs.cpp.i
+
+.PHONY : PlayerObs.i
+
+# target to preprocess a source file
+PlayerObs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/PlayerObs.cpp.i
+.PHONY : PlayerObs.cpp.i
+
+PlayerObs.s: PlayerObs.cpp.s
+
+.PHONY : PlayerObs.s
+
+# target to generate assembly for a file
+PlayerObs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/PlayerObs.cpp.s
+.PHONY : PlayerObs.cpp.s
+
+PlayersList.o: PlayersList.cpp.o
+
+.PHONY : PlayersList.o
+
+# target to build an object file
+PlayersList.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/PlayersList.cpp.o
+.PHONY : PlayersList.cpp.o
+
+PlayersList.i: PlayersList.cpp.i
+
+.PHONY : PlayersList.i
+
+# target to preprocess a source file
+PlayersList.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/PlayersList.cpp.i
+.PHONY : PlayersList.cpp.i
+
+PlayersList.s: PlayersList.cpp.s
+
+.PHONY : PlayersList.s
+
+# target to generate assembly for a file
+PlayersList.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/PlayersList.cpp.s
+.PHONY : PlayersList.cpp.s
+
+TextBox.o: TextBox.cpp.o
+
+.PHONY : TextBox.o
+
+# target to build an object file
+TextBox.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/TextBox.cpp.o
+.PHONY : TextBox.cpp.o
+
+TextBox.i: TextBox.cpp.i
+
+.PHONY : TextBox.i
+
+# target to preprocess a source file
+TextBox.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/TextBox.cpp.i
+.PHONY : TextBox.cpp.i
+
+TextBox.s: TextBox.cpp.s
+
+.PHONY : TextBox.s
+
+# target to generate assembly for a file
+TextBox.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/TextBox.cpp.s
+.PHONY : TextBox.cpp.s
 
 main.o: main.cpp.o
 
@@ -205,9 +502,42 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Client"
+	@echo "... BPGame.o"
+	@echo "... BPGame.i"
+	@echo "... BPGame.s"
+	@echo "... Ball.o"
+	@echo "... Ball.i"
+	@echo "... Ball.s"
+	@echo "... Button.o"
+	@echo "... Button.i"
+	@echo "... Button.s"
 	@echo "... ClientSock.o"
 	@echo "... ClientSock.i"
 	@echo "... ClientSock.s"
+	@echo "... GUI.o"
+	@echo "... GUI.i"
+	@echo "... GUI.s"
+	@echo "... GenPuzzle.o"
+	@echo "... GenPuzzle.i"
+	@echo "... GenPuzzle.s"
+	@echo "... ImageParts.o"
+	@echo "... ImageParts.i"
+	@echo "... ImageParts.s"
+	@echo "... Line.o"
+	@echo "... Line.i"
+	@echo "... Line.s"
+	@echo "... PhysController.o"
+	@echo "... PhysController.i"
+	@echo "... PhysController.s"
+	@echo "... PlayerObs.o"
+	@echo "... PlayerObs.i"
+	@echo "... PlayerObs.s"
+	@echo "... PlayersList.o"
+	@echo "... PlayersList.i"
+	@echo "... PlayersList.s"
+	@echo "... TextBox.o"
+	@echo "... TextBox.i"
+	@echo "... TextBox.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

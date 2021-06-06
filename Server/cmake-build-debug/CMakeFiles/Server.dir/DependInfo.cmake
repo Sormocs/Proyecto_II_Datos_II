@@ -4,8 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/ServerSocket.cpp" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/ServerSocket.cpp.o"
-  "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/main.cpp" "/home/sormocs/CLionProjects/Proyecto_II_Let's_Play/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/main.cpp.o"
+  "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Astar.cpp" "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/Astar.cpp.o"
+  "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Backtracking.cpp" "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/Backtracking.cpp.o"
+  "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/FacadeServer.cpp" "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/FacadeServer.cpp.o"
+  "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/GeneticAlgorithm.cpp" "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/GeneticAlgorithm.cpp.o"
+  "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Lists.cpp" "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/Lists.cpp.o"
+  "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/Matrix.cpp" "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/Matrix.cpp.o"
+  "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/NodeAStar.cpp" "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/NodeAStar.cpp.o"
+  "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/ServerSocket.cpp" "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/ServerSocket.cpp.o"
+  "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/main.cpp" "/home/tiquillo/CLionProjects/Proyecto_II_Datos_II/Server/cmake-build-debug/CMakeFiles/Server.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

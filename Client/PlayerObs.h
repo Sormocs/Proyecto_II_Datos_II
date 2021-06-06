@@ -4,9 +4,6 @@
  * @brief Archivo header de las clases PlayerObs y PlayerList.
  */
 
-#ifndef CLIENT_PLAYEROBS_H
-#define CLIENT_PLAYEROBS_H
-
 #include "Constants.h"
 
 /**
@@ -25,11 +22,11 @@ public:
     PlayerObs(float X,float Y);
     PlayerObs* next;
 
-
     PlayerObs();
-    char WhereCollition(float pos[]);
-
-    PlayerObs* GetNext();
+    char WhereCollision(float *pos);
+    float getPos() {
+        return xPos;
+    }
 };
 
 // ############################################################################################################
@@ -40,15 +37,13 @@ public:
 class PlayerList {
 private:
     PlayerObs* first;
-    int lenght;
+    int length;
 
 public:
 
     void Add(PlayerObs* player);
     PlayerObs* Get(int index);
 
-    int Lenght() { return lenght; };
+    int Length() const { return length; };
 };
 
-
-#endif //CLIENT_PLAYEROBS_H

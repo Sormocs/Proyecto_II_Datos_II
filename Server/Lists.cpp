@@ -81,12 +81,12 @@ Node *List::GetDelAt(int index) {
         }
 
     } else {
-        Node* temp1 = At(index-1);
-        Node* temp2 = temp1->next;
-        if (index == length-1) temp1->next = nullptr;
-        temp2->next = nullptr;
+        Node* prev = At(index - 1);
+        Node* temp = prev->next;
+        if (index == length-1) prev->next = nullptr;
+        temp->next = nullptr;
         length--;
-        return temp2;
+        return temp;
     }
 
 }
