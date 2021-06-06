@@ -24,7 +24,7 @@ void Ball::Friction(float deltaTime) {
  */
 void Ball::Throw(float force, float degrees) {
     this->energy = force - (US * (BALL_MASS * GRAVITY));
-    this->speed = force / BALL_MASS;
+    this->speed = (force / BALL_MASS) ;
     this->degree = degrees;
 }
 

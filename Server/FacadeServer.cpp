@@ -15,6 +15,7 @@ FacadeServer::FacadeServer() {
  * @param data string
  */
 void FacadeServer::ReciveInfo(string data) {
+    cout << data << endl;
     json obj = json::parse(data);
     std::string game = obj["game"].get<string>();
 

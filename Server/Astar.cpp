@@ -172,9 +172,9 @@ std::string Astar::GetPath() {
 
     for (int i = 0; i < closeList.size(); i++) {
 
-        obj[std::to_string(indexPath)]["i"] = closeList.at(i)->x;
-        obj[to_string(indexPath)]["j"] = closeList.at(i)->y;
-        indexPath++;
+        obj[std::to_string(i)]["i"] = closeList.at(i)->x;
+        obj[to_string(i)]["j"] = closeList.at(i)->y;
+        indexPath = i;
 
     }
 

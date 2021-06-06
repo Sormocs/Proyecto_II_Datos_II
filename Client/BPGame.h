@@ -15,6 +15,7 @@
 #include "PhysController.h"
 #include "TextBox.h"
 #include "Line.h"
+#include "CirclesList.h"
 #pragma once
 
 using json = nlohmann::json;
@@ -25,6 +26,10 @@ using json = nlohmann::json;
 class BPGame {
 private:
     bool selection = true;
+    bool playing = true;
+    bool player1 = true;
+    bool player2 = false;
+    bool computer = false;
     static BPGame* instance;
     bool avpos[5][12] = {
 
@@ -44,6 +49,7 @@ private:
     std::string playerName = "Guest";
     Line line;
     Line invertedLine;
+    CirclesList *circles = new CirclesList;
     ClientSock *client = ClientSock::getInstance();
     sf::Sprite* ballsprite = new sf::Sprite;
 
@@ -55,6 +61,10 @@ public:
     void DrawObst(sf::RenderWindow* win);
     void Reset();
     void ResetMatrixPlayer();
+    void GeneratePath();
     std::string StartGame();
+    std::string GetPath();
+    int GetI(int posy);
+    int GetJ(int posx);
 };
 

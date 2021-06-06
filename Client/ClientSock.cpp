@@ -58,3 +58,7 @@ void ClientSock::Send(std::string msg) {
         std::cout << "Send message failed" << std::endl;
     }
 }
+
+std::string ClientSock::GetReceived() {
+    return received;
+}

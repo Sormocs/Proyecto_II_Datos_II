@@ -26,11 +26,13 @@ private:
     std::string ipAddress = "127.0.0.1";
     char buf[4092];
     static ClientSock *instance;
+    std::string received;
     ClientSock() = default;
 
 public:
     static ClientSock* getInstance();
     void Start();
     void Send(std::string msg);
+    std::string GetReceived();
 };
 

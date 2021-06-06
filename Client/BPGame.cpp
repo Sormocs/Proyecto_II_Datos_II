@@ -99,6 +99,7 @@ bool BPGame::Run() {
 
 
     while (window.isOpen()) {
+
         sf::Event event;
         mouse[0] = sf::Mouse::getPosition(window).x;
         mouse[1] = sf::Mouse::getPosition(window).y;
@@ -188,6 +189,8 @@ bool BPGame::Run() {
                 if (event.type == sf::Event::MouseButtonReleased) {
                     if (pressed) {
                         pressed = false;
+                        playing = false;
+                        circles->Reset();
                         int force = std::sqrt(std::pow(line.getPoints().getBounds().width,2) + std::pow(line.getPoints().getBounds().height,2));
                         PhysController::Instance()->GetBall()->Throw(force/3, angle*(180/M_PI));
                         int ballx = PhysController::Instance()->GetBall()->pos[0];
@@ -248,6 +251,21 @@ bool BPGame::Run() {
 
                     }
                 }
+
+                if (PhysController::Instance()->GetBall()->speed == 0.0 and playing == 0){
+
+                    std::string send = GetPath();
+                    client->Send(send);
+                    playing = true;
+                    GeneratePath();
+
+                }
+
+                if (playing){
+                    //DIBUJAR CAMINO
+                }
+
+
             }
             window.clear();
 
@@ -419,5 +437,80 @@ std::string BPGame::StartGame() {
     }
 
     return obj.dump(4);
+
+}
+
+int BPGame::GetI(int posy) {
+
+    int y = 211;
+
+    for (int i = 0; i < 5 ; i++) {
+
+        if (posy < y) {
+            return i;
+        }
+        y += 81;
+
+    }
+}
+
+int BPGame::GetJ(int posx){
+
+    int x = 145;
+
+    for (int j = 0; j < 12; j++) {
+        if(posx < x){
+            return j;
+        }
+        x += 70;
+    }
+
+}
+
+std::string BPGame::GetPath(){
+
+    int i = GetI(PhysController::Instance()->GetBall()->pos[1]);
+    int j = GetJ(PhysController::Instance()->GetBall()->pos[0]);
+
+    json obj;
+
+    obj["game"] = "BP";
+
+    if(player1 or player2){
+        obj["action"] = "StartA";
+    }else{
+        obj["action"] = "BackA";
+    }
+
+    obj["i"] = i;
+    obj["j"] = j;
+    obj["fi"] = 2;
+
+    if (player1){
+        obj["fj"] = 11;
+    } else{
+        obj["fj"] = 0;
+    }
+
+    return obj.dump(4);
+
+}
+
+void BPGame::GeneratePath() {
+
+    std::string path = client->GetReceived();
+    json obj = json::parse(path);
+
+    int x = 110;
+    int y = 170;
+
+    for (int k = 0; k < obj["size"].get<int>(); k++) {
+
+        int i = obj[std::to_string(k)]["i"].get<int>();
+        int j = obj[std::to_string(k)]["j"].get<int>();
+
+        circles->Insert(x + (70*i), y + (81*j));
+
+    }
 
 }
