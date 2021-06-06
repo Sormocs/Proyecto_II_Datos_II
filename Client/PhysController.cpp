@@ -27,15 +27,15 @@ double PhysController::deltaTime() {
  */
 void PhysController::CheckColl() {
     char collision = NO_COLLITION;
-//    for (int i = 0; i < playerList->Length(); ++i) {
-//        collision = playerList->Get(i)->WhereCollision(ball->pos);
-//        if (collision == NO_COLLITION) continue;
-//
-//        else {
-//            std::cout << "Colisión con jugador " << i << ", en posición " << playerList->Get(i)->WhereCollision(ball->pos) << std::endl;
-//            ball->Bounce(collision);
-//        }
-//    }
+    for (int i = 0; i < playerList->Length(); ++i) {
+        collision = playerList->Get(i)->WhereCollision(ball->pos);
+        if (collision == NO_COLLITION) continue;
+
+        else {
+            std::cout << "Colisión con jugador " << i << ", en posición " << std::to_string(playerList->Get(i)->WhereCollision(ball->pos)) << std::endl;
+            ball->Bounce(collision);
+        }
+    }
 
     if (ball->pos[0] < 70) {
         // si colisiona con el borde izquierdo

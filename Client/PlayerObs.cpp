@@ -36,6 +36,8 @@ char PlayerObs::WhereCollision(float *pos) {
 
     // si la vertical es más pequeña, está golpeando arriba o abajo.
     else if (aboutToCollide(xDist) && colliding(yDist)) return VERTICAL_COLLITON;
+
+    else return NO_COLLITION;
 }
 
 /**
