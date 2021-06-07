@@ -22,7 +22,7 @@ private:
     bool inArray(char* posArray, int len, char ranIndex);
 
     void TwoRanParents(Specimen& father, Specimen& mother);
-    SpecList* SearchBests();
+    void SearchBests();
     char Score(PosList* positions);
     void Mutation(Specimen*& specimen, Specimen parents[2]);
     void Inheritance(Specimen*& specimen, Specimen parents[2]);

@@ -63,6 +63,7 @@ public:
     Specimen* At(int index);
 
     int Length() const { return length; }
+    void Repleace(int index, Specimen* specimen);
 };
 
 /**

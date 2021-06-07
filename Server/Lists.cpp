@@ -110,7 +110,7 @@ Specimen *SpecList::At(int index) {
     else if (index == 0) return first;
 
     else {
-        Specimen* temp = first;
+        Specimen* temp = this->first;
         for (int i = 0; i < length - 1; ++i) {
             if (i == index) return temp;
             else temp = temp->next;
@@ -139,6 +139,12 @@ void SpecList::AddBack(Specimen *specimen) {
         temp->next = specimen;
         length++;
     }
+}
+
+void SpecList::Repleace(int index, Specimen* specimen) {
+    Specimen* temp = At(index-1);
+    if (length-1 != index) specimen->next = temp->next->next;
+    temp->next = specimen;
 }
 
 void GenList::AddFront(SpecList *gen) {

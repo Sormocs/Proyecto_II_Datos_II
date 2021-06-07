@@ -42,9 +42,9 @@ void GenAlgorithm::TwoRanParents(Specimen& father, Specimen& mother) {
 
 }
 
-SpecList *GenAlgorithm::SearchBests() {
-    SpecList* genSpecimens = generations->At(currentGen - 1);
-    auto* newGenSpecimens = new SpecList();
+void GenAlgorithm::SearchBests() {
+//    SpecList* genSpecimens = generations->At(currentGen - 1);
+//    auto* newGenSpecimens = new SpecList();
 
     char bestScore = 0;
     int bestIndex = 0;
@@ -52,11 +52,13 @@ SpecList *GenAlgorithm::SearchBests() {
     for (int i = 0; i < generations->At(currentGen)->Length(); ++i) {
         char score = generations->At(currentGen)->At(i)->score;
         if (score > bestScore) {
-            bestScore = generations->At(currentGen)->At(i)->score;
+            bestScore = score;
             bestIndex = i;
         }
+
     }
-    gensBests->AddBack(generations->At(currentGen)->At(bestIndex));
+//    if (gensBests->Length() == currentGen) gensBests->AddBack(generations->At(currentGen)->At(bestIndex));
+//    else gensBests->Repleace(currentGen, generations->At(currentGen)->At(bestIndex));
     currGenBest = bestIndex;
 //
 //    if (bestScore >= 1) {
@@ -152,7 +154,7 @@ void GenAlgorithm::CreateSpecimen() {
         specimen->score = Score(specimen->positions);
         this->generations->At(currentGen)->AddBack(specimen);
         printf("Añadido a la cola un nuevo espécimen de generación %d.\n", currentGen);
-        printf("El mejor puntaje es %d. Mientras la división es %d\n", specimen->score, divisionNum);
+        printf("El puntaje es %d. Mientras la división es %d\n", specimen->score, divisionNum);
     } else {
         Specimen parents[2];
         TwoRanParents(parents[0], parents[1]);
@@ -182,13 +184,15 @@ void GenAlgorithm::CreateGen(int maxSpec) {
 
 void GenAlgorithm::Run(int maxGen, int maxSpec) {
     time_p now = Time::now();
+    int count = 0;
     while (!(solved || stop)) {
         currentGen++;
         printf("generación actual: %d\n", currentGen);
         CreateGen(maxSpec);
 
         if (generations->At(currentGen)->At(currGenBest)->score == divisionNum) solved = true;
-
+        count++;
+        stop = count >= maxGen;
     }
     time = std::chrono::duration_cast<ms>(Time::now()-now).count() * 0.001;
 }
