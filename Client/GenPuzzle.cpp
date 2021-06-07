@@ -228,6 +228,7 @@ void GenPuzzle::ShuffleParts() {
     int pLen = Parts->GetLen();
     int pos_parts[pLen][2];
     bool av_pos[pLen];
+    int offpos[pLen];
 
     Part* temp = Parts->GetStart();
     for (int i = 0; i < pLen; i++){ //GET POSITIONS
@@ -246,8 +247,18 @@ void GenPuzzle::ShuffleParts() {
 
             temp->getPart()->setPosition(pos_parts[randi][0],pos_parts[randi][1]);
             av_pos[randi] = false;
+            offpos[randi] = temp->GetNum();
             temp = temp->GetNext();
+
         } else continue;
+    }
+
+    generations->Insert();
+
+    for (int i = 0; i < pLen; i++) {
+
+        generations->GetStart()->Insert(offpos[i]);
+
     }
 
 }

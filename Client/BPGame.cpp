@@ -326,18 +326,16 @@ void BPGame::CreatePlayers(int x, int y) {
                 j++;
             }
 
-            obst->Insert(x,y,randi,randj);
+            obst->Insert(x+15,y+17,randi,randj);
             PhysController::Instance()->playerList->Add(new PlayerObs(x+PLAYER_RADIUS, y+PLAYER_RADIUS));
             x = 75;
             y = 130;
             avpos[randi][randj] = true;
-            //std::cout << avpos << std::endl;
             p++;
 
         } else continue;
 
     }
-    std::cout << "Side 1 finished" << std::endl;
     int p2 = 0;
     while (p2 < players/2){
         int randi2 = rand()%5;
@@ -357,12 +355,11 @@ void BPGame::CreatePlayers(int x, int y) {
                 j++;
             }
 
-            obst->Insert(x,y,randi2,randj2);
-            PhysController::Instance()->playerList->Add(new PlayerObs(x,y));
+            obst->Insert(x+15,y+17,randi2,randj2);
+            PhysController::Instance()->playerList->Add(new PlayerObs(x+PLAYER_RADIUS, y+PLAYER_RADIUS));
             x = 75;
             y = 130;
             avpos[randi2][randj2] = true;
-            //std::cout << avpos << std::endl;
             p2++;
 
         } else continue;

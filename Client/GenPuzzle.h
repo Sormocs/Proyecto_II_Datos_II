@@ -2,6 +2,7 @@
 #include "Button.h"
 #include "TextBox.h"
 #include "ImageParts.h"
+#include "GenLists.h"
 
 #pragma once
 
@@ -12,6 +13,7 @@ private:
     sf::Font font;
     int parts = 4;
     ImageParts* Parts = new ImageParts;
+    GenLists* generations = new GenLists;
     GenPuzzle() = default;
 
 public:
