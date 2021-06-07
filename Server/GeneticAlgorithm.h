@@ -6,20 +6,15 @@ typedef std::chrono::high_resolution_clock Time;
 typedef std::chrono::milliseconds ms;
 typedef std::chrono::time_point<std::chrono::system_clock, std::chrono::duration<long, std::ratio<1, 1000000000>>> time_p;
 
-class Specimen {
-public:
-    List* positions;
-    char score;
-    Specimen();
-};
 
 class GenAlgorithm {
 private:
-    List* allPossibleDivs;
-    List* generations;
-    List* lastGenBests;
+    PosList* allPossibleDivs;
+    GenList* generations;
+    SpecList* gensBests;
     char divisionNum;
     int currentGen;
+    int currGenBest;
     bool solved;
     bool stop;
     float time;
@@ -27,8 +22,8 @@ private:
     bool inArray(char* posArray, int len, char ranIndex);
 
     void TwoRanParents(Specimen& father, Specimen& mother);
-    List* SearchBests();
-    char Score(List* positions);
+    SpecList* SearchBests();
+    char Score(PosList* positions);
     void Mutation(Specimen*& specimen, Specimen parents[2]);
     void Inheritance(Specimen*& specimen, Specimen parents[2]);
     void CreateSpecimen();
@@ -37,11 +32,11 @@ private:
 public:
     GenAlgorithm();
 
-    void SetDivisionNum(int divisions);
+    void SetDivisionNum(char divisions);
 
     void Run(int maxGen = 500, int maxSpec = 700);
 
-    List* getGenerations() const;
+    GenList* getGenerations() const;
 
     int getLastGen() const;
 

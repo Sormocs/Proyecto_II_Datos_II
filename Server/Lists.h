@@ -1,8 +1,10 @@
 /**
  * @file Lists.h
  * @author Luis Delgado
- * @brief Incluye las clases Node, List, GenMatrix y GenList para el control de la matriz.
+ * @brief Incluye las clases Node, PosList, GenList y SpecList para el control de la matriz.
  */
+
+
 
 /**
  * @brief Node es una clase base que sirve de nodo para listas enlazadas.
@@ -10,18 +12,18 @@
 class Node {
 public:
     Node* next;
-    void* value;
+    char value;
 
     Node() = default;
-    Node(void* value);
+    explicit Node(char value);
 
     void Delete();
 };
 
 /**
- * @brief List es una clase base para las listas.
+ * @brief PosList es una clase base para las listas.
  */
-class List {
+class PosList {
 private:
     Node* first;
     int length;
@@ -37,15 +39,44 @@ public:
     void Reset();
 };
 
-/**
- * @brief GenList es una clase de lista enlazada que almacena un vector de una fila de la matriz.
- */
-class GenList : public List {
-
+class Specimen {
+public:
+    PosList* positions;
+    Specimen* next;
+    char score;
+    Specimen();
 };
 
 /**
- * GenMatrix es una clase que contiene vectores con elementos de la matriz del algoritmo genético.
+ * @brief SpecList es una clase de lista enlazada que almacena un vector de una fila de la matriz.
  */
-class GenMatrix : List {
+class SpecList {
+private:
+    Specimen* first;
+    int length;
+
+public:
+    SpecList* next;
+
+    void AddFront(Specimen* specimen);
+    void AddBack(Specimen* specimen);
+    Specimen* At(int index);
+
+    int Length() const { return length; }
+};
+
+/**
+ * GenList es una clase que contiene vectores con elementos de la matriz del algoritmo genético.
+ */
+class GenList {
+private:
+    SpecList* first;
+    int length;
+
+public:
+    void AddFront(SpecList* gen);
+    void AddBack(SpecList* gen);
+    SpecList* At(int index);
+
+    int Length() const { return length; }
 };
