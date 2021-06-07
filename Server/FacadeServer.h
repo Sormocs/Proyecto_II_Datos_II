@@ -29,6 +29,7 @@ public:
     void StarAlg(json obj);
     std::string GetSend();
     bool GetFlag();
+    void GameGen(std::string data);
 
 };
 

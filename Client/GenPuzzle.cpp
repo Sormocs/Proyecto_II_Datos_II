@@ -37,7 +37,8 @@ bool GenPuzzle::Run() {
     title2.setPosition(280, 160);
 
     sf::Text cuts;
-    cuts.setString(std::to_string(parts));
+    if (parts < 10) cuts.setString("0" + std::to_string(parts));
+    else cuts.setString(std::to_string(parts));
     cuts.setFont(font);
     cuts.setCharacterSize(170);
     cuts.setPosition(390, 230);
@@ -51,6 +52,10 @@ bool GenPuzzle::Run() {
     Button accept = Button(400, 520, 180, 75, 26, "Begin", btncolor);
     Button addc = Button(500, 450, 80, 50, 32, "MORE", btncolor);
     Button removec = Button(400, 450, 80, 50, 32, "LESS", btncolor);
+
+    //BUTTONS FOR SECOND PART
+    Button next = Button(800, 450, 90, 50, 32, "Next", btncolor);
+    Button prev = Button(800, 390, 90, 50, 32, "Prev", btncolor);
 
     //SHAPE
     sf::RectangleShape bg = sf::RectangleShape(sf::Vector2f (1000,700));
@@ -130,12 +135,30 @@ bool GenPuzzle::Run() {
                     window.close();
                     return true;
                 }
+                if (event.type == sf::Event::MouseButtonReleased){
+                    if (next.Clicked(mouse[0],mouse[1]) && currGen < Parts->GetLen()){
+
+                        currGen ++;
+                        ResetSprites();
+
+                    }
+                    if (prev.Clicked(mouse[0],mouse[1]) && currGen >= 0){
+
+                        currGen --;
+                        ResetSprites();
+                    }
+                }
+                if (event.type == sf::Event::MouseMoved){
+                    next.MouseOver(mouse[0],mouse[1]);
+                    prev.MouseOver(mouse[0],mouse[1]);
+                }
             }
             window.clear();
 
             window.draw(bg);
-
             DrawParts(winptr);
+            next.Draw(winptr);
+            prev.Draw(winptr);
 
             window.display();
         }
@@ -228,14 +251,27 @@ void GenPuzzle::ShuffleParts() {
     int pLen = Parts->GetLen();
     int pos_parts[pLen][2];
     bool av_pos[pLen];
+    int offpos[pLen];
 
     Part* temp = Parts->GetStart();
     for (int i = 0; i < pLen; i++){ //GET POSITIONS
 
         pos_parts[i][0] = temp->getPart()->getPosition().x;
+        std::cout << "// x = " << pos_parts[i][0] << " ";
         pos_parts[i][1] = temp->getPart()->getPosition().y;
+        std::cout << "y = " << pos_parts[i][0] << " ";
         av_pos[i] = true;
         temp = temp->GetNext();
+
+    }
+    std::cout << "" << std::endl;
+    positions->Insert();
+    positions->Insert();
+    for (int i = 0; i < pLen; i++){
+
+        positions->GetStart()->Insert(pos_parts[i][0]);
+        positions->GetEnd()->Insert(pos_parts[i][1]);
+
 
     }
 
@@ -246,18 +282,126 @@ void GenPuzzle::ShuffleParts() {
 
             temp->getPart()->setPosition(pos_parts[randi][0],pos_parts[randi][1]);
             av_pos[randi] = false;
+            offpos[randi] = temp->GetNum();
             temp = temp->GetNext();
+
         } else continue;
     }
+
+    generations->Insert();
+
+    for (int i = 0; i < pLen; i++) {
+
+        generations->GetStart()->Insert(offpos[i]);
+
+    }
+
+    IWillHaveOrder();
 
 }
 
 void GenPuzzle::IWillHaveOrder() {
 
+    bool isDone[Parts->GetLen()];
+    for (int i = 0; i < Parts->GetLen(); i++){
+        isDone[i] = false;
+    }
+
+    int i = 0;
+    while (i < Parts->GetLen()) {
+        int currPos[Parts->GetLen()];
+
+        Position *temp = generations->GetEnd()->start;
+        for (int i2 = 0; i2 < Parts->GetLen(); i2++) {
+            currPos[i2] = temp->pos;
+            temp = temp->next;
+        }
+
+        if (i != currPos[i]){
+            int toSwitch = currPos[i];
+            for (int j =0; j < Parts->GetLen(); j++){
+                if (currPos[j] == i){
+                    currPos[j] = toSwitch;
+                } else continue;
+            }
+        }
+        currPos[i] = i;
+
+        for (int i = 0; i < Parts->GetLen(); i++) {
+            std::cout << currPos[i];
+        }
+
+        generations->Insert();
+
+        for (int i = 0; i < Parts->GetLen(); i++) {
+            generations->GetEnd()->Insert(currPos[i]);
+        }
+
+        i ++;
+        std::cout <<" " <<i << std::endl;
+    }
+
+    Gen* temp = generations->GetStart();
+    while (temp != nullptr) {
+        Position *temp2 = temp->start;
+        while (temp2 != nullptr) {
+            std::cout << temp2->pos << " ";
+            temp2 = temp2->next;
+        }
+        temp = temp->next;
+        std::cout << " = Full Gen" << std::endl;
+    }
+}
+
+void GenPuzzle::ResetSprites() {
+
+    int pos_parts[Parts->GetLen()][2];
+
+    Position* temp1 = positions->GetStart()->start;
+    Position* temp2 = positions->GetEnd()->start;
     for (int i = 0; i < Parts->GetLen(); i++){
 
+        pos_parts[i][0] = temp1->pos;
+        std::cout << "// x = " << pos_parts[i][0] << " ";
+        pos_parts[i][1] = temp2->pos;
+        std::cout << " y = " << pos_parts[i][1] << " ";
 
+        temp1 = temp1->next;
+        temp2 = temp2->next;
 
     }
+    std::cout << "" << std::endl;
+
+    Gen* temp = generations->GetStart();
+    while (temp != nullptr){
+
+        if (temp->gennum == currGen){
+
+            Position* newTemp = temp->start;
+            Part* tempart = Parts->GetStart();
+            while (tempart != nullptr){
+
+                tempart->getPart()->setPosition(pos_parts[newTemp->pos][0],pos_parts[newTemp->pos][1]);
+                newTemp = newTemp->next;
+                tempart = tempart->GetNext();
+
+            }
+            break;
+
+        } else temp = temp->next;
+
+    }
+
+}
+
+void GenPuzzle::SendParts() {
+
+    json obj;
+
+    obj["game"] = "Gen";
+    obj["action"] = "Parts";
+    obj["parts"] = parts;
+
+    client->Send(obj.dump(4));
 
 }

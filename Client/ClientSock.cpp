@@ -42,7 +42,7 @@ void ClientSock::Start() {
 
             //		Display response
             std::string temp = std::string(buf, bytesReceived);
-
+            sleep(0.5);
             this->received = temp;
 
             std::cout << "From Server:" << std::string(buf, bytesReceived) << std::endl;

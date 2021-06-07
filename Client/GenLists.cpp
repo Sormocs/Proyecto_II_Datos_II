@@ -10,6 +10,7 @@ void Gen::Insert(int num) {
 
         Position* temp = new Position;
         temp->pos = num;
+        temp->i = index;
         temp->prev = nullptr;
         temp->next = nullptr;
 
@@ -20,12 +21,15 @@ void Gen::Insert(int num) {
 
         Position* temp = new Position;
         temp->pos = num;
+        temp->i = index;
         temp->prev = end;
         temp->next = nullptr;
+        end->next = temp;
 
         end = temp;
 
     }
+    index ++;
 
 }
 
@@ -48,6 +52,7 @@ void GenLists::Insert() {
         temp->gennum = len;
         temp->next = nullptr;
         temp->prev = end;
+        end->next = temp;
 
         end = temp;
 
@@ -58,4 +63,8 @@ void GenLists::Insert() {
 
 Gen *GenLists::GetStart() {
     return start;
+}
+
+Gen *GenLists::GetEnd() {
+    return end;
 }
