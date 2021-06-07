@@ -21,5 +21,6 @@ public:
     sf::Image ResizeImage(const sf::Image& originalImage, sf::Image& resizedImage);
     void DrawParts(sf::RenderWindow* win);
     void ShuffleParts();
+    void IWillHaveOrder();
 };
 
