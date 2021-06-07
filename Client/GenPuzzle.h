@@ -14,6 +14,8 @@ private:
     bool selection;
     sf::Font font;
     int parts = 4;
+    int currGen = 0;
+    GenLists* positions = new GenLists;
     ImageParts* Parts = new ImageParts;
     GenLists* generations = new GenLists;
     GenPuzzle() = default;
@@ -28,5 +30,6 @@ public:
     void ShuffleParts();
     void IWillHaveOrder();
     void SendParts();
+    void ResetSprites();
 };
 

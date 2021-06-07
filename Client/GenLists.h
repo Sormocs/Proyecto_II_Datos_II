@@ -1,10 +1,11 @@
-
+#include <iostream>
 #pragma once
 
 class Position{
 public:
     Position()=default;
     int pos;
+    int i;
     Position* next;
     Position* prev;
 
@@ -15,8 +16,9 @@ class Gen{
 public:
     Gen() = default;
     int gennum;
-    Position* start;
-    Position* end;
+    int index = 0;
+    Position* start = nullptr;
+    Position* end = nullptr;
     Gen* next;
     Gen* prev;
     void Insert(int num);
@@ -24,8 +26,8 @@ public:
 
 class GenLists {
 private:
-    Gen* start;
-    Gen* end;
+    Gen* start = nullptr;
+    Gen* end = nullptr;
 
 public:
 
@@ -33,6 +35,7 @@ public:
     GenLists() = default;
     void Insert();
     Gen* GetStart();
+    Gen* GetEnd();
 
 
 };

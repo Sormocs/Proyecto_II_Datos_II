@@ -27,16 +27,16 @@ double PhysController::deltaTime() {
  */
 void PhysController::CheckColl() {
     char collision = NO_COLLISION;
-//    for (int i = 0; i < playerList->Length(); ++i) {
-//        collision = playerList->Get(i)->WhereCollision(ball->pos, ball->degree);
-//        if (collision == NO_COLLISION) continue;
-//
-//        else {
-//            std::cout << "Colisión con jugador " << i << ", de tipo " << playerList->Get(i)->WhereCollision(ball->pos, ball->degree) << ", con coordenadas " << playerList->Get(i)->getXPos() << ", " << playerList->Get(i)->getYPos() << " y bola en" << ball->pos[0] << ", " << ball->pos[1] << std::endl;
-//            ball->Bounce(collision);
-// //            std::cout << "Ángulo " << ball->degree << std::endl;
-//        }
-//    }
+    for (int i = 0; i < playerList->Length(); ++i) {
+        collision = playerList->Get(i)->WhereCollision(ball->pos, ball->degree);
+        if (collision == NO_COLLISION) continue;
+
+        else {
+            std::cout << "Colisión con jugador " << i << ", de tipo " << playerList->Get(i)->WhereCollision(ball->pos, ball->degree) << ", con coordenadas " << playerList->Get(i)->getXPos() << ", " << playerList->Get(i)->getYPos() << " y bola en" << ball->pos[0] << ", " << ball->pos[1] << std::endl;
+            ball->Bounce(collision);
+ //            std::cout << "Ángulo " << ball->degree << std::endl;
+        }
+    }
 
     if (ball->pos[0] < 95) {
         // si colisiona con el borde izquierdo
