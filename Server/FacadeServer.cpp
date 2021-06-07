@@ -22,7 +22,7 @@ void FacadeServer::ReciveInfo(string data) {
     if(game == "BP"){
         GameBP(data);
     } else{
-        //codigo otro jueguito sergio yamete kudasai
+        GameGen(data);
     }
 
 }
@@ -118,4 +118,17 @@ std::string FacadeServer::GetSend() {
  */
 bool FacadeServer::GetFlag() {
     return flag;
+}
+
+void FacadeServer::GameGen(std::string data) {
+
+    json obj = json::parse(data);
+    std::string action = obj["action"].get<string>();
+
+    if (action == "Parts"){
+       int parts = obj["parts"].get<int>();
+
+    }
+
+
 }

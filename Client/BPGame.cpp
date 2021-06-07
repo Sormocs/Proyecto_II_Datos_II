@@ -68,6 +68,8 @@ bool BPGame::Run() {
     //NAME TEXTBOX
     TextBox name_entry = TextBox(60,title2.getPosition().y + title2.getLocalBounds().height + 15, 260,55,28);
 
+    TextBox goals_entry = TextBox(700,title2.getPosition().y + title2.getLocalBounds().height + 15, 260,55,28);
+
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
@@ -101,6 +103,12 @@ bool BPGame::Run() {
     goalComputer.setColor(sf::Color::White);
     goalComputer.setPosition(800, 40);
 
+    sf::Text goalswinner;
+    goalswinner.setString(std::to_string(win));
+    goalswinner.setFont(font);
+    goalswinner.setCharacterSize(30);
+    goalswinner.setColor(sf::Color::White);
+    goalswinner.setPosition(500, 10);
 
     //FIELD
     sf::Texture* fieldimg = new sf::Texture;
@@ -137,6 +145,7 @@ bool BPGame::Run() {
                     return true;
                 } if (event.type == sf::Event::MouseButtonReleased) {
                     name_entry.CheckClick(mouse[0],mouse[1]);
+                    goals_entry.CheckClick(mouse[0],mouse[1]);
                     if (addp.Clicked(mouse[0], mouse[1]) and players < 17) {
 
                         players += 2;
@@ -160,13 +169,13 @@ bool BPGame::Run() {
                         if (name_entry.GetString() != ""){
                             playerName = name_entry.GetString();
                             playertxt.setString("Player: "+playerName);
+                        };
+                        if(goals_entry.GetString() != ""){
+                            win = std::stoi(goals_entry.GetString());
+                            goalswinner.setString(std::to_string(win));
                         }
-                        std::string send2 = GetPath();
-                        client->Send(send2);
-                        playing = true;
-                        GeneratePath();
-                        player1 = true;
-                        computer = false;
+
+
                     }
 
                 } if (event.type == sf::Event::MouseMoved) {
@@ -186,6 +195,16 @@ bool BPGame::Run() {
                             name_entry.Wrtie(letter);
                         }
                     }
+                    if(goals_entry.isSelected()){
+                        if (event.text.unicode == 8){
+                            goals_entry.Delete();
+                        } else if (event.text.unicode == 13){
+                            goals_entry.CheckClick(0,0);
+                        } else {
+                            char letter = static_cast<char>(event.text.unicode);
+                            goals_entry.Wrtie(letter);
+                        }
+                    }
                 }
             }
 
@@ -197,6 +216,7 @@ bool BPGame::Run() {
             window.draw(title1);
             window.draw(title2);
             name_entry.Draw(winptr);
+            goals_entry.Draw(winptr);
             window.draw(playernum);
 
             window.display();
@@ -210,9 +230,14 @@ bool BPGame::Run() {
                     return true;
                 }
 
-                if(player1){
+                if(computerPlay.Clicked(mouse[0],mouse[1]) and player1 == 0){
+                    MoveComputer();
+                }
+                if (event.type == sf::Event::MouseMoved) {
+                    computerPlay.MouseOver(mouse[0], mouse[1]);
+                }
 
-                    std::cout << "hola" << std::endl;
+                if(player1){
 
                     if (event.type == sf::Event::MouseButtonPressed) {
                         if (PhysController::Instance()->GetBall()->Clicked(mouse[0], mouse[1])) {
@@ -223,9 +248,6 @@ bool BPGame::Run() {
                     }
                     if (event.type == sf::Event::MouseButtonReleased) {
 
-                        if(computerPlay.Clicked(mouse[0],mouse[1]) and player1 == 0){
-                            MoveComputer();
-                        }
 
                         if (pressed) {
                             pressed = false;
@@ -300,7 +322,7 @@ bool BPGame::Run() {
 
 
 
-                if (PhysController::Instance()->GetBall()->speed < 1.0 && playing == 0){
+                if (PhysController::Instance()->GetBall()->speed == 0.0 && playing == 0){
 
                     std::string send = GetPath();
                     client->Send(send);
@@ -317,6 +339,10 @@ bool BPGame::Run() {
                 PhysController::Instance()->GetBall()->pos[1] = 405/2+80;
                 PhysController::Instance()->GetBall()->Throw(0.0,0.0);
                 circles->Reset();
+                std::string send = GetPath();
+                client->Send(send);
+                playing = true;
+                GeneratePath();
             }
 
             window.clear();
@@ -331,6 +357,7 @@ bool BPGame::Run() {
             window.draw(playertxt);
             window.draw(computertxt);
             window.draw(goalComputer);
+            window.draw(goalswinner);
             window.draw(goalPlayer);
             window.draw(*fields);
             window.draw(*ballsprite);
@@ -346,6 +373,28 @@ bool BPGame::Run() {
             if (pressed){
                 window.draw(line);
                 window.draw(invertedLine);
+            }
+
+            if(Win() == 1){
+                sf::Text playerwinner;
+                playerwinner.setString("Ha ganado: "+playerName);
+                playerwinner.setFont(font);
+                playerwinner.setCharacterSize(30);
+                playerwinner.setColor(sf::Color::White);
+                playerwinner.setPosition(300, 50);
+                window.draw(playerwinner);
+
+            }
+
+            if (Win() == 2){
+                sf::Text playerwinner;
+                playerwinner.setString("Ha ganado: la computadora");
+                playerwinner.setFont(font);
+                playerwinner.setCharacterSize(30);
+                playerwinner.setColor(sf::Color::White);
+                playerwinner.setPosition(300, 50);
+                window.draw(playerwinner);
+
             }
 
             window.display();
@@ -566,8 +615,8 @@ void BPGame::GeneratePath() {
     std::string path;
 
     while (true){
+        sleep(0.15);
         std::string temp = client->GetReceived();
-        std::cout << temp << std::endl;
         if (temp != ""){
             path = temp;
             break;
@@ -623,7 +672,13 @@ int BPGame::Win() {
 }
 
 void BPGame::MoveComputer() {
-    PhysController::Instance()->GetBall()->Throw(500.0,0);
+
+    int randi = rand()%201 + 100;
+    int randj = 90 - rand()%180 ;
+
+    PhysController::Instance()->GetBall()->Throw(randi,randj);
     player1 = true;
     playing = false;
+    circles->Reset();
+
 }

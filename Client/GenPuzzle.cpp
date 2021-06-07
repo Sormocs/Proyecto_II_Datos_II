@@ -272,3 +272,17 @@ void GenPuzzle::IWillHaveOrder() {
     }
 
 }
+
+
+
+void GenPuzzle::SendParts() {
+
+    json obj;
+
+    obj["game"] = "Gen";
+    obj["action"] = "Parts";
+    obj["parts"] = parts;
+
+    client->Send(obj.dump(4));
+
+}

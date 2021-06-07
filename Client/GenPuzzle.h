@@ -3,8 +3,10 @@
 #include "TextBox.h"
 #include "ImageParts.h"
 #include "GenLists.h"
-
+#include "json.hpp"
+#include "ClientSock.h"
 #pragma once
+using json = nlohmann::json;
 
 class GenPuzzle {
 private:
@@ -15,6 +17,7 @@ private:
     ImageParts* Parts = new ImageParts;
     GenLists* generations = new GenLists;
     GenPuzzle() = default;
+    ClientSock *client = ClientSock::getInstance();
 
 public:
     static GenPuzzle* getInstance();
@@ -24,5 +27,6 @@ public:
     void DrawParts(sf::RenderWindow* win);
     void ShuffleParts();
     void IWillHaveOrder();
+    void SendParts();
 };
 

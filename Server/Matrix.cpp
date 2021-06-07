@@ -65,8 +65,8 @@ std::string Matrix::AlgBackttracking(int i, int j,int fi, int fj) {
 
     b = new Backtracking(matrix);
     b->FindPath(i,j,fi,fj,"right");
+    b->PrintPath();
     std::string path = b->GenerateJsonString();
-    delete b;
     return path;
 
 }

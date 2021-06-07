@@ -26,13 +26,13 @@ using json = nlohmann::json;
 class BPGame {
 private:
     bool selection = true;
-    bool playing = true;
+    bool playing = false;
     bool player1 = true;
     bool timing = false;
     bool computer = false;
     int goalP = 0;
     int goalC = 0;
-    int win = 10;
+    int win;
     static BPGame* instance;
     bool avpos[5][12] = {
 
