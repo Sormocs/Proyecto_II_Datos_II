@@ -88,11 +88,11 @@ void Ball::Bounce(char direction) {
 // //         < /  |
 //
 //        else this->degree = 180 - (this->degree - 180);
-////         < \  |
-////     a aquí \ |
-////        ______|______
-////    de aquí / |
-////         < /  |
+// //         < \  |
+// //     a aquí \ |
+// //        ______|______
+// //    de aquí / |
+// //         < /  |
     }
 
     if (this->degree >= 360) this->degree -= 360.0f;
