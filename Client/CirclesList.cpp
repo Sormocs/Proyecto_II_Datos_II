@@ -27,13 +27,14 @@ void CirclesList::Reset() {
 void CirclesList::Insert(int posx, int posy) {
 
     sf::CircleShape *tempC = new sf::CircleShape;
-    tempC->setRadius(4);
+    tempC->setRadius(20);
     tempC->setPosition(posx,posy);
-    tempC->setFillColor(sf::Color(255,0,0,125));
+    tempC->setFillColor(sf::Color(255,0,0,185));
 
     if(start == nullptr){
         Circle *temp = new Circle;
         temp->SetObj(tempC);
+        temp->SetNext(nullptr);
         start = temp;
     } else{
         Circle *temp = new Circle;
@@ -42,6 +43,10 @@ void CirclesList::Insert(int posx, int posy) {
         start = temp;
     }
 
+}
+
+Circle *CirclesList::GetStart() {
+    return start;
 }
 
 

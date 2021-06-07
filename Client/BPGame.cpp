@@ -256,15 +256,11 @@ bool BPGame::Run() {
 
                     std::string send = GetPath();
                     client->Send(send);
+                    std::this_thread::sleep_for(std::chrono::seconds(1));
                     playing = true;
                     GeneratePath();
 
                 }
-
-                if (playing){
-                    //DIBUJAR CAMINO
-                }
-
 
             }
             window.clear();
@@ -278,6 +274,13 @@ bool BPGame::Run() {
             window.draw(*fields);
             window.draw(*ballsprite);
             DrawObst(winptr);
+            if (playing){
+                Circle* temp = circles->GetStart();
+                while(temp != nullptr){
+                    window.draw(*temp->GetCircle());
+                    temp = temp->GetNext();
+                }
+            }
             if (pressed){
 
                 window.draw(line);
@@ -355,7 +358,7 @@ void BPGame::CreatePlayers(int x, int y) {
             }
 
             obst->Insert(x,y,randi2,randj2);
-            PhysController::Instance()->playerList->Add(new PlayerObs(x+35,y+PLAYER_RADIUS));
+            PhysController::Instance()->playerList->Add(new PlayerObs(x,y));
             x = 75;
             y = 130;
             avpos[randi2][randj2] = true;
@@ -522,7 +525,7 @@ void BPGame::GeneratePath() {
         int i = obj[std::to_string(k)]["i"].get<int>();
         int j = obj[std::to_string(k)]["j"].get<int>();
 
-        circles->Insert(x + (70*i), y + (81*j));
+        circles->Insert(x + (70*j), y + (81*i));
 
     }
 

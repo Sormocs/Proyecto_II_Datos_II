@@ -230,7 +230,7 @@ void GenPuzzle::ShuffleParts() {
     bool av_pos[pLen];
 
     Part* temp = Parts->GetStart();
-    for (int i = 0; i < pLen; i++){
+    for (int i = 0; i < pLen; i++){ //GET POSITIONS
 
         pos_parts[i][0] = temp->getPart()->getPosition().x;
         pos_parts[i][1] = temp->getPart()->getPosition().y;
@@ -250,7 +250,14 @@ void GenPuzzle::ShuffleParts() {
         } else continue;
     }
 
+}
+
+void GenPuzzle::IWillHaveOrder() {
+
+    for (int i = 0; i < Parts->GetLen(); i++){
 
 
+
+    }
 
 }
