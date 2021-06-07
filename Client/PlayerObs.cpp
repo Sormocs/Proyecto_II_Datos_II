@@ -19,61 +19,23 @@ PlayerObs::PlayerObs() {
  * @param pos
  * @return char 'd', 'h', 'v'.
  */
-char PlayerObs::WhereCollision(float *pos) {
+char PlayerObs::WhereCollision(float *pos, float degrees) {
+
+    float dist[2];
 
     // Obtiene la distancia entre los puntos en la horizontal y en la vertical por separado.
-    float xDist = pos[0] - this->xPos;
-    //float yDist = std::sqrt(std::abs((pos[1] * pos[1]) + (this->yPos * this->yPos)));
-    float yDist = pos[1] - this->yPos;
+    dist[0] = pos[0] - this->xPos;
+    dist[1] = pos[1] - this->yPos;
 
-    // si ambos están tocando a la vez, está golpeando en diagonal
-    if (outside(xDist) & outside(yDist)) return NO_COLLISION;
+    if (LeftColl(dist, degrees)) return HORIZONTAL_COLLISION;
 
-    else if (colliding(xDist) && colliding(yDist)) return DIAGONAL_COLLISION;
+    else if (RightColl(dist, degrees)) return HORIZONTAL_COLLISION;
 
-    // si la horizontal es más pequeña, está golpeando de costado.
-    else if (colliding(xDist) && aboutToCollide(yDist)) return HORIZONTAL_COLLISION;
+    else if (UpColl(dist, degrees)) return VERTICAL_COLLISION;
 
-    // si la vertical es más pequeña, está golpeando arriba o abajo.
-    else if (aboutToCollide(xDist) && colliding(yDist)) return VERTICAL_COLLISION;
+    else if (DownColl(dist, degrees)) return VERTICAL_COLLISION;
 
     else return NO_COLLISION;
-}
-
-/**
- * @brief outside revisa si el jugador está fuera del radio.
- * @param pos
- * @return si el jugador está fuera del radio
- */
-bool PlayerObs::outside(float pos) {
-    return (pos > PLAYER_RADIUS);
-}
-
-/**
- * @brief colliding revisa si la posición colisiona con el jugador
- * @param pos
- * @return si la posición colisiona con el jugador
- */
-bool PlayerObs::colliding(float pos) {
-    return (pos <= PLAYER_RADIUS && pos > 2*PLAYER_RADIUS/3.0);
-}
-
-/**
- * @brief inside si la posición está dentro del radio
- * @param pos
- * @return si la posición está dentro del radio
- */
-bool PlayerObs::inside(float pos) {
-    return (pos <= 2*PLAYER_RADIUS/3.0);
-}
-
-/**
- * @brief aboutToCollide revisa si la posición dada está a punto de colisionar.
- * @param pos
- * @return si la posición dada está a punto de colisionar
- */
-bool PlayerObs::aboutToCollide(float pos) {
-    return (pos <= PLAYER_RADIUS + (PLAYER_RADIUS*0.1));
 }
 
 PlayerObs::PlayerObs(float X, float Y) {
@@ -81,8 +43,37 @@ PlayerObs::PlayerObs(float X, float Y) {
     yPos = Y;
 }
 
+bool PlayerObs::LeftColl(float* dist, float degrees) {
+    // si la distancia es negativa, está a la izquierda
+    // si el radio es menor o igual a la distancia, lo está tocando
+    // si el ángulo está en el segundo o cuarto cuadrante, se dirige hacia él
+    // si el valor absoluto de la distancia en y es menor al radio, están alineados
+    return dist[0] < 0 && std::abs(dist[0]) <= PLAYER_RADIUS + BALL_RADIUS && degrees > 90 && degrees < 270 && std::abs(dist[1]) <= PLAYER_RADIUS + BALL_RADIUS;
+}
 
+bool PlayerObs::RightColl(float* dist, float degrees) {
+    // si la distancia es positiva, está a la derecha
+    // si el radio es menor o igual a la distancia, lo está tocando
+    // si el ángulo está en el primer o cuarto cuadrante, se dirige hacia él
+    // si el valor absoluto de la distancia en y es menor al radio, están alineados
+    return dist[0] > 0 && std::abs(dist[0]) <= PLAYER_RADIUS + BALL_RADIUS && (degrees > 270 || degrees < 90) && std::abs(dist[1]) <= PLAYER_RADIUS + BALL_RADIUS;
+}
 
+bool PlayerObs::UpColl(float *dist, float degrees) {
+    // si la distancia es negativa, está arriba
+    // si el radio es menor o igual a la distancia, lo está tocando
+    // si el ángulo está en el primer o segundo cuadrante, se dirige hacia él
+    // si el valor absoluto de la distancia en y es menor al radio, esá a la misma línea que él
+    return dist[1] < 0 && std::abs(dist[1]) <= PLAYER_RADIUS + BALL_RADIUS && (degrees > 0 && degrees < 180) && std::abs(dist[0]) <= PLAYER_RADIUS + BALL_RADIUS;
+}
+
+bool PlayerObs::DownColl(float *dist, float degrees) {
+    // si la distancia es positiva, está abajo
+    // si el radio es menor o igual a la distancia, lo está tocando
+    // si el ángulo está en el tercer o cuarto cuadrante, se dirige hacia él
+    // si el valor absoluto de la distancia en y es menor al radio, están alineados
+    return dist[1] > 0 && std::abs(dist[1]) <= PLAYER_RADIUS + BALL_RADIUS && (degrees > 180 && degrees < 360) && std::abs(dist[0]) <= PLAYER_RADIUS + BALL_RADIUS;
+}
 
 
 

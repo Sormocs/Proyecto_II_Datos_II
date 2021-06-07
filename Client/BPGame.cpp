@@ -192,20 +192,20 @@ bool BPGame::Run() {
                         playing = false;
                         circles->Reset();
                         int force = std::sqrt(std::pow(line.getPoints().getBounds().width,2) + std::pow(line.getPoints().getBounds().height,2));
-                        PhysController::Instance()->GetBall()->Throw(force/3, angle*(180/M_PI));
-                        int ballx = PhysController::Instance()->GetBall()->pos[0];
-                        int bally = PhysController::Instance()->GetBall()->pos[1];
+                        PhysController::Instance()->GetBall()->Throw(force, angle*(180/M_PI));
+                        PhysController::Instance()->GetBall()->degree = PhysController::Instance()->FixAngle(PhysController::Instance()->GetBall()->degree);
+                        int ballx = PhysController::Instance()->GetBall()->pos[0]-BALL_RADIUS;
+                        int bally = PhysController::Instance()->GetBall()->pos[1]-BALL_RADIUS;
                         line = Line(ballx+15,bally+15,ballx+15,bally+15,sf::Color(255,255,255,255));
                         invertedLine = Line(ballx+15,bally+15,ballx+15,bally+15,sf::Color(255,255,255,255));
-                        std::cout << angle << std::endl;
                         angle = 0;
                     }
                 }
                 if (event.type == sf::Event::MouseMoved) {
                     if (pressed) {
 
-                        int ballx = PhysController::Instance()->GetBall()->pos[0];
-                        int bally = PhysController::Instance()->GetBall()->pos[1];
+                        int ballx = PhysController::Instance()->GetBall()->pos[0]-BALL_RADIUS;
+                        int bally = PhysController::Instance()->GetBall()->pos[1]-BALL_RADIUS;
 
                         line = Line(ballx+15,bally+15,mouse[0],bally-(bally-mouse[1]),sf::Color(255,255,255,255));
 
@@ -271,7 +271,7 @@ bool BPGame::Run() {
 
             PhysController::Instance()->MoveBall();
 
-            ballsprite->setPosition(PhysController::Instance()->GetBall()->pos[0],PhysController::Instance()->GetBall()->pos[1]);
+            ballsprite->setPosition(PhysController::Instance()->GetBall()->pos[0]-20,PhysController::Instance()->GetBall()->pos[1]-20);
 
             window.draw(bg);
             window.draw(playertxt);
@@ -286,6 +286,7 @@ bool BPGame::Run() {
 
             window.display();
         }
+        // permite mostar solo 60 fps
         std::this_thread::sleep_for (std::chrono::milliseconds (16));
     }
     return false;
@@ -300,8 +301,8 @@ void BPGame::CreatePlayers(int x, int y) {
     obst->Reset();
 
     PhysController::ResetAll();
-    PhysController::Instance()->GetBall()->pos[0] = ballsprite->getPosition().x+20;
-    PhysController::Instance()->GetBall()->pos[1] = ballsprite->getPosition().y+20;
+    PhysController::Instance()->GetBall()->pos[0] = ballsprite->getPosition().x+BALL_RADIUS*2;
+    PhysController::Instance()->GetBall()->pos[1] = ballsprite->getPosition().y+BALL_RADIUS*2;
 
     ResetMatrixPlayer();
     int p = 0;
@@ -323,7 +324,7 @@ void BPGame::CreatePlayers(int x, int y) {
             }
 
             obst->Insert(x,y,randi,randj);
-            PhysController::Instance()->playerList->Add(new PlayerObs(x+35,y+PLAYER_RADIUS));
+            PhysController::Instance()->playerList->Add(new PlayerObs(x+PLAYER_RADIUS, y+PLAYER_RADIUS));
             x = 75;
             y = 130;
             avpos[randi][randj] = true;

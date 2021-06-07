@@ -74,18 +74,18 @@ void Ball::Bounce(char direction) {
 //        pos[1] = -pos[1];
 //
 //        if (this->degree < 90 || this->degree > 270)  this->degree = 360 - this->degree;
-////              |  / >
-////              | /
-////        ______|______
-////              | \
-////              |  \ >
+// //              |  / >
+// //              | /
+// //        ______|______
+// //              | \
+// //              |  \ >
 //
 //        else if (this->degree < 180) this->degree = 180 + (180 - this->degree);
-////         < \  |
-////    de aquí \ |
-////        ______|______
-////     a aquí / |
-////         < /  |
+// //         < \  |
+// //    de aquí \ |
+// //        ______|______
+// //     a aquí / |
+// //         < /  |
 //
 //        else this->degree = 180 - (this->degree - 180);
 ////         < \  |
