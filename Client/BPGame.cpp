@@ -398,6 +398,7 @@ void BPGame::Reset() {
 
     selection = true;
     players = 2;
+    circles->Reset();
     obst = new PlayersList;
 
 }
@@ -525,7 +526,7 @@ void BPGame::GeneratePath() {
         int i = obj[std::to_string(k)]["i"].get<int>();
         int j = obj[std::to_string(k)]["j"].get<int>();
 
-        circles->Insert(x + (70*j), y + (81*i));
+        circles->Insert(x + (70*j), y + (70*i));
 
     }
 

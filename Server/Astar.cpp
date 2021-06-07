@@ -170,11 +170,17 @@ std::string Astar::GetPath() {
 
     int indexPath = 0;
 
+    NodeAStar* current;
+
+    current = openList[0];
+
     for (int i = 0; i < closeList.size(); i++) {
 
-        obj[std::to_string(i)]["i"] = closeList.at(i)->x;
-        obj[to_string(i)]["j"] = closeList.at(i)->y;
+        obj[std::to_string(i)]["i"] = current->x;
+        obj[to_string(i)]["j"] = current->y;
         indexPath = i;
+        if (current->father != NULL)
+            current=current->father;
 
     }
 
