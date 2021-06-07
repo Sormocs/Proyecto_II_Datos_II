@@ -39,6 +39,7 @@ bool BPGame::Run() {
     Button addp = Button(500, 450, 80, 50, 32, "MORE", btncolor);
     Button removep = Button(400, 450, 80, 50, 32, "LESS", btncolor);
     Button accept = Button(400, 520, 180, 75, 26, "Let's Play", btncolor);
+    Button computerPlay = Button(400, 600, 180, 75, 26, "Computer play", btncolor);
 
     //TEXTS:
     sf::Text playernum;
@@ -78,6 +79,28 @@ bool BPGame::Run() {
     playertxt.setCharacterSize(30);
     playertxt.setColor(sf::Color::White);
     playertxt.setPosition(10, 10);
+
+    sf::Text computertxt;
+    computertxt.setString("Computer");
+    computertxt.setFont(font);
+    computertxt.setCharacterSize(30);
+    computertxt.setColor(sf::Color::White);
+    computertxt.setPosition(800, 10);
+
+    sf::Text goalPlayer;
+    goalPlayer.setString(std::to_string(goalP));
+    goalPlayer.setFont(font);
+    goalPlayer.setCharacterSize(30);
+    goalPlayer.setColor(sf::Color::White);
+    goalPlayer.setPosition(10, 40);
+
+    sf::Text goalComputer;
+    goalComputer.setString(std::to_string(goalC));
+    goalComputer.setFont(font);
+    goalComputer.setCharacterSize(30);
+    goalComputer.setColor(sf::Color::White);
+    goalComputer.setPosition(800, 40);
+
 
     //FIELD
     sf::Texture* fieldimg = new sf::Texture;
@@ -138,6 +161,12 @@ bool BPGame::Run() {
                             playerName = name_entry.GetString();
                             playertxt.setString("Player: "+playerName);
                         }
+                        std::string send2 = GetPath();
+                        client->Send(send2);
+                        playing = true;
+                        GeneratePath();
+                        player1 = true;
+                        computer = false;
                     }
 
                 } if (event.type == sf::Event::MouseMoved) {
@@ -173,107 +202,140 @@ bool BPGame::Run() {
             window.display();
 
         } else {
+
             while (window.pollEvent(event)) {
 
                 if (event.type == sf::Event::Closed) {
                     window.close();
                     return true;
                 }
-                if (event.type == sf::Event::MouseButtonPressed) {
-                    if (PhysController::Instance()->GetBall()->Clicked(mouse[0], mouse[1])) {
 
-                        pressed = true;
+                if(player1){
 
-                    }
-                }
-                if (event.type == sf::Event::MouseButtonReleased) {
-                    if (pressed) {
-                        pressed = false;
-                        playing = false;
-                        circles->Reset();
-                        int force = std::sqrt(std::pow(line.getPoints().getBounds().width,2) + std::pow(line.getPoints().getBounds().height,2));
-                        PhysController::Instance()->GetBall()->Throw(force, angle*(180/M_PI));
-                        PhysController::Instance()->GetBall()->degree = PhysController::Instance()->FixAngle(PhysController::Instance()->GetBall()->degree);
-                        int ballx = PhysController::Instance()->GetBall()->pos[0]-BALL_RADIUS;
-                        int bally = PhysController::Instance()->GetBall()->pos[1]-BALL_RADIUS;
-                        line = Line(ballx+15,bally+15,ballx+15,bally+15,sf::Color(255,255,255,255));
-                        invertedLine = Line(ballx+15,bally+15,ballx+15,bally+15,sf::Color(255,255,255,255));
-                        angle = 0;
-                    }
-                }
-                if (event.type == sf::Event::MouseMoved) {
-                    if (pressed) {
+                    std::cout << "hola" << std::endl;
 
-                        int ballx = PhysController::Instance()->GetBall()->pos[0]-BALL_RADIUS;
-                        int bally = PhysController::Instance()->GetBall()->pos[1]-BALL_RADIUS;
+                    if (event.type == sf::Event::MouseButtonPressed) {
+                        if (PhysController::Instance()->GetBall()->Clicked(mouse[0], mouse[1])) {
 
-                        line = Line(ballx+15,bally+15,mouse[0],bally-(bally-mouse[1]),sf::Color(255,255,255,255));
-
-                        int x2 = ballx+15;
-                        int y2 = bally+15;
-                        if (mouse[0] > ballx+15 && mouse[1] < bally+15){
-
-                            x2 = line.getPoints().getBounds().left-line.getPoints().getBounds().width;
-                            y2 = line.getPoints().getBounds().top+line.getPoints().getBounds().height*2;
-
-                            invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
-
-                            angle = (-1)*atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) - M_PI;
-
-                        } else if (mouse[0] < ballx+15 && mouse[1] < bally+15 ){
-
-                            x2 = line.getPoints().getBounds().left+line.getPoints().getBounds().width*2;
-                            y2 = line.getPoints().getBounds().top+line.getPoints().getBounds().height*2;
-
-                            invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
-
-                            angle = atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) + 2*M_PI;
-
-                        } else if (mouse[0] < ballx+15 && mouse[1] > bally+15){
-
-                            x2 = line.getPoints().getBounds().left+line.getPoints().getBounds().width*2;
-                            y2 = line.getPoints().getBounds().top-line.getPoints().getBounds().height;
-
-                            invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
-
-                            angle = (-1)*atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width);
-
-                        } else{
-
-                            x2 = line.getPoints().getBounds().left-line.getPoints().getBounds().width;
-                            y2 = line.getPoints().getBounds().top-line.getPoints().getBounds().height;
-
-                            invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
-
-                            angle = atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) + M_PI;
+                            pressed = true;
 
                         }
-
                     }
+                    if (event.type == sf::Event::MouseButtonReleased) {
+
+                        if(computerPlay.Clicked(mouse[0],mouse[1]) and player1 == 0){
+                            MoveComputer();
+                        }
+
+                        if (pressed) {
+                            pressed = false;
+                            playing = false;
+                            player1 = false;
+                            circles->Reset();
+                            int force = std::sqrt(std::pow(line.getPoints().getBounds().width,2) + std::pow(line.getPoints().getBounds().height,2));
+                            PhysController::Instance()->GetBall()->Throw(force, angle*(180/M_PI));
+                            PhysController::Instance()->GetBall()->degree = PhysController::Instance()->FixAngle(PhysController::Instance()->GetBall()->degree);
+                            int ballx = PhysController::Instance()->GetBall()->pos[0]-BALL_RADIUS;
+                            int bally = PhysController::Instance()->GetBall()->pos[1]-BALL_RADIUS;
+                            line = Line(ballx+15,bally+15,ballx+15,bally+15,sf::Color(255,255,255,255));
+                            invertedLine = Line(ballx+15,bally+15,ballx+15,bally+15,sf::Color(255,255,255,255));
+                            angle = 0;
+                        }
+                    }
+                    if (event.type == sf::Event::MouseMoved) {
+                        computerPlay.MouseOver(mouse[0], mouse[1]);
+                        if (pressed) {
+
+                            int ballx = PhysController::Instance()->GetBall()->pos[0]-BALL_RADIUS;
+                            int bally = PhysController::Instance()->GetBall()->pos[1]-BALL_RADIUS;
+
+                            line = Line(ballx+15,bally+15,mouse[0],bally-(bally-mouse[1]),sf::Color(255,255,255,255));
+
+                            int x2 = ballx+15;
+                            int y2 = bally+15;
+                            if (mouse[0] > ballx+15 && mouse[1] < bally+15){
+
+                                x2 = line.getPoints().getBounds().left-line.getPoints().getBounds().width;
+                                y2 = line.getPoints().getBounds().top+line.getPoints().getBounds().height*2;
+
+                                invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+
+                                angle = (-1)*atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) - M_PI;
+
+                            } else if (mouse[0] < ballx+15 && mouse[1] < bally+15 ){
+
+                                x2 = line.getPoints().getBounds().left+line.getPoints().getBounds().width*2;
+                                y2 = line.getPoints().getBounds().top+line.getPoints().getBounds().height*2;
+
+                                invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+
+                                angle = atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) + 2*M_PI;
+
+                            } else if (mouse[0] < ballx+15 && mouse[1] > bally+15){
+
+                                x2 = line.getPoints().getBounds().left+line.getPoints().getBounds().width*2;
+                                y2 = line.getPoints().getBounds().top-line.getPoints().getBounds().height;
+
+                                invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+
+                                angle = (-1)*atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width);
+
+                            } else{
+
+                                x2 = line.getPoints().getBounds().left-line.getPoints().getBounds().width;
+                                y2 = line.getPoints().getBounds().top-line.getPoints().getBounds().height;
+
+                                invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
+
+                                angle = atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) + M_PI;
+
+                            }
+
+                        }
+                    }
+
+
                 }
 
-                if (PhysController::Instance()->GetBall()->speed < 1.0 and playing == 0){
+
+
+
+                if (PhysController::Instance()->GetBall()->speed < 1.0 && playing == 0){
 
                     std::string send = GetPath();
                     client->Send(send);
-                    std::this_thread::sleep_for(std::chrono::seconds(1));
                     playing = true;
                     GeneratePath();
 
                 }
 
             }
+
+            if(Goal()){
+                ballsprite->setPosition(sf::Vector2f (840/2+40,405/2+80));
+                PhysController::Instance()->GetBall()->pos[0] = 840/2+40;
+                PhysController::Instance()->GetBall()->pos[1] = 405/2+80;
+                PhysController::Instance()->GetBall()->Throw(0.0,0.0);
+                circles->Reset();
+            }
+
             window.clear();
 
             PhysController::Instance()->MoveBall();
 
             ballsprite->setPosition(PhysController::Instance()->GetBall()->pos[0]-20,PhysController::Instance()->GetBall()->pos[1]-20);
 
+            goalComputer.setString(std::to_string(goalC));
+            goalPlayer.setString(std::to_string(goalP));
             window.draw(bg);
             window.draw(playertxt);
+            window.draw(computertxt);
+            window.draw(goalComputer);
+            window.draw(goalPlayer);
             window.draw(*fields);
             window.draw(*ballsprite);
             DrawObst(winptr);
+            computerPlay.Draw(winptr);
             if (playing){
                 Circle* temp = circles->GetStart();
                 while(temp != nullptr){
@@ -282,7 +344,6 @@ bool BPGame::Run() {
                 }
             }
             if (pressed){
-
                 window.draw(line);
                 window.draw(invertedLine);
             }
@@ -393,6 +454,8 @@ void BPGame::DrawObst(sf::RenderWindow *win) {
  */
 void BPGame::Reset() {
 
+    goalC = 0;
+    goalP = 0;
     selection = true;
     players = 2;
     circles->Reset();
@@ -417,8 +480,6 @@ void BPGame::ResetMatrixPlayer() {
  * @return
  */
 std::string BPGame::StartGame() {
-
-    std::cout << "gola";
 
     json obj;
 
@@ -480,7 +541,7 @@ std::string BPGame::GetPath(){
 
     obj["game"] = "BP";
 
-    if(player1 or player2){
+    if(player1){
         obj["action"] = "StartA";
     }else{
         obj["action"] = "BackA";
@@ -491,9 +552,9 @@ std::string BPGame::GetPath(){
     obj["fi"] = 2;
 
     if (player1){
-        obj["fj"] = 11;
-    } else{
         obj["fj"] = 0;
+    } else{
+        obj["fj"] = 11;
     }
 
     return obj.dump(4);
@@ -527,5 +588,42 @@ void BPGame::GeneratePath() {
 
     }
 
+    timing = true;
 
+
+}
+
+bool BPGame::Goal() {
+
+    int i = GetI(PhysController::Instance()->GetBall()->pos[1]);
+    int j = GetJ(PhysController::Instance()->GetBall()->pos[0]);
+
+    if(i == 2 && j == 11){
+        goalC++;
+        return true;
+    } else if(i == 2 && j == 0){
+        goalP++;
+        return true;
+    } else{
+        return false;
+    }
+
+}
+
+int BPGame::Win() {
+
+    if (goalP == win ){
+        return 1;
+    } else if(goalC == win){
+        return 2;
+    } else {
+        return 0;
+    }
+
+}
+
+void BPGame::MoveComputer() {
+    PhysController::Instance()->GetBall()->Throw(500.0,0);
+    player1 = true;
+    playing = false;
 }
