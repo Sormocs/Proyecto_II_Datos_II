@@ -252,7 +252,7 @@ bool BPGame::Run() {
                     }
                 }
 
-                if (PhysController::Instance()->GetBall()->speed == 0.0 and playing == 0){
+                if (PhysController::Instance()->GetBall()->speed < 1.0 and playing == 0){
 
                     std::string send = GetPath();
                     client->Send(send);
@@ -416,6 +416,8 @@ void BPGame::ResetMatrixPlayer() {
  */
 std::string BPGame::StartGame() {
 
+    std::cout << "gola";
+
     json obj;
 
     obj["game"] = "BP";
@@ -498,7 +500,16 @@ std::string BPGame::GetPath(){
 
 void BPGame::GeneratePath() {
 
-    std::string path = client->GetReceived();
+    std::string path;
+
+    while (true){
+        std::string temp = client->GetReceived();
+        if (temp != ""){
+            path = temp;
+            break;
+        }
+    }
+
     json obj = json::parse(path);
 
     int x = 110;
@@ -512,5 +523,6 @@ void BPGame::GeneratePath() {
         circles->Insert(x + (70*i), y + (81*j));
 
     }
+
 
 }

@@ -41,7 +41,9 @@ void ClientSock::Start() {
         else {
 
             //		Display response
-            std::string received = std::string(buf, bytesReceived);
+            std::string temp = std::string(buf, bytesReceived);
+
+            this->received = temp;
 
             std::cout << "From Server:" << std::string(buf, bytesReceived) << std::endl;
         }
@@ -60,5 +62,8 @@ void ClientSock::Send(std::string msg) {
 }
 
 std::string ClientSock::GetReceived() {
-    return received;
+
+    std::string temp = received;
+    this->received = "";
+    return temp;
 }

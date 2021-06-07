@@ -19,11 +19,11 @@ void RunClient(){
  * @return int
  */
 int main() {
-    //std::thread RunC (RunClient);
+    std::thread RunC (RunClient);
     srand(time(NULL));
 
     GUI::getInstance()->Run();
 
-    //RunC.join();
+    RunC.join();
     return 0;
 }
