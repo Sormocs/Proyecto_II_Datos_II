@@ -14,18 +14,21 @@ private:
     float xPos;
     float yPos;
 
-    bool inside(float pos);
-    bool colliding(float pos);
-    bool aboutToCollide(float pos);
-    bool outside(float pos);
+    bool LeftColl(float* dist, float degrees);
+    bool RightColl(float* dist, float degrees);
+    bool UpColl(float* dist, float degrees);
+    bool DownColl(float* dist, float degrees);
 public:
     PlayerObs(float X,float Y);
     PlayerObs* next;
 
     PlayerObs();
-    char WhereCollision(float *pos);
-    float getPos() {
+    char WhereCollision(float *pos, float degrees);
+    float getXPos() {
         return xPos;
+    }
+    float getYPos() {
+        return yPos;
     }
 };
 

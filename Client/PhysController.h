@@ -44,6 +44,8 @@ public:
     void MoveBall();
 
     void CheckColl();
+    void CheckBounds();
+    bool OutScreen();
 
     Ball* GetBall();
 };

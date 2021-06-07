@@ -5,8 +5,9 @@
 #define UK 20.7              // coeficiente de fricción cinética del césped
 
 // propiedades de la bola
-#define BALL_MASS 0.45      // 450 g de masa del balón
-#define ENERGY_LOSS 0      // Porcentaje de pérdidad de energía tras impacto
+#define BALL_MASS 0.45       // 450 g de masa del balón
+#define ENERGY_LOSS 0.3       // Porcentaje de pérdidad de energía tras impacto
+#define BALL_RADIUS 20       // Radio de la bola
 
 // constantes de colisión
 #define HORIZONTAL_COLLISION 'h'
