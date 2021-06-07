@@ -1,4 +1,4 @@
-#include "Lists.h"
+#include "XML.h"
 #include <random>
 #include <chrono>
 
@@ -14,7 +14,9 @@ private:
     SpecList* gensBests;
     char divisionNum;
     int currentGen;
-    int currGenBest;
+    int currGenBestIndex;
+    int currGenBestScore;
+    int prevGenBestScore;
     bool solved;
     bool stop;
     float time;
@@ -43,5 +45,7 @@ public:
     bool isSolved() const;
 
     float getTime() const;
+
+    int getBestIndex() const;
 
 };

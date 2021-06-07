@@ -11,13 +11,14 @@ private:
     XMLDocument doc;
     int gennum = 0;
     static XML* instance;
-    List* genList = nullptr;
+    GenList* genList = nullptr;
+    std::string infoMaker();
     XML() = default;
+    std::string GenBuilder(const std::string& info);
 public:
     static XML* GetInstance();
-    void SetList(List* list);
-    void Builder();
-
+    void SetList(GenList* list);
+    void Build();
 };
 
 

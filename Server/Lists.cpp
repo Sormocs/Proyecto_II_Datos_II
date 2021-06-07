@@ -33,6 +33,11 @@ void PosList::AddFront(Node *node) {
     length ++;
 }
 
+/**
+ * @brief At retorna el elemento en el índice.
+ * @param index
+ * @return Node
+ */
 Node* PosList::At(int index) {
     if (first == nullptr or length == 0) return nullptr;
 
@@ -65,6 +70,11 @@ void PosList::Reset() {
     first = nullptr;
 }
 
+/**
+ * @brief GetDelAt retorna el elemento en el índice y lo elimina.
+ * @param index
+ * @return Node
+ */
 Node *PosList::GetDelAt(int index) {
     Node* temp = nullptr;
     if (length == 0){
@@ -92,6 +102,10 @@ Node *PosList::GetDelAt(int index) {
     return temp;
 }
 
+/**
+ * @brief AddBack añade elementos al final de la lista
+ * @param node
+ */
 void PosList::AddBack(Node *node) {
     if (length == 0) AddFront(node);
 
@@ -104,6 +118,11 @@ void PosList::AddBack(Node *node) {
 
 //####################################################################################################################
 
+/**
+ * @brief At retorna el elemento en el índice.
+ * @param index
+ * @return Specimen
+ */
 Specimen *SpecList::At(int index) {
     if (first == nullptr or length == 0) return nullptr;
 
@@ -119,7 +138,10 @@ Specimen *SpecList::At(int index) {
         return temp;
     }
 }
-
+/**
+ * @brief AddFront añade un elemento al frente de la lista.
+ * @param specimen
+ */
 void SpecList::AddFront(Specimen *specimen) {
     if (first == nullptr or length == 0) first = specimen;
 
@@ -131,6 +153,10 @@ void SpecList::AddFront(Specimen *specimen) {
     length ++;
 }
 
+/**
+ * @brief AddBack añade elementos al final de la lista
+ * @param node
+ */
 void SpecList::AddBack(Specimen *specimen) {
     if (length == 0) AddFront(specimen);
 
@@ -141,12 +167,21 @@ void SpecList::AddBack(Specimen *specimen) {
     }
 }
 
-void SpecList::Repleace(int index, Specimen* specimen) {
+/**
+ * @brief Replace reemplaza el elemento en el índice con el nuevo elemento.
+ * @param index
+ * @param specimen
+ */
+void SpecList::Replace(int index, Specimen* specimen) {
     Specimen* temp = At(index-1);
     if (length-1 != index) specimen->next = temp->next->next;
     temp->next = specimen;
 }
 
+/**
+ * @brief AddFront añade un elemento al frente de la lista.
+ * @param gen
+ */
 void GenList::AddFront(SpecList *gen) {
     if (first == nullptr or length == 0) first = gen;
 
@@ -157,6 +192,10 @@ void GenList::AddFront(SpecList *gen) {
     length ++;
 }
 
+/**
+ * @brief AddBack añade elementos al final de la lista
+ * @param node
+ */
 void GenList::AddBack(SpecList *gen) {
     if (length == 0) AddFront(gen);
 
@@ -167,6 +206,11 @@ void GenList::AddBack(SpecList *gen) {
     }
 }
 
+/**
+ * @brief At retorna el elemento en el índice.
+ * @param index
+ * @return SpecList
+ */
 SpecList *GenList::At(int index) {
     if (first == nullptr or length == 0) return nullptr;
 
