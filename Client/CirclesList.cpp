@@ -26,7 +26,7 @@ void CirclesList::Reset() {
 
 void CirclesList::Insert(int posx, int posy) {
 
-    sf::CircleShape *tempC;
+    sf::CircleShape *tempC = new sf::CircleShape;
     tempC->setRadius(4);
     tempC->setPosition(posx,posy);
     tempC->setFillColor(sf::Color(255,0,0,125));

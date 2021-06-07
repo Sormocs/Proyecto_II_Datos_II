@@ -505,6 +505,7 @@ void BPGame::GeneratePath() {
 
     while (true){
         std::string temp = client->GetReceived();
+        std::cout << temp << std::endl;
         if (temp != ""){
             path = temp;
             break;
