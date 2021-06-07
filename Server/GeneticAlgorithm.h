@@ -24,6 +24,8 @@ private:
     bool stop;
     float time;
 
+    bool inArray(char* posArray, int len, char ranIndex);
+
     void TwoRanParents(Specimen& father, Specimen& mother);
     List* SearchBests();
     char Score(List* positions);

@@ -119,12 +119,24 @@ void GenAlgorithm::Inheritance(Specimen *&specimen, Specimen parents[]) {
  */
 void GenAlgorithm::CreateSpecimen() {
     auto* specimen = new Specimen();
-    List allPossibleDivsTEMP = *allPossibleDivs;
+
+
+    char posArray[allPossibleDivs->Length()];
+    for (int i = 0; i < allPossibleDivs->Length(); ++i) {
+        posArray[i] = -1;
+    }
+
     if (currentGen == 0) {
         for (int i = 0; i < divisionNum; ++i) {
-            char leng = allPossibleDivsTEMP.Length();
+            char leng = allPossibleDivs->Length();
             char ranIndex = random() % leng;
-            char posVal = *((char *) allPossibleDivsTEMP.GetDelAt(ranIndex)->value);
+
+            while (inArray(posArray, allPossibleDivs->Length(), ranIndex)) {
+                ranIndex = random() % leng;
+            }
+            posArray[i] = ranIndex;
+
+            char posVal = *((char *) allPossibleDivs->At(ranIndex)->value);
             specimen->positions->AddBack(new Node((void *) new char(posVal)));
         }
     } else {
@@ -154,10 +166,13 @@ void GenAlgorithm::Run(int maxGen, int maxSpec) {
     time_p now = Time::now();
     while (!(solved || stop)) {
 
-        CreateGen(maxSpec);
-
-        currentGen++;
-        if (currentGen >= maxGen) stop = true;
+        if (currentGen == 0) {
+            CreateGen(maxSpec);
+        } else if (currentGen >= maxGen) stop = true;
+        else {
+            currentGen++;
+            CreateGen(maxSpec);
+        }
     }
     time = std::chrono::duration_cast<ms>(Time::now()-now).count() * 0.001;
 }
@@ -176,4 +191,11 @@ bool GenAlgorithm::isSolved() const {
 
 float GenAlgorithm::getTime() const {
     return time;
+}
+
+bool GenAlgorithm::inArray(char *posArray, int len, char ranIndex) {
+    for (int i = 0; i < len; ++i) {
+        if (posArray[1] == ranIndex) return true;
+    }
+    return false;
 }

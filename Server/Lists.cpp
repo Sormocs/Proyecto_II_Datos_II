@@ -62,33 +62,30 @@ void List::Reset() {
 }
 
 Node *List::GetDelAt(int index) {
+    Node* temp = nullptr;
     if (length == 0){
-        return nullptr;
+        temp = nullptr;
 
     } else if (index == 0) {
         if (length == 1){
-            Node* temp = first;
+            temp = first;
             first = nullptr;
-            length = 0;
-            return temp;
 
         } else {
-            Node* temp = first;
+            temp = first;
             first = first->next;
             temp->next = nullptr;
-            length--;
-            return temp;
         }
 
     } else {
         Node* temp1 = At(index-1);
-        Node* temp2 = temp1->next;
+        temp = temp1->next;
         if (index == length-1) temp1->next = nullptr;
-        temp2->next = nullptr;
-        length--;
-        return temp2;
+        else temp1->next = temp1->next->next;
+        temp->next = nullptr;
     }
-
+    length--;
+    return temp;
 }
 
 void List::AddBack(Node *node) {
