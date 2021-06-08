@@ -15,10 +15,10 @@ private:
     float xPos;
     float yPos;
 
-    bool LeftColl(float* dist, float& degrees);
-    bool RightColl(float* dist, float& degrees);
-    bool UpColl(float* dist, float& degrees);
-    bool DownColl(float* dist, float& degrees);
+    static bool LeftColl(float* dist, float& degrees);
+    static bool RightColl(float* dist, float& degrees);
+    static bool UpColl(float* dist, float& degrees);
+    static bool DownColl(float* dist, float& degrees);
 public:
     PlayerObs(float X,float Y);
     PlayerObs* next;
