@@ -254,11 +254,11 @@ bool BPGame::Run() {
                             playing = false;
                             player1 = false;
                             circles->Reset();
-                            int force = std::sqrt(std::pow(line.getPoints().getBounds().width,2) + std::pow(line.getPoints().getBounds().height,2));
+                            float force = std::sqrt(std::pow(line.getPoints().getBounds().width,2) + std::pow(line.getPoints().getBounds().height,2));
                             PhysController::Instance()->GetBall()->Throw(force, angle*(180/M_PI));
                             PhysController::Instance()->GetBall()->degree = PhysController::Instance()->FixAngle(PhysController::Instance()->GetBall()->degree);
-                            int ballx = PhysController::Instance()->GetBall()->pos[0]-BALL_RADIUS;
-                            int bally = PhysController::Instance()->GetBall()->pos[1]-BALL_RADIUS;
+                            float ballx = PhysController::Instance()->GetBall()->pos[0]-BALL_RADIUS;
+                            float bally = PhysController::Instance()->GetBall()->pos[1]-BALL_RADIUS;
                             line = Line(ballx+15,bally+15,ballx+15,bally+15,sf::Color(255,255,255,255));
                             invertedLine = Line(ballx+15,bally+15,ballx+15,bally+15,sf::Color(255,255,255,255));
                             angle = 0;
@@ -268,13 +268,13 @@ bool BPGame::Run() {
                         computerPlay.MouseOver(mouse[0], mouse[1]);
                         if (pressed) {
 
-                            int ballx = PhysController::Instance()->GetBall()->pos[0]-BALL_RADIUS;
-                            int bally = PhysController::Instance()->GetBall()->pos[1]-BALL_RADIUS;
+                            float ballx = PhysController::Instance()->GetBall()->pos[0]-BALL_RADIUS;
+                            float bally = PhysController::Instance()->GetBall()->pos[1]-BALL_RADIUS;
 
                             line = Line(ballx+15,bally+15,mouse[0],bally-(bally-mouse[1]),sf::Color(255,255,255,255));
 
-                            int x2 = ballx+15;
-                            int y2 = bally+15;
+                            float x2 = ballx+15;
+                            float y2 = bally+15;
                             if (mouse[0] > ballx+15 && mouse[1] < bally+15){
 
                                 x2 = line.getPoints().getBounds().left-line.getPoints().getBounds().width;
@@ -282,7 +282,7 @@ bool BPGame::Run() {
 
                                 invertedLine = Line(ballx+15,bally+15,x2,y2,sf::Color::White);
 
-                                angle = (-1)*atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) - M_PI;
+                                angle = -atan(invertedLine.getPoints().getBounds().height/invertedLine.getPoints().getBounds().width) - M_PI;
 
                             } else if (mouse[0] < ballx+15 && mouse[1] < bally+15 ){
 
@@ -334,9 +334,9 @@ bool BPGame::Run() {
             }
 
             if(Goal()){
-                ballsprite->setPosition(sf::Vector2f (840/2+40,405/2+80));
-                PhysController::Instance()->GetBall()->pos[0] = 840/2+40;
-                PhysController::Instance()->GetBall()->pos[1] = 405/2+80;
+                ballsprite->setPosition(sf::Vector2f (840.0/2+40,405.0/2+80));
+                PhysController::Instance()->GetBall()->pos[0] = 840.0/2+40;
+                PhysController::Instance()->GetBall()->pos[1] = 405.0/2+80;
                 PhysController::Instance()->GetBall()->Throw(0.0,0.0);
                 circles->Reset();
                 std::string send = GetPath();
@@ -401,6 +401,8 @@ bool BPGame::Run() {
         }
         // permite mostar solo 60 fps
         std::this_thread::sleep_for (std::chrono::milliseconds (16));
+
+//        sleep(0.016);    //este no sirve porque solo acepta enteros y debe congelarse por 16 milisegundos.
     }
     return false;
 }
@@ -437,7 +439,7 @@ void BPGame::CreatePlayers(int x, int y) {
             }
 
             obst->Insert(x+15,y+17,randi,randj);
-            PhysController::Instance()->playerList->Add(new PlayerObs(x+PLAYER_RADIUS, y+PLAYER_RADIUS));
+            PhysController::Instance()->playerList->Add(new Obstacles(x+PLAYER_RADIUS, y+PLAYER_RADIUS));
             x = 75;
             y = 130;
             avpos[randi][randj] = true;
@@ -466,7 +468,7 @@ void BPGame::CreatePlayers(int x, int y) {
             }
 
             obst->Insert(x+15,y+17,randi2,randj2);
-            PhysController::Instance()->playerList->Add(new PlayerObs(x+PLAYER_RADIUS, y+PLAYER_RADIUS));
+            PhysController::Instance()->playerList->Add(new Obstacles(x+PLAYER_RADIUS, y+PLAYER_RADIUS));
             x = 75;
             y = 130;
             avpos[randi2][randj2] = true;
@@ -525,7 +527,7 @@ void BPGame::ResetMatrixPlayer() {
 }
 
 /**
- * @brief Metodo para formar el json con la matriz del juegoo para enviar al server
+ * @brief Método para formar el json con la matriz del juego para enviar al server
  * @return
  */
 std::string BPGame::StartGame() {
@@ -564,7 +566,6 @@ int BPGame::GetI(int posy) {
             return i;
         }
         y += 81;
-
     }
 }
 
@@ -578,13 +579,12 @@ int BPGame::GetJ(int posx){
         }
         x += 70;
     }
-
 }
 
 std::string BPGame::GetPath(){
 
-    int i = GetI(PhysController::Instance()->GetBall()->pos[1]);
-    int j = GetJ(PhysController::Instance()->GetBall()->pos[0]);
+    int i = GetI((int)PhysController::Instance()->GetBall()->pos[1]);
+    int j = GetJ((int)PhysController::Instance()->GetBall()->pos[0]);
 
     json obj;
 
@@ -615,9 +615,10 @@ void BPGame::GeneratePath() {
     std::string path;
 
     while (true){
-        sleep(0.15);
+        // sleep(0.15); // crashea porque lee dice que se duerma por 0 segundos al convertir float a int que se convierte 0
+        std::this_thread::sleep_for(std::chrono::milliseconds(150));
         std::string temp = client->GetReceived();
-        if (temp != ""){
+        if (!temp.empty()){
             path = temp;
             break;
         }
@@ -644,8 +645,8 @@ void BPGame::GeneratePath() {
 
 bool BPGame::Goal() {
 
-    int i = GetI(PhysController::Instance()->GetBall()->pos[1]);
-    int j = GetJ(PhysController::Instance()->GetBall()->pos[0]);
+    int i = GetI((int)PhysController::Instance()->GetBall()->pos[1]);
+    int j = GetJ((int)PhysController::Instance()->GetBall()->pos[0]);
 
     if(i == 2 && j == 11){
         goalC++;
@@ -659,7 +660,7 @@ bool BPGame::Goal() {
 
 }
 
-int BPGame::Win() {
+int BPGame::Win() const {
 
     if (goalP == win ){
         return 1;
@@ -673,8 +674,8 @@ int BPGame::Win() {
 
 void BPGame::MoveComputer() {
 
-    int randi = rand()%201 + 100;
-    int randj = 90 - rand()%180 ;
+    auto randi = (short)(rand()%201 + 100);
+    auto randj = (short)(90 - rand()%180);
 
     PhysController::Instance()->GetBall()->Throw(randi,randj);
     player1 = true;

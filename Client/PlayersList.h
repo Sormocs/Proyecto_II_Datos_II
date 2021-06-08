@@ -1,5 +1,5 @@
 /**
- * @file PlayerList.h
+ * @file ObstacleList.h
  * @author Sergio MB
  * @brief Lista enlazada para los jugadores en pantalla
  */
@@ -31,7 +31,7 @@ public:
 };
 
 /**
- * @brief Clase PlayerList que contiene elementos Player para formar una lista enlazada
+ * @brief Clase ObstacleList que contiene elementos Player para formar una lista enlazada
  */
 class PlayersList {
 private:

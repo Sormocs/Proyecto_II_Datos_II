@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include "Constants.h"
+
 /**
  * @brief Clase Ball encargada del control de la ubicación de la bola.
  */
@@ -16,13 +17,18 @@ class Ball {
 
 public:
     Ball();
+
     float pos[2];
     float energy;
     float speed;
     float degree;
+
     void Throw(float force, float direction);
+
     void Bounce(char direction);
+
     void Friction(float deltaTime);
+
     bool Clicked(int x, int y);
 };
 

@@ -46,7 +46,7 @@ private:
     bool pressed = false;
     sf::Font font;
     int players = 2;
-    float angle = 0;
+    double angle = 0;
     PlayersList* obst = new PlayersList;
     BPGame() = default;
     std::string playerName = "Guest";
@@ -70,7 +70,7 @@ public:
     int GetI(int posy);
     int GetJ(int posx);
     bool Goal();
-    int Win();
+    int Win() const;
     void MoveComputer();
 };
 

@@ -5,6 +5,7 @@
  */
 
 #include "Ball.h"
+
 /**
  * @brief Friction disminuye la velocidad de la bola con el paso del tiempo con base en su fricción.
  * @param deltaTime
@@ -24,7 +25,7 @@ void Ball::Friction(float deltaTime) {
  */
 void Ball::Throw(float force, float degrees) {
     this->energy = force - (US * (BALL_MASS * GRAVITY));
-    this->speed = (force / BALL_MASS) ;
+    this->speed = (force / BALL_MASS);
     this->degree = degrees;
 }
 
@@ -38,9 +39,7 @@ void Ball::Bounce(char direction) {
 //        pos[1] = -pos[1];
 
         this->degree += 180.0f;
-    }
-
-    else if (direction == HORIZONTAL_COLLISION) {
+    } else if (direction == HORIZONTAL_COLLISION) {
 //        pos[0] = -pos[0];
 
         if (this->degree > 270) this->degree = 180 + (360 - this->degree);
@@ -101,7 +100,7 @@ void Ball::Bounce(char direction) {
 
 bool Ball::Clicked(int x, int y) {
 
-    if (pos[0]-20 < x && x < pos[0] + 40 && pos[1]-20 < y && y < pos[1] + 40) {
+    if (pos[0] - 20 < x && x < pos[0] + 40 && pos[1] - 20 < y && y < pos[1] + 40) {
         return true;
     }
     return false;

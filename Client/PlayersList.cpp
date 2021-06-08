@@ -1,7 +1,7 @@
 /**
- * @file PlayerList.cpp
+ * @file ObstacleList.cpp
  * @author Sergio MB
- * @brief Declaracion de los metodos de las clases Player y PlayerList
+ * @brief Declaracion de los metodos de las clases Player y ObstacleList
  */
 
 #include "PlayersList.h"
@@ -75,7 +75,7 @@ void Player::SetIndex(int posi, int posj) {
 //LIST
 /**
  * @brief Obtiene el nodo inicial
- * @return PlayerList*
+ * @return ObstacleList*
  */
 Player *PlayersList::GetStart() {
     return start;
@@ -83,7 +83,7 @@ Player *PlayersList::GetStart() {
 
 /**
  * @breif Obtiene el nodo final
- * @return PlayerList*
+ * @return ObstacleList*
  */
 Player *PlayersList::GetEnd() {
     return end;

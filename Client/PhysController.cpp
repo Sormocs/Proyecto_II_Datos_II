@@ -6,7 +6,7 @@
 
 #include "PhysController.h"
 
-PhysController* PhysController::instance = nullptr;
+PhysController *PhysController::instance = nullptr;
 
 /**
  * @brief deltaTime retorna el tiempo transcurrido desde la última llamada, por ejemplo, el tiempo pasado desde el último fame.
@@ -32,9 +32,12 @@ void PhysController::CheckColl() {
         if (collision == NO_COLLISION) continue;
 
         else {
-            std::cout << "Colisión con jugador " << i << ", de tipo " << playerList->Get(i)->WhereCollision(ball->pos, ball->degree) << ", con coordenadas " << playerList->Get(i)->getXPos() << ", " << playerList->Get(i)->getYPos() << " y bola en " << ball->pos[0] << ", " << ball->pos[1] << std::endl;
+            std::cout << "Colisión con jugador " << i << ", de tipo "
+                      << playerList->Get(i)->WhereCollision(ball->pos, ball->degree) << ", con coordenadas "
+                      << playerList->Get(i)->getXPos() << ", " << playerList->Get(i)->getYPos() << " y bola en "
+                      << ball->pos[0] << ", " << ball->pos[1] << std::endl;
             ball->Bounce(collision);
- //            std::cout << "Ángulo " << ball->degree << std::endl;
+            //            std::cout << "Ángulo " << ball->degree << std::endl;
         }
     }
 
@@ -78,17 +81,17 @@ void PhysController::CheckColl() {
             //                   |
             ball->Bounce(VERTICAL_COLLISION);
         }
-    } else if (ball->pos[1] > 516){
+    } else if (ball->pos[1] > 516) {
 
         if (ball->degree > 0 && ball->degree < 180) {
 //             sino, si colisiona con el borde inferior
 
- //            y el vector está
- //                   |
- //                   |
- //            _______|_______
- //              aquí | o aquí
- //                   |
+            //            y el vector está
+            //                   |
+            //                   |
+            //            _______|_______
+            //              aquí | o aquí
+            //                   |
             ball->Bounce(VERTICAL_COLLISION);
         }
     }
@@ -104,11 +107,12 @@ void PhysController::MoveBall() {
 //    if (this->ball->energy == 0) return;
     CheckColl();
     ball->Friction(deltaTime());
-    ball->pos[0] += ((std::cos((ball->degree * PI) / 180) * ball->energy)/BALL_MASS) * deltaTime();
-    ball->pos[1] += ((std::sin((ball->degree * PI) / 180) * ball->energy)/BALL_MASS) * deltaTime();
+    ball->pos[0] += ((std::cos((ball->degree * PI) / 180) * ball->energy) / BALL_MASS) * deltaTime();
+    ball->pos[1] += ((std::sin((ball->degree * PI) / 180) * ball->energy) / BALL_MASS) * deltaTime();
 
     *lastTime = Time::now();
 }
+
 /**
  * @brief getAngleInDeg obtiene el ángulo de un vector con las componentes X y Y.
 */
@@ -118,9 +122,9 @@ float PhysController::getAngleInDeg(float xDist, float yDist) {
         else return 90;
 
     } else if (xDist < 0) {
-        return FixAngle((std::atan(yDist/xDist) * 180 / PI) + 180);
+        return FixAngle((std::atan(yDist / xDist) * 180 / PI) + 180);
 
-    } else return FixAngle(std::atan(yDist/xDist) * 180 / PI);
+    } else return FixAngle(std::atan(yDist / xDist) * 180 / PI);
 }
 
 /**
@@ -128,9 +132,9 @@ float PhysController::getAngleInDeg(float xDist, float yDist) {
  * @param angle
  * @return angle
  */
-float PhysController::FixAngle(float angle){
+float PhysController::FixAngle(float angle) {
 
-    while (angle < 0 || 360 <= angle){
+    while (angle < 0 || 360 <= angle) {
 
         if (angle < 0) angle += 360;
 
@@ -188,15 +192,15 @@ PhysController::PhysController() {
 }
 
 void PhysController::CheckBounds() {
-    if ((ball->pos[0] < 90 || ball->pos[0] > 905 || ball->pos[1] < 145 || ball->pos[1] > 525) && ball->energy == 0){
+    if ((ball->pos[0] < 90 || ball->pos[0] > 905 || ball->pos[1] < 145 || ball->pos[1] > 525) && ball->energy == 0) {
         ball->Throw(0, 0);
-        ball->pos[0] = 840.0/2+40;
-        ball->pos[1] = 405.0/2+80;
+        ball->pos[0] = 840.0 / 2 + 40;
+        ball->pos[1] = 405.0 / 2 + 80;
     }
 }
 
 bool PhysController::OutScreen() {
-    if ((ball->pos[0] < 0 || ball->pos[0] > 1000 || ball->pos[1] < 0 || ball->pos[1] > 700) && ball->energy == 0){
+    if ((ball->pos[0] < 0 || ball->pos[0] > 1000 || ball->pos[1] < 0 || ball->pos[1] > 700) && ball->energy == 0) {
         ball->energy = 0;
     }
 }

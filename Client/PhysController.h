@@ -6,7 +6,7 @@
 
 #include <chrono>
 #include <cmath>
-#include "PlayerObs.h"
+#include "Obstacles.h"
 #include "Ball.h"
 
 #pragma once
@@ -22,18 +22,23 @@ typedef std::chrono::time_point<std::chrono::system_clock, std::chrono::duration
 class PhysController {
 private:
     PhysController();
-    static PhysController* instance;
-    time_p* lastTime;
-    Ball* ball;
+
+    static PhysController *instance;
+    time_p *lastTime;
+    Ball *ball;
 public:
 
-    static PhysController* Instance();
+    static PhysController *Instance();
+
     void ResetTime();
+
     void ResetPlayers();
+
     void ResetBall();
+
     static void ResetAll();
 
-    PlayerList* playerList = new PlayerList;
+    ObstacleList *playerList = new ObstacleList;
 
     double deltaTime();
 
@@ -44,10 +49,12 @@ public:
     void MoveBall();
 
     void CheckColl();
+
     void CheckBounds();
+
     bool OutScreen();
 
-    Ball* GetBall();
+    Ball *GetBall();
 };
 
 
