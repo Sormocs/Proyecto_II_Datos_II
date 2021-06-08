@@ -5,6 +5,7 @@
  */
 
 #include "Constants.h"
+#include <iostream>
 
 /**
  * @brief Clase PlayerObs encargada de representar los jugadores que sirven de obstáculos para el balón.
@@ -14,16 +15,16 @@ private:
     float xPos;
     float yPos;
 
-    bool LeftColl(float* dist, float degrees);
-    bool RightColl(float* dist, float degrees);
-    bool UpColl(float* dist, float degrees);
-    bool DownColl(float* dist, float degrees);
+    bool LeftColl(float* dist, float& degrees);
+    bool RightColl(float* dist, float& degrees);
+    bool UpColl(float* dist, float& degrees);
+    bool DownColl(float* dist, float& degrees);
 public:
     PlayerObs(float X,float Y);
     PlayerObs* next;
 
     PlayerObs();
-    char WhereCollision(float *pos, float degrees);
+    char WhereCollision(float *pos, float& degrees);
     float getXPos() {
         return xPos;
     }

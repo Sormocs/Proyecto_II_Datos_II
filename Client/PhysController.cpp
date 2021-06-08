@@ -32,7 +32,7 @@ void PhysController::CheckColl() {
         if (collision == NO_COLLISION) continue;
 
         else {
-            std::cout << "Colisión con jugador " << i << ", de tipo " << playerList->Get(i)->WhereCollision(ball->pos, ball->degree) << ", con coordenadas " << playerList->Get(i)->getXPos() << ", " << playerList->Get(i)->getYPos() << " y bola en" << ball->pos[0] << ", " << ball->pos[1] << std::endl;
+            std::cout << "Colisión con jugador " << i << ", de tipo " << playerList->Get(i)->WhereCollision(ball->pos, ball->degree) << ", con coordenadas " << playerList->Get(i)->getXPos() << ", " << playerList->Get(i)->getYPos() << " y bola en " << ball->pos[0] << ", " << ball->pos[1] << std::endl;
             ball->Bounce(collision);
  //            std::cout << "Ángulo " << ball->degree << std::endl;
         }

@@ -5,8 +5,6 @@
  */
 
 #include "PlayerObs.h"
-
-#include <cmath>
 /**
  * @brief Constructor para PlayerObs.
  */
@@ -19,7 +17,7 @@ PlayerObs::PlayerObs() {
  * @param pos
  * @return char 'd', 'h', 'v'.
  */
-char PlayerObs::WhereCollision(float *pos, float degrees) {
+char PlayerObs::WhereCollision(float *pos, float& degrees) {
 
     float dist[2];
 
@@ -27,13 +25,9 @@ char PlayerObs::WhereCollision(float *pos, float degrees) {
     dist[0] = pos[0] - this->xPos;
     dist[1] = pos[1] - this->yPos;
 
-    if (LeftColl(dist, degrees)) return HORIZONTAL_COLLISION;
+    if (LeftColl(dist, degrees) || RightColl(dist, degrees)) return HORIZONTAL_COLLISION;
 
-    else if (RightColl(dist, degrees)) return HORIZONTAL_COLLISION;
-
-    else if (UpColl(dist, degrees)) return VERTICAL_COLLISION;
-
-    else if (DownColl(dist, degrees)) return VERTICAL_COLLISION;
+    else if (UpColl(dist, degrees) || DownColl(dist, degrees)) return VERTICAL_COLLISION;
 
     else return NO_COLLISION;
 }
@@ -43,36 +37,38 @@ PlayerObs::PlayerObs(float X, float Y) {
     yPos = Y;
 }
 
-bool PlayerObs::LeftColl(float* dist, float degrees) {
+bool PlayerObs::LeftColl(float* dist, float& degrees) {
     // si la distancia es negativa, está a la izquierda
-    // si el radio es menor o igual a la distancia, lo está tocando
+    // si el radio es menor o igual al valor absoluto de la distancia, lo está tocando
     // si el ángulo está en el segundo o cuarto cuadrante, se dirige hacia él
     // si el valor absoluto de la distancia en y es menor al radio, están alineados
-    return dist[0] < 0 && std::abs(dist[0]) <= PLAYER_RADIUS + BALL_RADIUS && degrees > 90 && degrees < 270 && std::abs(dist[1]) <= PLAYER_RADIUS + BALL_RADIUS;
+    return dist[0] < 0 && std::abs(dist[0]) <= PLAYER_RADIUS && (degrees < 90 || degrees > 270) && std::abs(dist[1]-BALL_RADIUS) <= PLAYER_RADIUS;
 }
 
-bool PlayerObs::RightColl(float* dist, float degrees) {
+bool PlayerObs::RightColl(float* dist, float& degrees) {
     // si la distancia es positiva, está a la derecha
     // si el radio es menor o igual a la distancia, lo está tocando
     // si el ángulo está en el primer o cuarto cuadrante, se dirige hacia él
     // si el valor absoluto de la distancia en y es menor al radio, están alineados
-    return dist[0] > 0 && std::abs(dist[0]) <= PLAYER_RADIUS + BALL_RADIUS && (degrees > 270 || degrees < 90) && std::abs(dist[1]) <= PLAYER_RADIUS + BALL_RADIUS;
+    return dist[0] > 0 && std::abs(dist[0]) <= 2*PLAYER_RADIUS && degrees > 90 && degrees < 270 && std::abs(dist[1]-BALL_RADIUS) <= PLAYER_RADIUS;
 }
 
-bool PlayerObs::UpColl(float *dist, float degrees) {
+bool PlayerObs::UpColl(float *dist, float& degrees) {
     // si la distancia es negativa, está arriba
     // si el radio es menor o igual a la distancia, lo está tocando
     // si el ángulo está en el primer o segundo cuadrante, se dirige hacia él
     // si el valor absoluto de la distancia en y es menor al radio, esá a la misma línea que él
-    return dist[1] < 0 && std::abs(dist[1]) <= PLAYER_RADIUS + BALL_RADIUS && (degrees > 0 && degrees < 180) && std::abs(dist[0]) <= PLAYER_RADIUS + BALL_RADIUS;
+  //return dist[0] < 0 && std::abs(dist[0]) <= PLAYER_RADIUS && (degrees < 90 || degrees > 270) && std::abs(dist[1]-BALL_RADIUS) <= PLAYER_RADIUS;
+    return dist[1] < 0 && std::abs(dist[1]) <= PLAYER_RADIUS && degrees > 0 && degrees < 180 && std::abs(dist[0]-BALL_RADIUS) <= PLAYER_RADIUS;
 }
 
-bool PlayerObs::DownColl(float *dist, float degrees) {
+bool PlayerObs::DownColl(float *dist, float& degrees) {
     // si la distancia es positiva, está abajo
     // si el radio es menor o igual a la distancia, lo está tocando
     // si el ángulo está en el tercer o cuarto cuadrante, se dirige hacia él
     // si el valor absoluto de la distancia en y es menor al radio, están alineados
-    return dist[1] > 0 && std::abs(dist[1]) <= PLAYER_RADIUS + BALL_RADIUS && (degrees > 180 && degrees < 360) && std::abs(dist[0]) <= PLAYER_RADIUS + BALL_RADIUS;
+  //return dist[0] > 0 && std::abs(dist[0]) <= 2*PLAYER_RADIUS && degrees > 90 && degrees < 270 && std::abs(dist[1]-BALL_RADIUS) <= PLAYER_RADIUS;
+    return dist[1] > 0 && std::abs(dist[1]) <= 2*PLAYER_RADIUS + BALL_RADIUS/2 && degrees > 180 && degrees < 360 && std::abs(dist[0]-BALL_RADIUS) <= PLAYER_RADIUS;
 }
 
 
