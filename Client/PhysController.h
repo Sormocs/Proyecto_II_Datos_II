@@ -42,9 +42,9 @@ public:
 
     double deltaTime();
 
-    float getAngleInDeg(float xDist, float yDist);
+    static float getAngleInDeg(float xDist, float yDist);
 
-    float FixAngle(float angle);
+    static float FixAngle(float angle);
 
     void MoveBall();
 
@@ -52,7 +52,6 @@ public:
 
     void CheckBounds();
 
-    bool OutScreen();
 
     Ball *GetBall();
 };

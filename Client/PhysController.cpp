@@ -179,6 +179,7 @@ void PhysController::ResetBall() {
  * @brief ResetAll crea otra instancia del controlador completamente nueva.
  */
 void PhysController::ResetAll() {
+    delete PhysController::instance;
     PhysController::instance = new PhysController();
 }
 
@@ -198,11 +199,4 @@ void PhysController::CheckBounds() {
         ball->pos[1] = 405.0 / 2 + 80;
     }
 }
-
-bool PhysController::OutScreen() {
-    if ((ball->pos[0] < 0 || ball->pos[0] > 1000 || ball->pos[1] < 0 || ball->pos[1] > 700) && ball->energy == 0) {
-        ball->energy = 0;
-    }
-}
-
 
